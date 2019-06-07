@@ -1,0 +1,16 @@
++ Check whether the supplied countryname exists
++ Have a `presenter` function which can then be appended to a `seminaR object`
+
+The presenter object will have attributes
+
+name, surname, department, affiliation, email
+
+The idea is that more than one presenters can be added dynamically,
+i.e. when a presenter is appended to a seminar object the necessary
+number of presenters is added appending the column names with _1, _2
+and so on
+
+adding presenters will be destructive in the sense that all past
+presenters are overwritten by adding presenters
+
+The necessary structure are similar to what is done in trackeR for changing units.
