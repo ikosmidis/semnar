@@ -5,7 +5,6 @@
 #' @docType package
 #' @name seminaR
 #' @import lubridate
-#' @import mapdeck
 #' @import leaflet
 #' @import sf
 #' @importFrom magrittr %>%

@@ -10,6 +10,5 @@ Suggests: testthat
 Imports:
    countrycode,
    lubridate,
-   mapdeck,
-   sf
+   leaflet
 RoxygenNote: 6.1.1
