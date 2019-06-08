@@ -1,28 +1,32 @@
 #' @param title the title of the map. Currently inactive
 #' @export
 plot.seminaR <- function(object,
-                         group = c("month", "year", "presenter", "event", "country"),
+                         group = "year",
                          title = NA,
-                         title_position = c("topleft", "bottomleft", "topright", "bottomright"),
-                         tiles = "OpenStreetMap.Mapnik") {
-    group <- match.arg(group)
-    title_position <- match.arg(title_position)
+                         title_position = "bottomleft",
+                         provider = "OpenStreetMap.Mapnik") {
+    group <- match.arg(group,
+                       choices = c("month", "year", "presenter", "event", "country"))
+    title_position <- match.arg(title_position,
+                                choices = c("topleft", "bottomleft", "topright", "bottomright"))
     object$popup_text <- with(object, {
         paste(
             paste("Event:", event),
             paste("Presenter:", presenter),
-            paste("Title:", title),
+            paste("Title:", paste0("<strong>",title, "</strong>")),
             paste("URL:", paste0("<a href=", link, ">", link, "</a>")),
             paste("Start:", as.character(wday(start, abbr = TRUE, label = TRUE)), strftime(start, format = "%H:%M")),
             paste("End:", end),
             sep = "<br/>"
         )})
 
-    ## Base map (tiles), test with "Stamen.Toner", "Stamen.TonerLite", "CartoDB.Positron", "Stamen.Watercolor",
+    ## Base map (provider),
+    ## A few options
+    ## "Stamen.Toner", "Stamen.TonerLite", "CartoDB.Positron", "Stamen.Watercolor",
     ## "Esri.WorldGrayCanvas", "CartoDB.Voyager"
     ## Full list at http://leaflet-extras.github.io/leaflet-providers/preview/
     p <- leaflet() %>%
-        addProviderTiles(tiles)
+        addProviderTiles(provider)
 
 
     ## Change here
