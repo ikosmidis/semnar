@@ -45,3 +45,51 @@ plot.seminaR <- function(object,
     map
 
 }
+
+
+plot_leaflet.seminaR <- function(object, group = c("month", "year", "presenter", "event", "country")) {
+    group <- match.arg(group)
+    object$popup_text <- with(object, {
+        paste(
+            paste("Event:", event),
+            paste("Presenter:", presenter),
+            paste("Title:", title),
+            paste("URL:", paste0("<a href=", link, ">", link, "</a>")),
+            paste("Start:", as.character(wday(start, abbr = TRUE, label = TRUE)), strftime(start, format = "%H:%M")),
+            paste("End:", end),
+            sep = "<br/>"
+        )})
+
+    p <- leaflet()
+    p <- addTiles(p, group = "OSM (default)")
+    p <- addProviderTiles(p, "Stamen.Toner", group = "Toner")
+    p <- addProviderTiles(p, "Stamen.TonerLite", group = "Toner Lite")
+    p <- addProviderTiles(p, "CartoDB.Positron", group = "CartoDB Positron")
+
+    ## Change here
+    object$group <- switch(group,
+                           "month" = as.character(month(object$start, label = TRUE, abbr = FALSE)),
+                           "year" = year(object$start),
+                           "presenter" = object$presenter,
+                           "event" = object$event,
+                           "country" = object$country)
+
+    object_split <- split(object, object$group)
+    names(object_split) %>% purrr::walk(function(group) {
+        p <<- p %>%
+            addMarkers(data = object_split[[group]],
+                       lng = ~ lon,
+                       lat = ~ lat,
+                       popup = ~ popup_text,
+                       group = as.character(group),
+                       clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = FALSE),
+                       labelOptions = labelOptions(noHide = TRUE, direction = "auto"))
+    })
+
+    p <- addLayersControl(p,
+                          baseGroups = c("OSM (default)", "Toner", "Toner Lite", "CartoDB Positron"),
+                          overlayGroups = names(object_split),
+                          options = layersControlOptions(collapsed = TRUE))
+
+    p
+}
