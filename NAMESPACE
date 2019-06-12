@@ -2,6 +2,7 @@
 
 S3method(plot,seminaR)
 export(add_presentation)
+export(presenter)
 import(leaflet)
 import(lubridate)
 import(sf)

@@ -2,12 +2,13 @@
 % Please edit documentation in R/add_presentation.R
 \name{add_presentation}
 \alias{add_presentation}
-\title{Create or add to a seminaR object}
+\title{Create or add to a \code{seminaR} object}
 \usage{
-add_presentation(object, country = NA, city = NA, lon = NA,
-  lat = NA, event = NA, presenter_name = NA,
+add_presentation(object, presenter = NA, presenter_name = NA,
   presenter_midname = NA, presenter_surname = NA,
-  presenter_affiliation = NA, title = NA, abstract = NA, type = NA,
+  presenter_affiliation = NA, presenter_email = NA,
+  presenter_link = NA, country = NA, city = NA, lon = NA,
+  lat = NA, event = NA, title = NA, abstract = NA, type = NA,
   link = NA, institution = NA, department = NA, school = NA,
   venue = NA, room = NA, year = NA, month = NA, day = NA,
   start_hour = NA, end_hour = start_hour, start_min = 0L,
@@ -15,6 +16,20 @@ add_presentation(object, country = NA, city = NA, lon = NA,
 }
 \arguments{
 \item{object}{an object an object of class \code{"seminaR"}.}
+
+\item{presenter}{either \code{NA} (default) or an object of class \code{\link{seminaR_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.}
+
+\item{presenter_name}{name of the presenter of the talk/seminar; character string or \code{NA} (default).}
+
+\item{presenter_midname}{middle name of the presenter of the talk/seminar; character string or \code{NA} (default).}
+
+\item{presenter_surname}{surname of the presenter of the talk/seminar; character string or \code{NA} (default).}
+
+\item{presenter_affiliation}{affiliation of the presenter of the talk/seminar; character string or \code{NA} (default).}
+
+\item{presenter_email}{email of the presenter of the talk/seminar; character string or \code{NA} (default).}
+
+\item{presenter_link}{link to the webpage of the presenter of the talk/seminar; character string or \code{NA} (default).}
 
 \item{country}{country of the talk/seminar; character string or \code{NA} (default).}
 
@@ -25,12 +40,6 @@ add_presentation(object, country = NA, city = NA, lon = NA,
 \item{lat}{latitude of the venue of the talk/seminar; numeric or \code{NA} (default).}
 
 \item{event}{name of the event at which the talk/seminar is/was given; character string or \code{NA} (default).}
-
-\item{presenter_name}{name of the present of the talk/seminar; character string or \code{NA} (default).}
-
-\item{presenter_midname}{middle name of the present of the talk/seminar; character string or \code{NA} (default).}
-
-\item{presenter_surname}{surname of the present of the talk/seminar; character string or \code{NA} (default).}
 
 \item{title}{title of the talk/seminar; character string or \code{NA} (default).}
 
@@ -74,7 +83,7 @@ add_presentation(object, country = NA, city = NA, lon = NA,
 A structured \code{\link{data.frame}} that also inherits from class \code{seminaR}, including the supplied talk/seminar details.
 }
 \description{
-Create or add to a seminaR object
+Create or add to a \code{seminaR} object
 }
 \details{
 If \code{object} is not specified then \code{add_talk} will create an \code{seminaR} objects based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.

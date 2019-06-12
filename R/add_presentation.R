@@ -1,4 +1,4 @@
-#' Create or add to a seminaR object
+#' Create or add to a \code{seminaR} object
 #'
 #' @param object an object an object of class \code{"seminaR"}.
 #' @param country country of the talk/seminar; character string or \code{NA} (default).
@@ -6,9 +6,13 @@
 #' @param lon longitude of the venue of the talk/seminar; numeric or \code{NA} (default).
 #' @param lat latitude of the venue of the talk/seminar; numeric or \code{NA} (default).
 #' @param event name of the event at which the talk/seminar is/was given; character string or \code{NA} (default).
-#' @param presenter_name name of the present of the talk/seminar; character string or \code{NA} (default).
-#' @param presenter_midname middle name of the present of the talk/seminar; character string or \code{NA} (default).
-#' @param presenter_surname surname of the present of the talk/seminar; character string or \code{NA} (default).
+#' @param presenter either \code{NA} (default) or an object of class \code{\link{seminaR_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.
+#' @param presenter_name name of the presenter of the talk/seminar; character string or \code{NA} (default).
+#' @param presenter_midname middle name of the presenter of the talk/seminar; character string or \code{NA} (default).
+#' @param presenter_surname surname of the presenter of the talk/seminar; character string or \code{NA} (default).
+#' @param presenter_affiliation  affiliation of the presenter of the talk/seminar; character string or \code{NA} (default).
+#' @param presenter_link  link to the webpage of the presenter of the talk/seminar; character string or \code{NA} (default).
+#' @param presenter_email  email of the presenter of the talk/seminar; character string or \code{NA} (default).
 #' @param title title of the talk/seminar; character string or \code{NA} (default).
 #' @param abstract abstract of the talk/seminar; character string or \code{NA} (default).
 #' @param type the type of the talk. Available options are \code{NA} (default), \code{"seminar"}, \code{"lecture"}, \code{"presentation"}, \code{"talk"}, \code{"poster"}.
@@ -36,15 +40,18 @@
 #' A structured \code{\link{data.frame}} that also inherits from class \code{seminaR}, including the supplied talk/seminar details.
 #' @export
 add_presentation <- function(object,
+                             presenter = NA,
+                             presenter_name = NA,
+                             presenter_midname = NA,
+                             presenter_surname = NA,
+                             presenter_affiliation = NA,
+                             presenter_email = NA,
+                             presenter_link = NA,
                      country = NA,
                      city = NA,
                      lon = NA,
                      lat = NA,
                      event = NA,
-                     presenter_name = NA,
-                     presenter_midname = NA,
-                     presenter_surname = NA,
-                     presenter_affiliation = NA,
                      title = NA,
                      abstract = NA,
                      type = NA,
@@ -71,17 +78,25 @@ add_presentation <- function(object,
     start_datetime <- make_datetime(year = year,
                                     month = month,
                                     day = day,
-                                    hour = start_hour,
-                                    min = start_min,
-                                    sec = start_sec,
-                                    tz = "UTC")
+                                    hour = ifelse(is.na(start_hour), 0, start_hour),
+                                    min = ifelse(is.na(start_min), 0, start_min),
+                                    sec = ifelse(is.na(start_sec), 0, start_sec),
+                                    tz = tz)
     end_datetime <- make_datetime(year = year,
                                   month = month,
                                   day = day,
-                                  hour = end_hour,
-                                  min = end_min,
-                                  sec = end_sec,
-                                  tz = "UTC")
+                                  hour = ifelse(is.na(end_hour), 0L, end_hour),
+                                  min = ifelse(is.na(end_min), 0L, end_min),
+                                  sec = ifelse(is.na(end_sec), 0, end_sec),
+                                  tz = tz)
+    if (inherits(presenter, "seminaR_presenter")) {
+        presenter_name <- presenter$name
+        presenter_midname <- presenter$midname
+        presenter_surname <- presenter$surname
+        presenter_affiliation <- presenter$affiliation
+        presenter_email <- presenter$email
+        presenter_link <- presenter$link
+    }
     next_seminar <-  data.frame(country = country,
                                 city = city,
                                 lon = lon,
@@ -91,6 +106,8 @@ add_presentation <- function(object,
                                 presenter_midname = presenter_midname,
                                 presenter_surname = presenter_surname,
                                 presenter_affiliation = presenter_affiliation,
+                                presenter_link = presenter_link,
+                                presenter_email = presenter_email,
                                 title = title,
                                 link = link,
                                 abstract = abstract,
@@ -111,6 +128,8 @@ add_presentation <- function(object,
             stop("`object` is not of class `seminaR`")
         }
     }
-    class(next_seminar) <- c("seminaR", class(next_seminar))
+    if (!inherits(next_seminar, "seminaR")) {
+        class(next_seminar) <- c("seminaR", class(next_seminar))
+    }
     return(next_seminar)
 }

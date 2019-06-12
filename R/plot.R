@@ -27,19 +27,35 @@ plot.seminaR <- function(object,
                           "ymd" = "%Y-%m-%d",
                           "ydm" = "%Y-%d-%m")
 
+    tz <- tz(object$start)
+
     date2text <- function(start, end) {
+        h <- hour(start) == hour(end)
+        m <- minute(start) == minute(end)
+        s <- second(start) == second(end)
         if (interval) {
-            paste("Date & Time:", as.character(wday(start, abbr = TRUE, label = TRUE)),
-                  strftime(start, format = date_format),
-                  paste0(strftime(start, format = "%H:%M"), "-", strftime(end, format = "%H:%M")))
+            ret <- ifelse(h & m & s,
+                          paste("Date & Time:", as.character(wday(start, abbr = TRUE, label = TRUE)),
+                                strftime(start, format = date_format, tz = tz)),
+                          paste("Date & Time:", as.character(wday(start, abbr = TRUE, label = TRUE)),
+                                strftime(start, format = date_format, tz = tz),
+                                ifelse(is.na(start), "", paste0(strftime(start, format = "%H:%M", tz = tz), "-",
+                                                                strftime(end, format = "%H:%M", tz = tz)))))
         }
         else {
-            paste(paste("Start:", as.character(wday(start, abbr = TRUE, label = TRUE)),
-                        strftime(start, format = paste(date_format, "%H:%M"))),
-                  paste("End:", as.character(wday(end, abbr = TRUE, label = TRUE)),
-                        strftime(end, format = paste(date_format, "%H:%M"))),
-                  sep = "<br/>")
+            ret <- ifelse(inds,
+                          paste(paste("Start:", as.character(wday(start, abbr = TRUE, label = TRUE)),
+                                      ifelse(is.na(start), "",
+                                             strftime(start, format = paste(date_format, "%H:%M"), tz = tz))),
+                                paste("End:", as.character(wday(end, abbr = TRUE, label = TRUE)),
+                                      ifelse(is.na(end), "",
+                                             strftime(end, format = paste(date_format, "%H:%M"), tz = tz))),
+                                sep = "<br/>"),
+                          paste(paste("Start:", as.character(wday(start, abbr = TRUE, label = TRUE))),
+                                paste("End:", as.character(wday(end, abbr = TRUE, label = TRUE))),
+                                sep = "<br/>"))
         }
+        ret
     }
 
     object$popup_text <- with(object, {
@@ -86,7 +102,14 @@ plot.seminaR <- function(object,
                           options = layersControlOptions(collapsed = TRUE))
 
     if (!is.na(title)) {
-        p <- addControl(p, html = paste0("<a>", title, "</a>"), position = title_position)
+        map_title <- paste0("<a>", title, "</a>",
+                            "<br/>",
+                            "<a>", nrow(object), " seminars</a>",
+                            "<br/>",
+                            "<a>", length(unique(object$country)), " countries</a>",
+                            "<br/>",
+                            "<a>", length(unique(object$city)), " cities</a>")
+        p <- addControl(p, html = map_title, position = title_position)
     }
 
     p
