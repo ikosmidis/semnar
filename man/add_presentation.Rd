@@ -93,6 +93,7 @@ If \code{object} is not specified then \code{add_talk} will create an \code{semi
 }
 \examples{
 # Two of my past talks
+library("magrittr")
 out <- add_presentation(country = "England", city = "Coventry", lon = -1.560843, lat = 52.384019,
                         event = "Young Researchers' Meeting",
                         title = "A workflow that most probably isn't yours",

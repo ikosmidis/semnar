@@ -1,6 +1,6 @@
 #' Interactive seminar maps
 #'
-#' @param object an object of class \code{"seminaR"}. See \code{\link{add_presentation}}.
+#' @param x an object of class \code{"seminaR"}. See \code{\link{add_presentation}}.
 #' @param group according to what should the seminars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"evnet"}, \code{"country"}.
 #' @param title characcter string for the title of the map. Default is \code{NA}, which produces no title.
 #' @param title_position the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.
@@ -9,8 +9,9 @@
 #' @param date_format In what format should the dates be displayed? Available options are \code{"dmy"}, \code{"mdy"}, \code{"ydm"}, \code{"ymd"}, where \code{"y"} stands for year, \code{"m"} stands for month, and \code{"d"} stands for day.
 #' @param shorten_URLs Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.
 #' @param service service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}. See \code{\link{shorten_URLs}}.
+#' @param ... Arguments to be passed to methods. Currently unused.
 #' @export
-plot.seminaR <- function(object,
+plot.seminaR <- function(x,
                          group = "year",
                          title = NA,
                          title_position = "bottomleft",
@@ -18,7 +19,9 @@ plot.seminaR <- function(object,
                          interval = TRUE,
                          date_format = "dmy",
                          shorten_URLs = FALSE,
-                         service = "Is.gd") {
+                         service = "Is.gd",
+                         ...) {
+    object <- x
     if (shorten_URLs) {
         object <- shorten_URLs(object, service)
     }
@@ -50,17 +53,20 @@ plot.seminaR <- function(object,
                                                                 strftime(end, format = "%H:%M", tz = tz)))))
         }
         else {
-            ret <- ifelse(inds,
+            ret <- ifelse(h & m & s,
+                          paste(paste("Start:", as.character(wday(start, abbr = TRUE, label = TRUE)),
+                                      strftime(start, format = date_format, tz = tz)),
+                                paste("End:", as.character(wday(start, abbr = TRUE, label = TRUE)),
+                                      strftime(start, format = date_format, tz = tz)),
+                                sep = "<br/>"),
                           paste(paste("Start:", as.character(wday(start, abbr = TRUE, label = TRUE)),
                                       ifelse(is.na(start), "",
                                              strftime(start, format = paste(date_format, "%H:%M"), tz = tz))),
                                 paste("End:", as.character(wday(end, abbr = TRUE, label = TRUE)),
                                       ifelse(is.na(end), "",
                                              strftime(end, format = paste(date_format, "%H:%M"), tz = tz))),
-                                sep = "<br/>"),
-                          paste(paste("Start:", as.character(wday(start, abbr = TRUE, label = TRUE))),
-                                paste("End:", as.character(wday(end, abbr = TRUE, label = TRUE))),
                                 sep = "<br/>"))
+            ## FIX
         }
         ret
     }
@@ -94,7 +100,7 @@ plot.seminaR <- function(object,
                            "city" = object$city)
 
     object_split <- split(object, object$group)
-    names(object_split) %>% purrr::walk(function(group) {
+    names(object_split) %>% walk(function(group) {
         p <<- addMarkers(p,
                          data = object_split[[group]],
                          lng = ~ lon,

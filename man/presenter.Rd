@@ -2,6 +2,7 @@
 % Please edit documentation in R/presenter.R
 \name{presenter}
 \alias{presenter}
+\alias{seminaR_presenter}
 \title{Create a \code{seminaR_presenter} object with presenter details}
 \usage{
 presenter(name = NA, midname = NA, surname = NA, affiliation = NA,

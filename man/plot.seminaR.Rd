@@ -4,13 +4,13 @@
 \alias{plot.seminaR}
 \title{Interactive seminar maps}
 \usage{
-\method{plot}{seminaR}(object, group = "year", title = NA,
+\method{plot}{seminaR}(x, group = "year", title = NA,
   title_position = "bottomleft", provider = "OpenStreetMap.Mapnik",
   interval = TRUE, date_format = "dmy", shorten_URLs = FALSE,
-  service = "Is.gd")
+  service = "Is.gd", ...)
 }
 \arguments{
-\item{object}{an object of class \code{"seminaR"}. See \code{\link{add_presentation}}.}
+\item{x}{an object of class \code{"seminaR"}. See \code{\link{add_presentation}}.}
 
 \item{group}{according to what should the seminars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"evnet"}, \code{"country"}.}
 
@@ -27,6 +27,8 @@
 \item{shorten_URLs}{Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.}
 
 \item{service}{service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}. See \code{\link{shorten_URLs}}.}
+
+\item{...}{Arguments to be passed to methods. Currently unused.}
 }
 \description{
 Interactive seminar maps

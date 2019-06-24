@@ -8,8 +8,7 @@
 #' @import leaflet
 #' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
 #' @importFrom magrittr %>%
-#'
-#' @details
+#' @importFrom purrr walk
 #'
 NULL
 

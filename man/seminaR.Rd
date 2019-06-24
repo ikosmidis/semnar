@@ -8,6 +8,3 @@
 \description{
 seminaR: Methods and classes for maintaining a database of talks and seminars
 }
-\details{
-
-}

@@ -1,4 +1,7 @@
 #' Create a \code{seminaR_presenter} object with presenter details
+#'
+#'
+#' @aliases seminaR_presenter
 #' @param name name of the presenter; character string or \code{NA} (default).
 #' @param midname middle name of the presenter; character string or \code{NA} (default).
 #' @param surname surname of the presenter; character string or \code{NA} (default).
