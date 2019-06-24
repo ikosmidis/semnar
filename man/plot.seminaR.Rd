@@ -18,7 +18,7 @@
 
 \item{title_position}{the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.}
 
-\item{provider}{the provider of tiles for the base map. See \code{\link[leaflet]{addProvider}}. Default is \code{"OpenStreetMap.Mapnik"}.}
+\item{provider}{the provider of tiles for the base map. See \code{\link[leaflet]{addProviderTiles}}. Default is \code{"OpenStreetMap.Mapnik"}.}
 
 \item{interval}{Should the start and end times in each popup be displayed as an interval (\code{TRUE}; default) or in two separate lines (\code{FALSE})?}
 

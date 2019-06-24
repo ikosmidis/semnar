@@ -4,7 +4,7 @@
 #' @param group according to what should the seminars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"evnet"}, \code{"country"}.
 #' @param title characcter string for the title of the map. Default is \code{NA}, which produces no title.
 #' @param title_position the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.
-#' @param provider the provider of tiles for the base map. See \code{\link[leaflet]{addProvider}}. Default is \code{"OpenStreetMap.Mapnik"}.
+#' @param provider the provider of tiles for the base map. See \code{\link[leaflet]{addProviderTiles}}. Default is \code{"OpenStreetMap.Mapnik"}.
 #' @param interval Should the start and end times in each popup be displayed as an interval (\code{TRUE}; default) or in two separate lines (\code{FALSE})?
 #' @param date_format In what format should the dates be displayed? Available options are \code{"dmy"}, \code{"mdy"}, \code{"ydm"}, \code{"ymd"}, where \code{"y"} stands for year, \code{"m"} stands for month, and \code{"d"} stands for day.
 #' @param shorten_URLs Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.
