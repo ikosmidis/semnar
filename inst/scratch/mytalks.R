@@ -698,13 +698,11 @@ out <- add_presentation(country = "Canada",
                      start_hour = 12, start_min = 00,
                      end_hour = 12, end_min = 35)
 
+out_short <- shorten_URLs(out)
 
 
 
-
-
-
-## DATE picker
+## Interative maps
 library("shiny")    # for shiny apps
 library("leaflet")  # renderLeaflet function
 ui = fluidPage(
@@ -722,7 +720,16 @@ ui = fluidPage(
 )
 server = function(input, output, session) {
     output$map = renderLeaflet({
-        plot(out[out$start >= input$date[1] & out$end <= input$date[2], ],
+        if (any(is.na(input$date))) {
+            inds <- rep(NA, nrow(out))
+        }
+        else {
+            inds <- out_short$start >= input$date[1] & out_short$end <= input$date[2]
+            if (all(!inds)) {
+                inds <- rep(NA, nrow(out))
+            }
+        }
+        plot(out_short[inds, ],
              title = "Ioannis Kosmidis",
              group = "country")
     })

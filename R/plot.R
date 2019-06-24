@@ -7,6 +7,8 @@
 #' @param provider the provider of tiles for the base map. See \code{\link[leaflet]{addProvider}}. Default is \code{"OpenStreetMap.Mapnik"}.
 #' @param interval Should the start and end times in each popup be displayed as an interval (\code{TRUE}; default) or in two separate lines (\code{FALSE})?
 #' @param date_format In what format should the dates be displayed? Available options are \code{"dmy"}, \code{"mdy"}, \code{"ydm"}, \code{"ymd"}, where \code{"y"} stands for year, \code{"m"} stands for month, and \code{"d"} stands for day.
+#' @param shorten_URLs Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.
+#' @param service service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}. See \code{\link{shorten_URLs}}.
 #' @export
 plot.seminaR <- function(object,
                          group = "year",
@@ -14,7 +16,12 @@ plot.seminaR <- function(object,
                          title_position = "bottomleft",
                          provider = "OpenStreetMap.Mapnik",
                          interval = TRUE,
-                         date_format = "dmy") {
+                         date_format = "dmy",
+                         shorten_URLs = FALSE,
+                         service = "Is.gd") {
+    if (shorten_URLs) {
+        object <- shorten_URLs(object, service)
+    }
     date_format <- match.arg(date_format, choices = c("dmy", "mdy", "ymd", "ydm"))
     group <- match.arg(group,
                        choices = c("month", "year", "presenter", "event", "country", "city"))

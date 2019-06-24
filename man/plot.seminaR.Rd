@@ -6,7 +6,8 @@
 \usage{
 \method{plot}{seminaR}(object, group = "year", title = NA,
   title_position = "bottomleft", provider = "OpenStreetMap.Mapnik",
-  interval = TRUE, date_format = "dmy")
+  interval = TRUE, date_format = "dmy", shorten_URLs = FALSE,
+  service = "Is.gd")
 }
 \arguments{
 \item{object}{an object of class \code{"seminaR"}. See \code{\link{add_presentation}}.}
@@ -22,6 +23,10 @@
 \item{interval}{Should the start and end times in each popup be displayed as an interval (\code{TRUE}; default) or in two separate lines (\code{FALSE})?}
 
 \item{date_format}{In what format should the dates be displayed? Available options are \code{"dmy"}, \code{"mdy"}, \code{"ydm"}, \code{"ymd"}, where \code{"y"} stands for year, \code{"m"} stands for month, and \code{"d"} stands for day.}
+
+\item{shorten_URLs}{Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.}
+
+\item{service}{service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}. See \code{\link{shorten_URLs}}.}
 }
 \description{
 Interactive seminar maps

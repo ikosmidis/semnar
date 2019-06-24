@@ -10,5 +10,6 @@ Suggests: testthat
 Imports:
    countrycode,
    lubridate,
-   leaflet
+   leaflet,
+   urlshorteneR
 RoxygenNote: 6.1.1
