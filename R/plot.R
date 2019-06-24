@@ -1,15 +1,15 @@
 #' Interactive seminar maps
 #'
 #' @param x an object of class \code{"seminaR"}. See \code{\link{add_presentation}}.
-#' @param group according to what should the seminars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"evnet"}, \code{"country"}.
-#' @param title characcter string for the title of the map. Default is \code{NA}, which produces no title.
+#' @param group according to what should the seminars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}.
+#' @param title character string for the title of the map. Default is \code{NA}, which produces no title.
 #' @param title_position the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.
 #' @param provider the provider of tiles for the base map. See \code{\link[leaflet]{addProviderTiles}}. Default is \code{"OpenStreetMap.Mapnik"}.
 #' @param interval Should the start and end times in each popup be displayed as an interval (\code{TRUE}; default) or in two separate lines (\code{FALSE})?
 #' @param date_format In what format should the dates be displayed? Available options are \code{"dmy"}, \code{"mdy"}, \code{"ydm"}, \code{"ymd"}, where \code{"y"} stands for year, \code{"m"} stands for month, and \code{"d"} stands for day.
 #' @param shorten_URLs Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.
-#' @param service service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}. See \code{\link{shorten_URLs}}.
-#' @param ... Arguments to be passed to methods. Currently unused.
+#' @param service service to use for shortening URLs. Current options are \code{"Is.gd"} (default) and \code{"V.gd"}. See \code{\link{shorten_URLs}}.
+#' @param ... Arguments to be passed to other methods. Currently unused.
 #' @export
 plot.seminaR <- function(x,
                          group = "year",

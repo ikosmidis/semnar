@@ -12,9 +12,9 @@
 \arguments{
 \item{x}{an object of class \code{"seminaR"}. See \code{\link{add_presentation}}.}
 
-\item{group}{according to what should the seminars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"evnet"}, \code{"country"}.}
+\item{group}{according to what should the seminars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}.}
 
-\item{title}{characcter string for the title of the map. Default is \code{NA}, which produces no title.}
+\item{title}{character string for the title of the map. Default is \code{NA}, which produces no title.}
 
 \item{title_position}{the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.}
 
@@ -26,9 +26,9 @@
 
 \item{shorten_URLs}{Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.}
 
-\item{service}{service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}. See \code{\link{shorten_URLs}}.}
+\item{service}{service to use for shortening URLs. Current options are \code{"Is.gd"} (default) and \code{"V.gd"}. See \code{\link{shorten_URLs}}.}
 
-\item{...}{Arguments to be passed to methods. Currently unused.}
+\item{...}{Arguments to be passed to other methods. Currently unused.}
 }
 \description{
 Interactive seminar maps

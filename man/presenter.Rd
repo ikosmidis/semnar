@@ -35,7 +35,7 @@ out <- add_presentation(country = "England", city = "Coventry", lon = -1.560843,
                         link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
                         type = "presentation", institution = "University of Warwick",
                         department = "Department of Statistics",
-                        venue = "Mathemtical Sciences Building", room = "M1.02",
+                        venue = "Mathematical Sciences Building", room = "M1.02",
                         year = 2019, month = 5, day = 28,
                         start_hour = 16, start_min = 00,
                         end_hour = 17, end_min = 00)
