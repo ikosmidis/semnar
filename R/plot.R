@@ -17,7 +17,7 @@ plot.seminaR <- function(object,
                          date_format = "dmy") {
     date_format <- match.arg(date_format, choices = c("dmy", "mdy", "ymd", "ydm"))
     group <- match.arg(group,
-                       choices = c("month", "year", "presenter", "event", "country"))
+                       choices = c("month", "year", "presenter", "event", "country", "city"))
     title_position <- match.arg(title_position,
                                 choices = c("topleft", "bottomleft", "topright", "bottomright"))
 
@@ -83,7 +83,8 @@ plot.seminaR <- function(object,
                            "year" = year(object$start),
                            "presenter" = object$presenter,
                            "event" = object$event,
-                           "country" = object$country)
+                           "country" = object$country,
+                           "city" = object$city)
 
     object_split <- split(object, object$group)
     names(object_split) %>% purrr::walk(function(group) {
@@ -114,3 +115,5 @@ plot.seminaR <- function(object,
 
     p
 }
+
+
