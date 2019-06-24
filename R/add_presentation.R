@@ -32,12 +32,41 @@
 #' @param start_sec start second of the talk/seminar; numeric (0-60) or \code{NA} (default).
 #' @param end_sec end second of the talk/seminar; numeric (0-60) or \code{NA} (default).
 #' @param tz timezone. Default is \code{"UTC"}. See \code{\link{DateTimeClasses}} for details.
+#' @param tag a tag for the talk/seminar; character string or \code{NA} (default).
 #'
 #' @details
 #' If \code{object} is not specified then \code{add_talk} will create an \code{seminaR} objects based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
 #'
 #' @return
 #' A structured \code{\link{data.frame}} that also inherits from class \code{seminaR}, including the supplied talk/seminar details.
+#'
+#' @examples
+#' # Two of my past talks
+#' out <- add_presentation(country = "England", city = "Coventry", lon = -1.560843, lat = 52.384019,
+#'                         event = "Young Researchers' Meeting",
+#'                         title = "A workflow that most probably isn't yours",
+#'                         link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
+#'                         type = "presentation", institution = "University of Warwick",
+#'                         department = "Department of Statistics",
+#'                         venue = "Mathemtical Sciences Building", room = "M1.02",
+#'                         year = 2019, month = 5, day = 28,
+#'                         start_hour = 16, start_min = 00,
+#'                         end_hour = 17, end_min = 00) %>%
+#'         add_presentation(country = "United States",
+#'                          city = "Stanford",
+#'                          lon = -122.165330, lat = 37.429464,
+#'                          event = "useR! 2016",
+#'                          title = "brglm: Reduced-bias inference in generalized linear models",
+#'                          link = "http://user2016.r-project.org//files/abs-book.pdf",
+#'                          type = "presentation",
+#'                          institution = NA,
+#'                          department = NA,
+#'                          venue = "Stanford Institute for Economic Policy Research",
+#'                          room = "Siepr 120",
+#'                          year = 2016, month = 06, day = 29,
+#'                          start_hour = 14, start_min = 15,
+#'                          end_hour = 14, end_min = 35)
+#' out
 #' @export
 add_presentation <- function(object,
                              presenter = NA,
@@ -70,6 +99,7 @@ add_presentation <- function(object,
                      end_min = start_min,
                      start_sec = 0L,
                      end_sec = 0L,
+                     tag = NA,
                      tz = "UTC") {
     types <- c(NA, "seminar", "lecture", "presentation", "talk", "poster")
     if (!(type %in% types)) {
@@ -119,6 +149,7 @@ add_presentation <- function(object,
                                 room = room,
                                 start = start_datetime,
                                 end = end_datetime,
+                                tag = tag,
                                 stringsAsFactors = FALSE)
     if (!missing(object)) {
         if (inherits(object, "seminaR")) {

@@ -7,6 +7,21 @@
 #' @param email  email of the presenter; character string or \code{NA} (default).
 #'
 #' @export
+#' @examples
+#' # A past talk of mine
+#' ik_warwick <- presenter(name = "Ioannis", surname = "Kosmidis",
+#'                         affiliation = "University of Warwick", link = "http://www.ikosmidis.com")
+#' out <- add_presentation(country = "England", city = "Coventry", lon = -1.560843, lat = 52.384019,
+#'                         event = "Young Researchers' Meeting",
+#'                         title = "A workflow that most probably isn't yours",
+#'                         presenter = ik_warwick,
+#'                         link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
+#'                         type = "presentation", institution = "University of Warwick",
+#'                         department = "Department of Statistics",
+#'                         venue = "Mathemtical Sciences Building", room = "M1.02",
+#'                         year = 2019, month = 5, day = 28,
+#'                         start_hour = 16, start_min = 00,
+#'                         end_hour = 17, end_min = 00)
 presenter <- function(name = NA,
                       midname = NA,
                       surname = NA,

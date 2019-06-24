@@ -3,7 +3,7 @@ Title: Methods and classes for maintaining a database of talks and seminars
 Version: 0.0.0.9000
 Authors@R: c(person(given = "Ioannis", family = "Kosmidis", role = c("aut", "cre"), email = "ioannis.kosmidis@warwick.ac.uk", comment = c(ORCID = "0000-0003-1556-0302")))
 Description: Provides methods for constructing and maintaining a list of seminars or talks, either ones that the user gives or gave or a list of talks at a particular event.
-License: GPL3
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: testthat
@@ -11,5 +11,7 @@ Imports:
    countrycode,
    lubridate,
    leaflet,
-   urlshorteneR
+   magrittr,
+   urlshorteneR,
+   purrr
 RoxygenNote: 6.1.1

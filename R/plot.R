@@ -110,16 +110,17 @@ plot.seminaR <- function(object,
                           options = layersControlOptions(collapsed = TRUE))
 
     if (!is.na(title)) {
-        map_title <- paste0("<a>", title, "</a>",
+        map_title <- paste0("seminaR map",
                             "<br/>",
-                            "<a>", nrow(object), " seminars</a>",
+                            title,
                             "<br/>",
-                            "<a>", length(unique(object$country)), " countries</a>",
+                            nrow(object), " seminars",
                             "<br/>",
-                            "<a>", length(unique(object$city)), " cities</a>")
+                            length(unique(object$country)), " countries",
+                            "<br/>",
+                            length(unique(object$city)), " cities")
         p <- addControl(p, html = map_title, position = title_position)
     }
-
     p
 }
 

@@ -109,7 +109,7 @@ out <- add_presentation(country = "Canada",
     add_presentation(country = "Scotland",
                      city = "Edinburgh",
                      lon = -3.175305, lat = 55.922925,
-                     event = "Statistics seminar series",
+                     event = "Seminar series",
                      title = "Location-adjusted Wald statistics",
                      presenter = me_warwick,
                      link = "https://www.maths.ed.ac.uk/school-of-mathematics/events",
@@ -195,7 +195,7 @@ out <- add_presentation(country = "Canada",
                      institution = NA, department = NA,
                      venue = "Cardiff City Hall",
                      room = "Syndicate Room B",
-                     year = 2019, month = 09, day = 04,
+                     year = 2018, month = 09, day = 04,
                      start_hour = 15, start_min = 40,
                      end_hour = 16, end_min = 40) %>%
         add_presentation(country = "Italy",
@@ -703,41 +703,71 @@ out_short <- shorten_URLs(out)
 
 
 ## Interative maps
-library("shiny")    # for shiny apps
-library("leaflet")  # renderLeaflet function
-ui = fluidPage(
-    div(class = "form-group shiny-input-container",
-        dateRangeInput(inputId = "date",
-                       label = "Date range",
-                       start = min(out$start),
-                       end = max(out$end),
-                       separator = " - "),
-        actionButton("resetButton", "Reset", icon("eraser"))
-    ),
+library("shiny")
+library("leaflet")
+library("dplyr")
+
+get_inds <- function(object, date) {
+    if (any(is.na(date))) {
+        inds <- rep(NA, nrow(object))
+    }
+    else {
+        inds <- object$start >= date[1] & object$end <= date[2]
+        if (all(!inds)) {
+            inds <- rep(NA, nrow(object))
+        }
+    }
+    inds
+}
+
+ui <- fluidPage(
+    ## Data table
+    dateRangeInput(inputId = "date",
+                   label = "Date Range",
+                   start = min(out_short$start),
+                   end = max(out_short$end),
+                   separator = " - "),
+    actionButton("resetButton", "Reset", icon("eraser")),
+    br(),
+    br(),
     leafletOutput(outputId = "map",
-                  width = "100%",
-                  height = "800")
+                  width = "auto",
+                  height = "600px"),
+    br(),
+    DT::dataTableOutput(outputId = "table",
+                        width = "auto",
+                        height = "600px")
 )
-server = function(input, output, session) {
-    output$map = renderLeaflet({
-        if (any(is.na(input$date))) {
-            inds <- rep(NA, nrow(out))
-        }
-        else {
-            inds <- out_short$start >= input$date[1] & out_short$end <= input$date[2]
-            if (all(!inds)) {
-                inds <- rep(NA, nrow(out))
-            }
-        }
+
+server <- function(input, output, session) {
+    output$map <- renderLeaflet({
+        inds <- get_inds(out_short, input$date)
         plot(out_short[inds, ],
              title = "Ioannis Kosmidis",
              group = "country")
     })
+    output$table <- DT::renderDataTable({
+        inds <- get_inds(out_short, input$date)
+        dt_out <- out_short[inds, ] %>%
+            mutate(Date = format(start, "%Y-%m-%d"),
+                   Institution = institution,
+                   Event = event,
+                   Title = title) %>%
+            select(Date, Institution, Event, Title)
+        ret <- DT::datatable(dt_out,
+                             rownames = FALSE,
+                             autoHideNavigation = TRUE,
+                             selection = 'none',
+                             options = list(autoWidth = TRUE,
+                                            columnDefs = list(list(width = "19%", targets = c(0)),
+                                                              list(width = "27%", targets = 1:3))))
+        ret
+    })
     observeEvent(input$resetButton, {
             updateDateRangeInput(session,
                                  inputId = "date",
-                                 start =  min(out$start),
-                                 end = max(out$start))
+                                 start =  min(out_short$start),
+                                 end = max(out_short$start))
             })
 }
 shinyApp(ui, server)

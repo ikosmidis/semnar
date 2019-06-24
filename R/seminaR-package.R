@@ -6,8 +6,7 @@
 #' @name seminaR
 #' @import lubridate
 #' @import leaflet
-#' @import sf
-#' @importFrom urlshorteneR isgd_LinksShorten
+#' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
 #' @importFrom magrittr %>%
 #'
 #' @details
