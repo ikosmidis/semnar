@@ -7,7 +7,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "README_files/README-",
-  fig.width = 8
+  fig.width = 8,
+  out.width = "100%"
 )
 ```
 <!-- badges: start -->
@@ -17,7 +18,7 @@ knitr::opts_chunk$set(
 
 # semnar
 
-[**semnar**](https://github.com/ikosmidis/semnar) provides methods for constructing and maintaining a list of seminars or talks in R. The presentations are either ones that the user gives or gave or a list of talks at a particular event or event series. [**semnar**](https://github.com/ikosmidis/semnar) also provides methods for the interactive mapping of the presentations using `leaflet` by grouping them according to country, city, year and other presentation attributes (see `?plot.semnar`). The markers on the map come with popups providing presentation details (title, insitution, event and so on) and materials (links to materials and events).
+[**semnar**](https://github.com/ikosmidis/semnar) provides methods for constructing and maintaining a list of seminars or talks in R. The presentations are either ones that the user gives or gave or a list of talks at a particular event or event series. [**semnar**](https://github.com/ikosmidis/semnar) also provides methods for the interactive mapping of the presentations using `leaflet` by grouping them according to country, city, year and other presentation attributes (see `?plot.semnar`). The markers on the map come with popups providing presentation details (title, institution, event and so on) and materials (links to materials and events).
 
 ## Installation
 
@@ -84,7 +85,7 @@ plot(IK_talks, group = "city",
      title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 ```
 
-See `?plot.semnar` for the customization options `plot.semnar` provides and [my talks page](http://ikosmidis.com/talks) for a live version with talks I gave in the last few years...
+See `?plot.semnar` for the customization options `plot.semnar` provides, and [my talks page](http://ikosmidis.com/talks) for a live version with talks I gave in the last few years...
 
 ## Interaction with other tools
 `jsonlite` can be directly used to export the [**semnar**](https://github.com/ikosmidis/semnar) databases into json files, ready to use in other software:
@@ -93,6 +94,6 @@ library("jsonlite")
 toJSON(IK_talks)
 ```
 
-### Code of Conduct
+## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

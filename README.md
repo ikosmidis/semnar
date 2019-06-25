@@ -16,7 +16,7 @@ talks at a particular event or event series.
 for the interactive mapping of the presentations using `leaflet` by
 grouping them according to country, city, year and other presentation
 attributes (see `?plot.semnar`). The markers on the map come with popups
-providing presentation details (title, insitution, event and so on) and
+providing presentation details (title, institution, event and so on) and
 materials (links to materials and events).
 
 Installation
@@ -120,9 +120,9 @@ The details in the database can be mapped using
     plot(IK_talks, group = "city",
          title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 
-![](README_files/README-unnamed-chunk-5-1.png)
+<img src="README_files/README-unnamed-chunk-5-1.png" width="100%" />
 
-See `?plot.semnar` for the customization options `plot.semnar` provides
+See `?plot.semnar` for the customization options `plot.semnar` provides,
 and [my talks page](http://ikosmidis.com/talks) for a live version with
 talks I gave in the last few years…
 
@@ -137,7 +137,8 @@ files, ready to use in other software:
     toJSON(IK_talks)
     #> [{"country":"England","city":"Coventry","lon":-1.5608,"lat":52.384,"event":"Young Researchers' Meeting","title":"A workflow that most probably isn't yours","link":"https://warwick.ac.uk/fac/sci/statistics/news/yrm/","materials":"http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf","venue":"Mathematical Sciences Building","institution":"University of Warwick","department":"Department of Statistics","type":"presentation","room":"M1.02","start":"2019-05-28 16:00:00","end":"2019-05-28 17:00:00"},{"country":"United States","city":"Stanford","lon":-122.1653,"lat":37.4295,"event":"useR! 2016","title":"brglm: Reduced-bias inference in generalized linear models","link":"http://user2016.r-project.org//files/abs-book.pdf","materials":"https://bit.ly/2KCBbKg","venue":"Stanford Institute for Economic Policy Research","type":"presentation","room":"Siepr 120","start":"2016-06-29 14:15:00","end":"2016-06-29 14:35:00"}]
 
-### Code of Conduct
+Code of Conduct
+---------------
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CONDUCT.md). By participating in this project you agree to
