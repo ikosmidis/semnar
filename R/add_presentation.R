@@ -23,6 +23,7 @@
 #' @param school school at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
 #' @param venue venue at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
 #' @param address address where the seminar/talk took place; character string or \code{NA} (default).
+#' @param postcode post code where the seminar/talk took place; character string or \code{NA} (default).
 #' @param room room at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
 #' @param year year of the talk/seminar; numeric, e.g. \code{2019}, or \code{NA} (default).
 #' @param month month of the talk/seminar; numeric (1-12) or \code{NA} (default).
@@ -97,6 +98,7 @@ add_presentation <- function(object,
                      school = NA,
                      venue = NA,
                      address = NA,
+                     postcode = NA,
                      room = NA,
                      year = NA,
                      month = NA,
@@ -152,6 +154,7 @@ add_presentation <- function(object,
                                 abstract = abstract,
                                 venue = venue,
                                 address = address,
+                                postcode = postcode,
                                 institution = institution,
                                 department = department,
                                 school = school,

@@ -61,7 +61,7 @@ University of Warwick on workflows and task management:
 class `semnar`, including the supplied presentation details.
 
     str(IK_talks)
-    #> Classes 'semnar' and 'data.frame':   1 obs. of  25 variables:
+    #> Classes 'semnar' and 'data.frame':   1 obs. of  26 variables:
     #>  $ country              : chr "England"
     #>  $ city                 : chr "Coventry"
     #>  $ lon                  : num -1.56
@@ -79,6 +79,7 @@ class `semnar`, including the supplied presentation details.
     #>  $ abstract             : logi NA
     #>  $ venue                : chr "Mathematical Sciences Building"
     #>  $ address              : logi NA
+    #>  $ postcode             : logi NA
     #>  $ institution          : chr "University of Warwick"
     #>  $ department           : chr "Department of Statistics"
     #>  $ school               : logi NA

@@ -84,6 +84,7 @@ plot(IK_talks, group = "year",
      title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 ```
 
+
 See `?plot.semnar` for the customization options `plot.semnar` provides, and [my talks page](http://ikosmidis.com/talks) for a live version with talks I gave in the last few years...
 
 ## Interaction with other tools

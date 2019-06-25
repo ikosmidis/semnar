@@ -10,10 +10,10 @@ add_presentation(object, presenter = NA, presenter_name = NA,
   presenter_link = NA, country = NA, city = NA, lon = NA,
   lat = NA, event = NA, title = NA, abstract = NA, type = NA,
   link = NA, materials = NA, institution = NA, department = NA,
-  school = NA, venue = NA, room = NA, year = NA, month = NA,
-  day = NA, start_hour = NA, end_hour = start_hour, start_min = 0L,
-  end_min = start_min, start_sec = 0L, end_sec = 0L, tag = NA,
-  tz = "UTC")
+  school = NA, venue = NA, address = NA, postcode = NA,
+  room = NA, year = NA, month = NA, day = NA, start_hour = NA,
+  end_hour = start_hour, start_min = 0L, end_min = start_min,
+  start_sec = 0L, end_sec = 0L, tag = NA, tz = "UTC")
 }
 \arguments{
 \item{object}{an object an object of class \code{"semnar"}.}
@@ -60,6 +60,10 @@ add_presentation(object, presenter = NA, presenter_name = NA,
 
 \item{venue}{venue at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).}
 
+\item{address}{address where the seminar/talk took place; character string or \code{NA} (default).}
+
+\item{postcode}{post code where the seminar/talk took place; character string or \code{NA} (default).}
+
 \item{room}{room at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).}
 
 \item{year}{year of the talk/seminar; numeric, e.g. \code{2019}, or \code{NA} (default).}
@@ -91,7 +95,7 @@ A structured \code{\link{data.frame}} that also inherits from class \code{semnar
 Create or add to a \code{semnar} object
 }
 \details{
-If \code{object} is not specified then \code{add_talk} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
+If \code{object} is not specified then \code{add_presentation} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
 }
 \examples{
 # Two of my past talks
