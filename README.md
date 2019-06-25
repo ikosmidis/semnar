@@ -120,10 +120,11 @@ The details in the database can be mapped using
     plot(IK_talks, group = "city",
          title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 
-<img src="README_files/README-unnamed-chunk-5-1.png" width="100%" />
+![](README_files/README-unnamed-chunk-5-1.png)
 
 See `?plot.semnar` for the customization options `plot.semnar` provides
-and [my talks page](http://ikosmidis.com/talks) for a live version
+and [my talks page](http://ikosmidis.com/talks) for a live version with
+talks I gave in the last few years…
 
 Interaction with other tools
 ----------------------------
