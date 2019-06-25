@@ -2,7 +2,7 @@ Package: semnar
 Title: Methods and classes for maintaining a database of talks and seminars
 Version: 0.1
 Authors@R: c(person(given = "Ioannis", family = "Kosmidis", role = c("aut", "cre"), email = "ioannis.kosmidis@warwick.ac.uk", comment = c(ORCID = "0000-0003-1556-0302")))
-Description: Provides methods for constructing and maintaining a list of seminars or talks, either ones that the user gives or gave or a list of talks at a particular event.
+Description: provides methods for constructing and maintaining a list of seminars or talks in R. The presentations are either ones that the user gives or gave or a list of talks at a particular event or event series. The package also provides methods for the interactive mapping of the presentations using `leaflet` by grouping them according to country, city, year and other presentation attributes (see `?plot.semnar`). The markers on the map come with popups providing presentation details (title, insitution, event and so on) and materials (links to materials and events).
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

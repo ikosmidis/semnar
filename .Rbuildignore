@@ -4,4 +4,6 @@
 ^\._*
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^CONDUCT\.md$
 inst/scratch/
+^README\.Rmd$

@@ -1,0 +1,126 @@
+<!-- badges: start -->
+[![Travis build
+status](https://travis-ci.org/ikosmidis/semnar.svg?branch=master)](https://travis-ci.org/ikosmidis/semnar)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/semnar)](https://cran.r-project.org/package=semnar)
+<!-- badges: end -->
+
+semnar
+======
+
+[**semnar**](https://github.com/ikosmidis/semnar) provides methods for
+constructing and maintaining a list of seminars or talks in R. The
+presentations are either ones that the user gives or gave or a list of
+talks at a particular event or event series.
+[**semnar**](https://github.com/ikosmidis/semnar) also provides methods
+for the interactive mapping of the presentations using `leaflet` by
+grouping them according to country, city, year and other presentation
+attributes (see `?plot.semnar`). The markers on the map come with popups
+providing presentation details (title, insitution, event and so on) and
+materials (links to materials and events).
+
+Installation
+------------
+
+You can install the development version from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("ikosmidis/semnar")
+```
+
+and the released version with:
+
+``` r
+install.packages("semnar")
+```
+
+Presentation databases
+----------------------
+
+`add_presentation` is the main function for constructing and maintaining
+a data base of presentations. For example, below I record the details of
+a recent presentation I gave to the PhD students and PostDocs at
+University of Warwick on workflows and task management:
+
+``` r
+library("semnar")
+IK_talks <- add_presentation(country = "England",
+                             city = "Coventry",
+                             lon = -1.560843, lat = 52.384019,
+                             event = "Young Researchers' Meeting",
+                             title = "A workflow that most probably isn't yours",
+                             link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
+                             materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+                             type = "presentation",
+                             institution = "University of Warwick",
+                             department = "Department of Statistics",
+                             venue = "Mathematical Sciences Building",
+                             room = "M1.02",
+                             year = 2019, month = 5, day = 28,
+                             start_hour = 16, start_min = 00,
+                             end_hour = 17, end_min = 00)
+```
+
+`IK_talks` is now a structured `data.frame` that also inherits from
+class `semnar`, including the supplied presentation details.
+
+``` r
+str(IK_talks)
+```
+
+I can then add another presentation, conveniently, by piping `IK_talks`
+forward into `add_presentation` using
+[**magrittr**’s](https://cran.r-project.org/package=magrittr) `%>%`
+operator:
+
+``` r
+IK_talks <- IK_talks %>%
+    add_presentation(country = "United States", city = "Stanford",
+                     lon = -122.165330, lat = 37.429464,
+                     event = "useR! 2016",
+                     title = "brglm: Reduced-bias inference in generalized linear models",
+                     link = "http://user2016.r-project.org//files/abs-book.pdf",
+                     materials = "https://bit.ly/2KCBbKg",
+                     type = "presentation", institution = NA, department = NA,
+                     venue = "Stanford Institute for Economic Policy Research",
+                     room = "Siepr 120",
+                     year = 2016, month = 06, day = 29,
+                     start_hour = 14, start_min = 15,
+                     end_hour = 14, end_min = 35)
+```
+
+`add_presentation` provides many arguments (see `?add_presentation`) to
+cover as much detail as I could think of relevant to a presentation.
+
+Mapping
+-------
+
+The details in the database can be mapped using
+[**leaflet**](https://cran.r-project.org/package=leaflet):
+
+``` r
+plot(IK_talks, group = "city",
+     title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
+```
+
+See `?plot.semnar` for the customization options `plot.semnar` provides.
+
+Interaction with other tools
+----------------------------
+
+`jsonlite` can be directly used to export the
+[**semnar**](https://github.com/ikosmidis/semnar) databases into json
+files, ready to use in other software:
+
+``` r
+library("jsonlite")
+toJSON(IK_talks)
+```
+
+### Code of Conduct
+
+Please note that this project is released with a [Contributor Code of
+Conduct](CONDUCT.md). By participating in this project you agree to
+abide by its terms.

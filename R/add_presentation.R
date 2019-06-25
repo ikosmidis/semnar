@@ -22,6 +22,7 @@
 #' @param department department at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
 #' @param school school at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
 #' @param venue venue at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
+#' @param address address where the seminar/talk took place; character string or \code{NA} (default).
 #' @param room room at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
 #' @param year year of the talk/seminar; numeric, e.g. \code{2019}, or \code{NA} (default).
 #' @param month month of the talk/seminar; numeric (1-12) or \code{NA} (default).
@@ -36,7 +37,7 @@
 #' @param tag a tag for the talk/seminar; character string or \code{NA} (default).
 #'
 #' @details
-#' If \code{object} is not specified then \code{add_talk} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
+#' If \code{object} is not specified then \code{add_presentation} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
 #'
 #' @return
 #' A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied talk/seminar details.
@@ -95,6 +96,7 @@ add_presentation <- function(object,
                      department = NA,
                      school = NA,
                      venue = NA,
+                     address = NA,
                      room = NA,
                      year = NA,
                      month = NA,
@@ -149,6 +151,7 @@ add_presentation <- function(object,
                                 materials = materials,
                                 abstract = abstract,
                                 venue = venue,
+                                address = address,
                                 institution = institution,
                                 department = department,
                                 school = school,
