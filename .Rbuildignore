@@ -1,0 +1,7 @@
+^\.travis\.yml$
+^codecov\.yml$
+^\.gitignore
+^\._*
+^.*\.Rproj$
+^\.Rproj\.user$
+inst/scratch/
