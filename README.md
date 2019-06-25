@@ -117,10 +117,10 @@ Mapping
 The details in the database can be mapped using
 [**leaflet**](https://cran.r-project.org/package=leaflet):
 
-    plot(IK_talks, group = "city",
+    plot(IK_talks, group = "year",
          title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 
-<img src="README_files/README-unnamed-chunk-5-1.png" width="100%" />
+![](README_files/README-unnamed-chunk-5-1.png)
 
 See `?plot.semnar` for the customization options `plot.semnar` provides,
 and [my talks page](http://ikosmidis.com/talks) for a live version with

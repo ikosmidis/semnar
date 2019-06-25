@@ -7,8 +7,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "README_files/README-",
-  fig.width = 8,
-  out.width = "100%"
+  fig.width = 8
 )
 ```
 <!-- badges: start -->
@@ -81,7 +80,7 @@ IK_talks <- IK_talks %>%
 ## Mapping
 The details in the database can be mapped using [**leaflet**](https://cran.r-project.org/package=leaflet):
 ```{r, eval = TRUE}
-plot(IK_talks, group = "city",
+plot(IK_talks, group = "year",
      title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 ```
 
