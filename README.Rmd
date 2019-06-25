@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 
 ```{r, echo = FALSE}
@@ -90,7 +88,7 @@ See `?plot.semnar` for the customization options `plot.semnar` provides.
 
 ## Interaction with other tools
 `jsonlite` can be directly used to export the [**semnar**](https://github.com/ikosmidis/semnar) databases into json files, ready to use in other software:
-```r
+```{r}
 library("jsonlite")
 toJSON(IK_talks)
 ```

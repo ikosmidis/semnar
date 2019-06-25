@@ -25,16 +25,12 @@ Installation
 You can install the development version from
 [GitHub](https://github.com/) with:
 
-``` r
-# install.packages("devtools")
-devtools::install_github("ikosmidis/semnar")
-```
+    # install.packages("devtools")
+    devtools::install_github("ikosmidis/semnar")
 
 and the released version with:
 
-``` r
-install.packages("semnar")
-```
+    install.packages("semnar")
 
 Presentation databases
 ----------------------
@@ -44,79 +40,73 @@ a data base of presentations. For example, below I record the details of
 a recent presentation I gave to the PhD students and PostDocs at
 University of Warwick on workflows and task management:
 
-``` r
-library("semnar")
-IK_talks <- add_presentation(country = "England",
-                             city = "Coventry",
-                             lon = -1.560843, lat = 52.384019,
-                             event = "Young Researchers' Meeting",
-                             title = "A workflow that most probably isn't yours",
-                             link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
-                             materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
-                             type = "presentation",
-                             institution = "University of Warwick",
-                             department = "Department of Statistics",
-                             venue = "Mathematical Sciences Building",
-                             room = "M1.02",
-                             year = 2019, month = 5, day = 28,
-                             start_hour = 16, start_min = 00,
-                             end_hour = 17, end_min = 00)
-```
+    library("semnar")
+    IK_talks <- add_presentation(country = "England",
+                                 city = "Coventry",
+                                 lon = -1.560843, lat = 52.384019,
+                                 event = "Young Researchers' Meeting",
+                                 title = "A workflow that most probably isn't yours",
+                                 link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
+                                 materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+                                 type = "presentation",
+                                 institution = "University of Warwick",
+                                 department = "Department of Statistics",
+                                 venue = "Mathematical Sciences Building",
+                                 room = "M1.02",
+                                 year = 2019, month = 5, day = 28,
+                                 start_hour = 16, start_min = 00,
+                                 end_hour = 17, end_min = 00)
 
 `IK_talks` is now a structured `data.frame` that also inherits from
 class `semnar`, including the supplied presentation details.
 
-``` r
-str(IK_talks)
-#> Classes 'semnar' and 'data.frame':   1 obs. of  25 variables:
-#>  $ country              : chr "England"
-#>  $ city                 : chr "Coventry"
-#>  $ lon                  : num -1.56
-#>  $ lat                  : num 52.4
-#>  $ event                : chr "Young Researchers' Meeting"
-#>  $ presenter_name       : logi NA
-#>  $ presenter_midname    : logi NA
-#>  $ presenter_surname    : logi NA
-#>  $ presenter_affiliation: logi NA
-#>  $ presenter_link       : logi NA
-#>  $ presenter_email      : logi NA
-#>  $ title                : chr "A workflow that most probably isn't yours"
-#>  $ link                 : chr "https://warwick.ac.uk/fac/sci/statistics/news/yrm/"
-#>  $ materials            : chr "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf"
-#>  $ abstract             : logi NA
-#>  $ venue                : chr "Mathematical Sciences Building"
-#>  $ address              : logi NA
-#>  $ institution          : chr "University of Warwick"
-#>  $ department           : chr "Department of Statistics"
-#>  $ school               : logi NA
-#>  $ type                 : chr "presentation"
-#>  $ room                 : chr "M1.02"
-#>  $ start                : POSIXct, format: "2019-05-28 16:00:00"
-#>  $ end                  : POSIXct, format: "2019-05-28 17:00:00"
-#>  $ tag                  : logi NA
-```
+    str(IK_talks)
+    #> Classes 'semnar' and 'data.frame':   1 obs. of  25 variables:
+    #>  $ country              : chr "England"
+    #>  $ city                 : chr "Coventry"
+    #>  $ lon                  : num -1.56
+    #>  $ lat                  : num 52.4
+    #>  $ event                : chr "Young Researchers' Meeting"
+    #>  $ presenter_name       : logi NA
+    #>  $ presenter_midname    : logi NA
+    #>  $ presenter_surname    : logi NA
+    #>  $ presenter_affiliation: logi NA
+    #>  $ presenter_link       : logi NA
+    #>  $ presenter_email      : logi NA
+    #>  $ title                : chr "A workflow that most probably isn't yours"
+    #>  $ link                 : chr "https://warwick.ac.uk/fac/sci/statistics/news/yrm/"
+    #>  $ materials            : chr "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf"
+    #>  $ abstract             : logi NA
+    #>  $ venue                : chr "Mathematical Sciences Building"
+    #>  $ address              : logi NA
+    #>  $ institution          : chr "University of Warwick"
+    #>  $ department           : chr "Department of Statistics"
+    #>  $ school               : logi NA
+    #>  $ type                 : chr "presentation"
+    #>  $ room                 : chr "M1.02"
+    #>  $ start                : POSIXct, format: "2019-05-28 16:00:00"
+    #>  $ end                  : POSIXct, format: "2019-05-28 17:00:00"
+    #>  $ tag                  : logi NA
 
 I can then add another presentation, conveniently, by piping `IK_talks`
 forward into `add_presentation` using
 [**magrittr**’s](https://cran.r-project.org/package=magrittr) `%>%`
 operator:
 
-``` r
-library("magrittr")
-IK_talks <- IK_talks %>%
-    add_presentation(country = "United States", city = "Stanford",
-                     lon = -122.165330, lat = 37.429464,
-                     event = "useR! 2016",
-                     title = "brglm: Reduced-bias inference in generalized linear models",
-                     link = "http://user2016.r-project.org//files/abs-book.pdf",
-                     materials = "https://bit.ly/2KCBbKg",
-                     type = "presentation", institution = NA, department = NA,
-                     venue = "Stanford Institute for Economic Policy Research",
-                     room = "Siepr 120",
-                     year = 2016, month = 06, day = 29,
-                     start_hour = 14, start_min = 15,
-                     end_hour = 14, end_min = 35)
-```
+    library("magrittr")
+    IK_talks <- IK_talks %>%
+        add_presentation(country = "United States", city = "Stanford",
+                         lon = -122.165330, lat = 37.429464,
+                         event = "useR! 2016",
+                         title = "brglm: Reduced-bias inference in generalized linear models",
+                         link = "http://user2016.r-project.org//files/abs-book.pdf",
+                         materials = "https://bit.ly/2KCBbKg",
+                         type = "presentation", institution = NA, department = NA,
+                         venue = "Stanford Institute for Economic Policy Research",
+                         room = "Siepr 120",
+                         year = 2016, month = 06, day = 29,
+                         start_hour = 14, start_min = 15,
+                         end_hour = 14, end_min = 35)
 
 `add_presentation` provides many arguments (see `?add_presentation`) to
 cover as much detail as I could think of relevant to a presentation.
@@ -127,10 +117,8 @@ Mapping
 The details in the database can be mapped using
 [**leaflet**](https://cran.r-project.org/package=leaflet):
 
-``` r
-plot(IK_talks, group = "city",
-     title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
-```
+    plot(IK_talks, group = "city",
+         title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 
 ![](README_files/README-unnamed-chunk-5-1.png) See `?plot.semnar` for
 the customization options `plot.semnar` provides.
@@ -142,10 +130,9 @@ Interaction with other tools
 [**semnar**](https://github.com/ikosmidis/semnar) databases into json
 files, ready to use in other software:
 
-``` r
-library("jsonlite")
-toJSON(IK_talks)
-```
+    library("jsonlite")
+    toJSON(IK_talks)
+    #> [{"country":"England","city":"Coventry","lon":-1.5608,"lat":52.384,"event":"Young Researchers' Meeting","title":"A workflow that most probably isn't yours","link":"https://warwick.ac.uk/fac/sci/statistics/news/yrm/","materials":"http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf","venue":"Mathematical Sciences Building","institution":"University of Warwick","department":"Department of Statistics","type":"presentation","room":"M1.02","start":"2019-05-28 16:00:00","end":"2019-05-28 17:00:00"},{"country":"United States","city":"Stanford","lon":-122.1653,"lat":37.4295,"event":"useR! 2016","title":"brglm: Reduced-bias inference in generalized linear models","link":"http://user2016.r-project.org//files/abs-book.pdf","materials":"https://bit.ly/2KCBbKg","venue":"Stanford Institute for Economic Policy Research","type":"presentation","room":"Siepr 120","start":"2016-06-29 14:15:00","end":"2016-06-29 14:35:00"}]
 
 ### Code of Conduct
 
