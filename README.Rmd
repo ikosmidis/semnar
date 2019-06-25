@@ -37,7 +37,7 @@ install.packages("semnar")
 ## Presentation databases
 
 `add_presentation` is the main function for constructing and maintaining a data base of presentations. For example, below I record the details of a recent presentation I gave to the PhD students and PostDocs at University of Warwick on workflows and task management:
-```r
+```{r}
 library("semnar")
 IK_talks <- add_presentation(country = "England",
                              city = "Coventry",
@@ -56,12 +56,13 @@ IK_talks <- add_presentation(country = "England",
                              end_hour = 17, end_min = 00)
 ```
 `IK_talks` is now a structured `data.frame` that also inherits from class `semnar`, including the supplied presentation details.
-```r
+```{r}
 str(IK_talks)
 ```
 
 I can then add another presentation, conveniently, by piping `IK_talks` forward into `add_presentation` using [**magrittr**'s](https://cran.r-project.org/package=magrittr) `%>%` operator:
-```r
+```{r}
+library("magrittr")
 IK_talks <- IK_talks %>%
     add_presentation(country = "United States", city = "Stanford",
                      lon = -122.165330, lat = 37.429464,
@@ -81,7 +82,7 @@ IK_talks <- IK_talks %>%
 
 ## Mapping
 The details in the database can be mapped using [**leaflet**](https://cran.r-project.org/package=leaflet):
-```r
+```{r, eval = TRUE}
 plot(IK_talks, group = "city",
      title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 ```

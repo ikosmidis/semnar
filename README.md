@@ -68,6 +68,32 @@ class `semnar`, including the supplied presentation details.
 
 ``` r
 str(IK_talks)
+#> Classes 'semnar' and 'data.frame':   1 obs. of  25 variables:
+#>  $ country              : chr "England"
+#>  $ city                 : chr "Coventry"
+#>  $ lon                  : num -1.56
+#>  $ lat                  : num 52.4
+#>  $ event                : chr "Young Researchers' Meeting"
+#>  $ presenter_name       : logi NA
+#>  $ presenter_midname    : logi NA
+#>  $ presenter_surname    : logi NA
+#>  $ presenter_affiliation: logi NA
+#>  $ presenter_link       : logi NA
+#>  $ presenter_email      : logi NA
+#>  $ title                : chr "A workflow that most probably isn't yours"
+#>  $ link                 : chr "https://warwick.ac.uk/fac/sci/statistics/news/yrm/"
+#>  $ materials            : chr "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf"
+#>  $ abstract             : logi NA
+#>  $ venue                : chr "Mathematical Sciences Building"
+#>  $ address              : logi NA
+#>  $ institution          : chr "University of Warwick"
+#>  $ department           : chr "Department of Statistics"
+#>  $ school               : logi NA
+#>  $ type                 : chr "presentation"
+#>  $ room                 : chr "M1.02"
+#>  $ start                : POSIXct, format: "2019-05-28 16:00:00"
+#>  $ end                  : POSIXct, format: "2019-05-28 17:00:00"
+#>  $ tag                  : logi NA
 ```
 
 I can then add another presentation, conveniently, by piping `IK_talks`
@@ -76,6 +102,7 @@ forward into `add_presentation` using
 operator:
 
 ``` r
+library("magrittr")
 IK_talks <- IK_talks %>%
     add_presentation(country = "United States", city = "Stanford",
                      lon = -122.165330, lat = 37.429464,
@@ -105,7 +132,8 @@ plot(IK_talks, group = "city",
      title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 ```
 
-See `?plot.semnar` for the customization options `plot.semnar` provides.
+![](README_files/README-unnamed-chunk-5-1.png) See `?plot.semnar` for
+the customization options `plot.semnar` provides.
 
 Interaction with other tools
 ----------------------------
