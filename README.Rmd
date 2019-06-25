@@ -7,8 +7,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "README_files/README-",
-  fig.width = 7,
-  fig.height = 7
+  out.width = "100%"
 )
 ```
 <!-- badges: start -->
@@ -84,7 +83,8 @@ The details in the database can be mapped using [**leaflet**](https://cran.r-pro
 plot(IK_talks, group = "city",
      title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 ```
-See `?plot.semnar` for the customization options `plot.semnar` provides.
+
+See `?plot.semnar` for the customization options `plot.semnar` provides and [my talks page](http://ikosmidis.com/talks) for a live version
 
 ## Interaction with other tools
 `jsonlite` can be directly used to export the [**semnar**](https://github.com/ikosmidis/semnar) databases into json files, ready to use in other software:
