@@ -7,7 +7,7 @@
 #' @import lubridate
 #' @import leaflet
 #' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
-#' @importFrom magrittr %>%
+#' @import magrittr
 #' @importFrom purrr walk
 #'
 NULL

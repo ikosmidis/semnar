@@ -1,7 +1,7 @@
 #' Interactive semnar maps
 #'
 #' @param x an object of class \code{"semnar"}. See \code{\link{add_presentation}}.
-#' @param group according to what should the semnars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}.
+#' @param group according to what should the semnars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}, \code{"city"}, \code{"year+country"}.
 #' @param title character string for the title of the map. Default is \code{NA}, which produces no title.
 #' @param title_position the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.
 #' @param provider the provider of tiles for the base map. See \code{\link[leaflet]{addProviderTiles}}. Default is \code{"OpenStreetMap.Mapnik"}.
@@ -10,8 +10,41 @@
 #' @param shorten_url Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.
 #' @param service service to use for shortening URLs. Current options are \code{"Is.gd"} (default) and \code{"V.gd"}. See \code{\link{shorten_url}}.
 #' @param show_event_url Should the event or talk/seminar URL (\code{"link"} argument in \code{\link{add_presentation}}) be printed in the popups (\code{TRUE}), or the event name (\code{"event"} argument in \code{\link{add_presentation}}) become a hyperlink pointing to the event or talk/seminar URL (\code{FALSE}; default).
+#' @param width As in \code{\link[leaflet]{leaflet}}. Default is \code{NULL}.
+#' @param height As in \code{\link[leaflet]{leaflet}}. Default is \code{NULL}.
+#' @param opacity As in \code{\link[leaflet]{markerOptions}}. Default is \code{1}.
 #' @param ... Arguments to be passed to other methods. Currently unused.
 #' @export
+#' @examples
+#' library("magrittr")
+#' out <- add_presentation(country = "England", city = "Coventry",
+#'                         lon = -1.560843, lat = 52.384019,
+#'                         event = "Young Researchers' Meeting",
+#'                         title = "A workflow that most probably isn't yours",
+#'                         link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
+#'                         materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+#'                         type = "presentation", institution = "University of Warwick",
+#'                         department = "Department of Statistics",
+#'                         venue = "Mathematical Sciences Building", room = "M1.02",
+#'                         year = 2019, month = 5, day = 28,
+#'                         start_hour = 16, start_min = 00,
+#'                         end_hour = 17, end_min = 00) %>%
+#'         add_presentation(country = "United States", city = "Stanford",
+#'                          lon = -122.165330, lat = 37.429464,
+#'                          event = "useR! 2016",
+#'                          title = "brglm: Reduced-bias inference in generalized linear models",
+#'                          link = "http://user2016.r-project.org//files/abs-book.pdf",
+#'                          materials = "https://bit.ly/2KCBbKg",
+#'                          type = "presentation", institution = NA, department = NA,
+#'                          venue = "Stanford Institute for Economic Policy Research",
+#'                          room = "Siepr 120",
+#'                          year = 2016, month = 06, day = 29,
+#'                          start_hour = 14, start_min = 15,
+#'                          end_hour = 14, end_min = 35)
+#' if (interactive()) {
+#'   plot(out, group = "city",
+#'        title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
+#' }
 plot.semnar <- function(x,
                         group = "year",
                         title = NA,
@@ -21,7 +54,10 @@ plot.semnar <- function(x,
                         date_format = "dmy",
                         shorten_url = FALSE,
                         service = "Is.gd",
+                        width = NULL,
+                        height = NULL,
                         show_event_url = FALSE,
+                        opacity = 1,
                         ...) {
     object <- x
     if (shorten_url) {
@@ -29,7 +65,7 @@ plot.semnar <- function(x,
     }
     date_format <- match.arg(date_format, choices = c("dmy", "mdy", "ymd", "ydm"))
     group <- match.arg(group,
-                       choices = c("month", "year", "presenter", "event", "country", "city"))
+                       choices = c("month", "year", "presenter", "event", "country", "city", "year+country"))
     title_position <- match.arg(title_position,
                                 choices = c("topleft", "bottomleft", "topright", "bottomright"))
 
@@ -111,7 +147,7 @@ plot.semnar <- function(x,
     ## "Stamen.Toner", "Stamen.TonerLite", "CartoDB.Positron", "Stamen.Watercolor",
     ## "Esri.WorldGrayCanvas", "CartoDB.Voyager"
     ## Full list at http://leaflet-extras.github.io/leaflet-providers/preview/
-    p <- leaflet() %>%
+    p <- leaflet(width = width, height = height) %>%
         addProviderTiles(provider)
 
     ## Change here
@@ -121,7 +157,9 @@ plot.semnar <- function(x,
                            "presenter" = object$presenter,
                            "event" = object$event,
                            "country" = object$country,
-                           "city" = object$city)
+                           "city" = object$city,
+                           "year+country" = paste(year(object$start), "-", object$country))
+
 
     object_split <- split(object, object$group)
     names(object_split) %>% walk(function(group) {
@@ -132,7 +170,8 @@ plot.semnar <- function(x,
                          popup = ~ popup_text,
                          group = as.character(group),
                          clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = FALSE),
-                         labelOptions = labelOptions(noHide = TRUE, direction = "auto"))
+                         labelOptions = labelOptions(noHide = TRUE, direction = "auto"),
+                         options = list(opacity = opacity))
     })
 
     p <- addLayersControl(p,
@@ -140,9 +179,7 @@ plot.semnar <- function(x,
                           options = layersControlOptions(collapsed = TRUE))
 
     if (!is.na(title)) {
-        map_title <- paste0("semnar map",
-                            "<br/>",
-                            title,
+        map_title <- paste0(title,
                             "<br/>",
                             nrow(object), " talks",
                             "<br/>",

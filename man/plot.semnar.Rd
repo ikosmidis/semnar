@@ -7,12 +7,13 @@
 \method{plot}{semnar}(x, group = "year", title = NA,
   title_position = "bottomleft", provider = "OpenStreetMap.Mapnik",
   interval = TRUE, date_format = "dmy", shorten_url = FALSE,
-  service = "Is.gd", show_event_url = FALSE, ...)
+  service = "Is.gd", width = NULL, height = NULL,
+  show_event_url = FALSE, opacity = 1, ...)
 }
 \arguments{
 \item{x}{an object of class \code{"semnar"}. See \code{\link{add_presentation}}.}
 
-\item{group}{according to what should the semnars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}.}
+\item{group}{according to what should the semnars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}, \code{"city"}, \code{"year+country"}.}
 
 \item{title}{character string for the title of the map. Default is \code{NA}, which produces no title.}
 
@@ -28,10 +29,47 @@
 
 \item{service}{service to use for shortening URLs. Current options are \code{"Is.gd"} (default) and \code{"V.gd"}. See \code{\link{shorten_url}}.}
 
+\item{width}{As in \code{\link[leaflet]{leaflet}}. Default is \code{NULL}.}
+
+\item{height}{As in \code{\link[leaflet]{leaflet}}. Default is \code{NULL}.}
+
 \item{show_event_url}{Should the event or talk/seminar URL (\code{"link"} argument in \code{\link{add_presentation}}) be printed in the popups (\code{TRUE}), or the event name (\code{"event"} argument in \code{\link{add_presentation}}) become a hyperlink pointing to the event or talk/seminar URL (\code{FALSE}; default).}
+
+\item{opacity}{As in \code{\link[leaflet]{markerOptions}}. Default is \code{1}.}
 
 \item{...}{Arguments to be passed to other methods. Currently unused.}
 }
 \description{
 Interactive semnar maps
+}
+\examples{
+library("magrittr")
+out <- add_presentation(country = "England", city = "Coventry",
+                        lon = -1.560843, lat = 52.384019,
+                        event = "Young Researchers' Meeting",
+                        title = "A workflow that most probably isn't yours",
+                        link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
+                        materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+                        type = "presentation", institution = "University of Warwick",
+                        department = "Department of Statistics",
+                        venue = "Mathematical Sciences Building", room = "M1.02",
+                        year = 2019, month = 5, day = 28,
+                        start_hour = 16, start_min = 00,
+                        end_hour = 17, end_min = 00) \%>\%
+        add_presentation(country = "United States", city = "Stanford",
+                         lon = -122.165330, lat = 37.429464,
+                         event = "useR! 2016",
+                         title = "brglm: Reduced-bias inference in generalized linear models",
+                         link = "http://user2016.r-project.org//files/abs-book.pdf",
+                         materials = "https://bit.ly/2KCBbKg",
+                         type = "presentation", institution = NA, department = NA,
+                         venue = "Stanford Institute for Economic Policy Research",
+                         room = "Siepr 120",
+                         year = 2016, month = 06, day = 29,
+                         start_hour = 14, start_min = 15,
+                         end_hour = 14, end_min = 35)
+if (interactive()) {
+  plot(out, group = "city",
+       title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
+}
 }

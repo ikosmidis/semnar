@@ -28,7 +28,8 @@ Create a \code{semnar_presenter} object with presenter details
 # A past talk of mine
 ik_warwick <- presenter(name = "Ioannis", surname = "Kosmidis",
                         affiliation = "University of Warwick", link = "http://www.ikosmidis.com")
-out <- add_presentation(country = "England", city = "Coventry", lon = -1.560843, lat = 52.384019,
+out <- add_presentation(country = "England", city = "Coventry",
+                        lon = -1.560843, lat = 52.384019,
                         event = "Young Researchers' Meeting",
                         title = "A workflow that most probably isn't yours",
                         presenter = ik_warwick,

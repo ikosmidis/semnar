@@ -615,7 +615,7 @@ IK_seminars <- add_presentation(country = "Canada",
                      presenter = me_ucl,
                      link = "http://www.unive.it/nqcontent.cfm?a_id=145468",
                      type = "seminar",
-                     institution = "Ca' Foscari University, Italy",
+                     institution = "Ca' Foscari University",
                      department = "Informatics and Statistics",
                      venue = NA,
                      room = NA,
@@ -675,7 +675,7 @@ IK_seminars <- add_presentation(country = "Canada",
                      presenter = me_ucl,
                      link = "http://www.unive.it/nqcontent.cfm?a_id=145468",
                      type = "seminar",
-                     institution = "Ca' Foscari University, Italy",
+                     institution = "Ca' Foscari University",
                      department = "Informatics and Statistics",
                      venue = NA,
                      room = NA,
@@ -731,75 +731,75 @@ with emphasis on models for categorical responses",
                      end_hour = 15, end_min = 00)
 
 
-out_short <- shorten_url(IK_seminars, service = "V.gd")
+## out_short <- shorten_url(IK_seminars, service = "V.gd")
 
 
-## Interative maps
-library("shiny")
-library("leaflet")
-library("dplyr")
+## ## Interative maps
+## library("shiny")
+## library("leaflet")
+## library("dplyr")
 
-get_inds <- function(object, date) {
-    if (any(is.na(date))) {
-        inds <- rep(NA, nrow(object))
-    }
-    else {
-        inds <- object$start >= date[1] & object$end <= date[2]
-        if (all(!inds)) {
-            inds <- rep(NA, nrow(object))
-        }
-    }
-    inds
-}
+## get_inds <- function(object, date) {
+##     if (any(is.na(date))) {
+##         inds <- rep(NA, nrow(object))
+##     }
+##     else {
+##         inds <- object$start >= date[1] & object$end <= date[2]
+##         if (all(!inds)) {
+##             inds <- rep(NA, nrow(object))
+##         }
+##     }
+##     inds
+## }
 
-ui <- fluidPage(
-    ## Data table
-    dateRangeInput(inputId = "date",
-                   label = "Date Range",
-                   start = min(out_short$start),
-                   end = max(out_short$end),
-                   separator = " - "),
-    actionButton("resetButton", "Reset", icon("eraser")),
-    br(),
-    br(),
-    leafletOutput(outputId = "map",
-                  width = "auto",
-                  height = "600px"),
-    br(),
-    DT::dataTableOutput(outputId = "table",
-                        width = "auto",
-                        height = "600px")
-)
+## ui <- fluidPage(
+##     ## Data table
+##     dateRangeInput(inputId = "date",
+##                    label = "Date Range",
+##                    start = min(out_short$start),
+##                    end = max(out_short$end),
+##                    separator = " - "),
+##     actionButton("resetButton", "Reset", icon("eraser")),
+##     br(),
+##     br(),
+##     leafletOutput(outputId = "map",
+##                   width = "auto",
+##                   height = "600px"),
+##     br(),
+##     DT::dataTableOutput(outputId = "table",
+##                         width = "auto",
+##                         height = "600px")
+## )
 
-server <- function(input, output, session) {
-    output$map <- renderLeaflet({
-        inds <- get_inds(out_short, input$date)
-        plot(out_short[inds, ],
-             title = "Ioannis Kosmidis",
-             group = "country")
-    })
-    output$table <- DT::renderDataTable({
-        inds <- get_inds(out_short, input$date)
-        dt_out <- out_short[inds, ] %>%
-            mutate(Date = format(start, "%Y-%m-%d"),
-                   Institution = institution,
-                   Event = event,
-                   Title = title) %>%
-            select(Date, Institution, Event, Title)
-        ret <- DT::datatable(dt_out,
-                             rownames = FALSE,
-                             autoHideNavigation = TRUE,
-                             selection = 'none',
-                             options = list(autoWidth = TRUE,
-                                            columnDefs = list(list(width = "19%", targets = c(0)),
-                                                              list(width = "27%", targets = 1:3))))
-        ret
-    })
-    observeEvent(input$resetButton, {
-            updateDateRangeInput(session,
-                                 inputId = "date",
-                                 start =  min(out_short$start),
-                                 end = max(out_short$start))
-            })
-}
-shinyApp(ui, server)
+## server <- function(input, output, session) {
+##     output$map <- renderLeaflet({
+##         inds <- get_inds(out_short, input$date)
+##         plot(out_short[inds, ],
+##              title = "Ioannis Kosmidis",
+##              group = "country")
+##     })
+##     output$table <- DT::renderDataTable({
+##         inds <- get_inds(out_short, input$date)
+##         dt_out <- out_short[inds, ] %>%
+##             mutate(Date = format(start, "%Y-%m-%d"),
+##                    Institution = institution,
+##                    Event = event,
+##                    Title = title) %>%
+##             select(Date, Institution, Event, Title)
+##         ret <- DT::datatable(dt_out,
+##                              rownames = FALSE,
+##                              autoHideNavigation = TRUE,
+##                              selection = 'none',
+##                              options = list(autoWidth = TRUE,
+##                                             columnDefs = list(list(width = "19%", targets = c(0)),
+##                                                               list(width = "27%", targets = 1:3))))
+##         ret
+##     })
+##     observeEvent(input$resetButton, {
+##             updateDateRangeInput(session,
+##                                  inputId = "date",
+##                                  start =  min(out_short$start),
+##                                  end = max(out_short$start))
+##             })
+## }
+## shinyApp(ui, server)
