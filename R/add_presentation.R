@@ -1,12 +1,12 @@
-#' Create or add to a \code{seminaR} object
+#' Create or add to a \code{semnar} object
 #'
-#' @param object an object an object of class \code{"seminaR"}.
+#' @param object an object an object of class \code{"semnar"}.
 #' @param country country of the talk/seminar; character string or \code{NA} (default).
 #' @param city city of the talk/seminar; character string or \code{NA} (default).
 #' @param lon longitude of the venue of the talk/seminar; numeric or \code{NA} (default).
 #' @param lat latitude of the venue of the talk/seminar; numeric or \code{NA} (default).
 #' @param event name of the event at which the talk/seminar is/was given; character string or \code{NA} (default).
-#' @param presenter either \code{NA} (default) or an object of class \code{\link{seminaR_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.
+#' @param presenter either \code{NA} (default) or an object of class \code{\link{semnar_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.
 #' @param presenter_name name of the presenter of the talk/seminar; character string or \code{NA} (default).
 #' @param presenter_midname middle name of the presenter of the talk/seminar; character string or \code{NA} (default).
 #' @param presenter_surname surname of the presenter of the talk/seminar; character string or \code{NA} (default).
@@ -17,6 +17,7 @@
 #' @param abstract abstract of the talk/seminar; character string or \code{NA} (default).
 #' @param type the type of the talk. Available options are \code{NA} (default), \code{"seminar"}, \code{"lecture"}, \code{"presentation"}, \code{"talk"}, \code{"poster"}.
 #' @param link link to the event or seminar/talk page; character string or \code{NA} (default).
+#' @param materials link to the slides or materials from the seminar/talk; character string or \code{NA} (default).
 #' @param institution institution at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
 #' @param department department at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
 #' @param school school at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
@@ -35,10 +36,10 @@
 #' @param tag a tag for the talk/seminar; character string or \code{NA} (default).
 #'
 #' @details
-#' If \code{object} is not specified then \code{add_talk} will create an \code{seminaR} objects based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
+#' If \code{object} is not specified then \code{add_talk} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
 #'
 #' @return
-#' A structured \code{\link{data.frame}} that also inherits from class \code{seminaR}, including the supplied talk/seminar details.
+#' A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied talk/seminar details.
 #'
 #' @examples
 #' # Two of my past talks
@@ -86,6 +87,7 @@ add_presentation <- function(object,
                      abstract = NA,
                      type = NA,
                      link = NA,
+                     materials = NA,
                      institution = NA,
                      department = NA,
                      school = NA,
@@ -120,7 +122,7 @@ add_presentation <- function(object,
                                   min = ifelse(is.na(end_min), 0L, end_min),
                                   sec = ifelse(is.na(end_sec), 0, end_sec),
                                   tz = tz)
-    if (inherits(presenter, "seminaR_presenter")) {
+    if (inherits(presenter, "semnar_presenter")) {
         presenter_name <- presenter$name
         presenter_midname <- presenter$midname
         presenter_surname <- presenter$surname
@@ -141,6 +143,7 @@ add_presentation <- function(object,
                                 presenter_email = presenter_email,
                                 title = title,
                                 link = link,
+                                materials = materials,
                                 abstract = abstract,
                                 venue = venue,
                                 institution = institution,
@@ -153,15 +156,15 @@ add_presentation <- function(object,
                                 tag = tag,
                                 stringsAsFactors = FALSE)
     if (!missing(object)) {
-        if (inherits(object, "seminaR")) {
+        if (inherits(object, "semnar")) {
             next_seminar <- rbind(object, next_seminar)
         }
         else {
-            stop("`object` is not of class `seminaR`")
+            stop("`object` is not of class `semnar`")
         }
     }
-    if (!inherits(next_seminar, "seminaR")) {
-        class(next_seminar) <- c("seminaR", class(next_seminar))
+    if (!inherits(next_seminar, "semnar")) {
+        class(next_seminar) <- c("semnar", class(next_seminar))
     }
     return(next_seminar)
 }

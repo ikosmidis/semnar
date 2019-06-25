@@ -1,29 +1,31 @@
-#' Interactive seminar maps
+#' Interactive semnar maps
 #'
-#' @param x an object of class \code{"seminaR"}. See \code{\link{add_presentation}}.
-#' @param group according to what should the seminars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}.
+#' @param x an object of class \code{"semnar"}. See \code{\link{add_presentation}}.
+#' @param group according to what should the semnars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}.
 #' @param title character string for the title of the map. Default is \code{NA}, which produces no title.
 #' @param title_position the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.
 #' @param provider the provider of tiles for the base map. See \code{\link[leaflet]{addProviderTiles}}. Default is \code{"OpenStreetMap.Mapnik"}.
 #' @param interval Should the start and end times in each popup be displayed as an interval (\code{TRUE}; default) or in two separate lines (\code{FALSE})?
 #' @param date_format In what format should the dates be displayed? Available options are \code{"dmy"}, \code{"mdy"}, \code{"ydm"}, \code{"ymd"}, where \code{"y"} stands for year, \code{"m"} stands for month, and \code{"d"} stands for day.
-#' @param shorten_URLs Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.
-#' @param service service to use for shortening URLs. Current options are \code{"Is.gd"} (default) and \code{"V.gd"}. See \code{\link{shorten_URLs}}.
+#' @param shorten_url Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.
+#' @param service service to use for shortening URLs. Current options are \code{"Is.gd"} (default) and \code{"V.gd"}. See \code{\link{shorten_url}}.
+#' @param show_event_url Should the event or talk/seminar URL (\code{"link"} argument in \code{\link{add_presentation}}) be printed in the popups (\code{TRUE}), or the event name (\code{"event"} argument in \code{\link{add_presentation}}) become a hyperlink pointing to the event or talk/seminar URL (\code{FALSE}; default).
 #' @param ... Arguments to be passed to other methods. Currently unused.
 #' @export
-plot.seminaR <- function(x,
-                         group = "year",
-                         title = NA,
-                         title_position = "bottomleft",
-                         provider = "OpenStreetMap.Mapnik",
-                         interval = TRUE,
-                         date_format = "dmy",
-                         shorten_URLs = FALSE,
-                         service = "Is.gd",
-                         ...) {
+plot.semnar <- function(x,
+                        group = "year",
+                        title = NA,
+                        title_position = "bottomleft",
+                        provider = "OpenStreetMap.Mapnik",
+                        interval = TRUE,
+                        date_format = "dmy",
+                        shorten_url = FALSE,
+                        service = "Is.gd",
+                        show_event_url = FALSE,
+                        ...) {
     object <- x
-    if (shorten_URLs) {
-        object <- shorten_URLs(object, service)
+    if (shorten_url) {
+        object <- shorten_url(object, service)
     }
     date_format <- match.arg(date_format, choices = c("dmy", "mdy", "ymd", "ydm"))
     group <- match.arg(group,
@@ -71,16 +73,38 @@ plot.seminaR <- function(x,
         ret
     }
 
-    object$popup_text <- with(object, {
-        paste(
-            paste("Presenter:", n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname)),
-            paste("Title:", paste0("<strong>", n2e(title), "</strong>")),
-            paste("Event:", n2e(event)),
-            paste("Institution:", n2e(institution)),
-            date2text(start, end),
-            paste("URL:", paste0("<a href=", n2e(link), ">", n2e(link), "</a>")),
-            sep = "<br/>"
-        )})
+    if (show_event_url) {
+        object$popup_text <- with(object, {
+            paste(
+                paste("Presenter:", n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname)),
+                paste("Title:",
+                      ifelse(is.na(materials),
+                             paste0("<strong>", n2e(title), "</strong>"),
+                             paste0("<strong><a href=", materials, ">", n2e(title), "</a></strong>"))),
+                paste("Event:", n2e(event)),
+                paste("Institution:", n2e(institution)),
+                date2text(start, end),
+                paste("URL:", paste0("<a href=", n2e(link), ">", n2e(link), "</a>")),
+                sep = "<br/>"
+            )})
+    }
+    else {
+        object$popup_text <- with(object, {
+            paste(
+                paste("Presenter:", n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname)),
+                paste("Title:",
+                      ifelse(is.na(materials),
+                             paste0("<strong>", n2e(title), "</strong>"),
+                             paste0("<strong><a href=", materials, ">", n2e(title), "</a></strong>"))),
+                paste("Event:",
+                      ifelse(is.na(link),
+                             n2e(event),
+                             paste0("<a href=", link, ">", n2e(event), "</a>"))),
+                paste("Institution:", n2e(institution)),
+                date2text(start, end),
+                sep = "<br/>"
+            )})
+    }
 
     ## Base map (provider),
     ## A few options
@@ -116,11 +140,11 @@ plot.seminaR <- function(x,
                           options = layersControlOptions(collapsed = TRUE))
 
     if (!is.na(title)) {
-        map_title <- paste0("seminaR map",
+        map_title <- paste0("semnar map",
                             "<br/>",
                             title,
                             "<br/>",
-                            nrow(object), " seminars",
+                            nrow(object), " talks",
                             "<br/>",
                             length(unique(object$country)), " countries",
                             "<br/>",

@@ -1,7 +1,6 @@
 me_warwick <- presenter(name = "Ioannis", surname = "Kosmidis", affiliation = "University of Warwick", link = "http://www.ikosmidis.com")
 me_ucl <- presenter(name = "Ioannis", surname = "Kosmidis", affiliation = "University College London", link = "http://www.ikosmidis.com")
 
-
 IK_seminars <- add_presentation(country = "Canada",
                                 city = "Toronto",
                                 lon = -79.398741, lat = 43.662692,
@@ -10,7 +9,8 @@ IK_seminars <- add_presentation(country = "Canada",
                                 presenter = me_warwick,
                                 link = NA,
                                 type = "seminar",
-                                institution = "University of Toronto", department = "Department of Statistical Sciences",
+                                institution = "University of Toronto",
+                                department = "Department of Statistical Sciences",
                                 venue = NA,
                                 room = "1084",
                                 year = 2019, month = 6, day = 5,
@@ -22,6 +22,7 @@ IK_seminars <- add_presentation(country = "Canada",
                      event = "Young Researchers' Meeting",
                      title = "A workflow that most probably isn't yours",
                      presenter = me_warwick,
+                     materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
                      link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
                      type = "presentation",
                      institution = "University of Warwick", department = "Department of Statistics",
@@ -696,11 +697,41 @@ IK_seminars <- add_presentation(country = "Canada",
                      room = "D1",
                      year = 2014, month = 12, day = 06,
                      start_hour = 12, start_min = 00,
-                     end_hour = 12, end_min = 35)
+                     end_hour = 12, end_min = 35) %>%
+    add_presentation(country = "England",
+                     city = "London",
+                     lon = -0.116588, lat = 51.513875,
+                     event = "Seminar series",
+                     title = "Shrinking bias to benefit estimation and inference
+with emphasis on models for categorical responses",
+                     presenter = me_ucl,
+                     link = NA,
+                     type = "seminar",
+                     institution = "London School of Economics and Political Science",
+                     department = "Department of Statistics",
+                     venue = "Columbia House",
+                     room = "COL 6.15",
+                     year = 2013, month = 11, day = 01,
+                     start_hour = 14, start_min = 00,
+                     end_hour = 15, end_min = 00) %>%
+    add_presentation(country = "England",
+                     city = "London",
+                     lon = -0.178993, lat = 51.499010,
+                     event = "Seminar series",
+                     title = "Shrinking bias to benefit estimation and inference",
+                     presenter = me_ucl,
+                     link = NA,
+                     type = "seminar",
+                     institution = "Imperial College London",
+                     department = "Department of Mathematics",
+                     venue = "Huxley Building",
+                     room = NA,
+                     year = 2013, month = 10, day = 11,
+                     start_hour = 14, start_min = 00,
+                     end_hour = 15, end_min = 00)
 
-out_short <- shorten_URLs(IK_seminars, service = "V.gd")
 
-
+out_short <- shorten_url(IK_seminars, service = "V.gd")
 
 
 ## Interative maps

@@ -2,8 +2,8 @@
 % Please edit documentation in R/presenter.R
 \name{presenter}
 \alias{presenter}
-\alias{seminaR_presenter}
-\title{Create a \code{seminaR_presenter} object with presenter details}
+\alias{semnar_presenter}
+\title{Create a \code{semnar_presenter} object with presenter details}
 \usage{
 presenter(name = NA, midname = NA, surname = NA, affiliation = NA,
   link = NA, email = NA)
@@ -22,7 +22,7 @@ presenter(name = NA, midname = NA, surname = NA, affiliation = NA,
 \item{email}{email of the presenter; character string or \code{NA} (default).}
 }
 \description{
-Create a \code{seminaR_presenter} object with presenter details
+Create a \code{semnar_presenter} object with presenter details
 }
 \examples{
 # A past talk of mine

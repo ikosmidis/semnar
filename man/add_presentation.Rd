@@ -2,23 +2,23 @@
 % Please edit documentation in R/add_presentation.R
 \name{add_presentation}
 \alias{add_presentation}
-\title{Create or add to a \code{seminaR} object}
+\title{Create or add to a \code{semnar} object}
 \usage{
 add_presentation(object, presenter = NA, presenter_name = NA,
   presenter_midname = NA, presenter_surname = NA,
   presenter_affiliation = NA, presenter_email = NA,
   presenter_link = NA, country = NA, city = NA, lon = NA,
   lat = NA, event = NA, title = NA, abstract = NA, type = NA,
-  link = NA, institution = NA, department = NA, school = NA,
-  venue = NA, room = NA, year = NA, month = NA, day = NA,
-  start_hour = NA, end_hour = start_hour, start_min = 0L,
+  link = NA, materials = NA, institution = NA, department = NA,
+  school = NA, venue = NA, room = NA, year = NA, month = NA,
+  day = NA, start_hour = NA, end_hour = start_hour, start_min = 0L,
   end_min = start_min, start_sec = 0L, end_sec = 0L, tag = NA,
   tz = "UTC")
 }
 \arguments{
-\item{object}{an object an object of class \code{"seminaR"}.}
+\item{object}{an object an object of class \code{"semnar"}.}
 
-\item{presenter}{either \code{NA} (default) or an object of class \code{\link{seminaR_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.}
+\item{presenter}{either \code{NA} (default) or an object of class \code{\link{semnar_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.}
 
 \item{presenter_name}{name of the presenter of the talk/seminar; character string or \code{NA} (default).}
 
@@ -49,6 +49,8 @@ add_presentation(object, presenter = NA, presenter_name = NA,
 \item{type}{the type of the talk. Available options are \code{NA} (default), \code{"seminar"}, \code{"lecture"}, \code{"presentation"}, \code{"talk"}, \code{"poster"}.}
 
 \item{link}{link to the event or seminar/talk page; character string or \code{NA} (default).}
+
+\item{materials}{link to the slides or materials from the seminar/talk; character string or \code{NA} (default).}
 
 \item{institution}{institution at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).}
 
@@ -83,13 +85,13 @@ add_presentation(object, presenter = NA, presenter_name = NA,
 \item{tz}{timezone. Default is \code{"UTC"}. See \code{\link{DateTimeClasses}} for details.}
 }
 \value{
-A structured \code{\link{data.frame}} that also inherits from class \code{seminaR}, including the supplied talk/seminar details.
+A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied talk/seminar details.
 }
 \description{
-Create or add to a \code{seminaR} object
+Create or add to a \code{semnar} object
 }
 \details{
-If \code{object} is not specified then \code{add_talk} will create an \code{seminaR} objects based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
+If \code{object} is not specified then \code{add_talk} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
 }
 \examples{
 # Two of my past talks

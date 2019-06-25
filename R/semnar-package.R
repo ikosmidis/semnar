@@ -1,9 +1,9 @@
 # Copyright (C) 2019 Ioannis Kosmidis
 
-#' seminaR: Methods and classes for maintaining a database of talks and seminars
+#' semnar: Methods and classes for maintaining a database of talks and seminars
 #'
 #' @docType package
-#' @name seminaR
+#' @name semnar
 #' @import lubridate
 #' @import leaflet
 #' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
@@ -12,8 +12,8 @@
 #'
 NULL
 
-#' @rdname shorten_URLs.seminaR
+#' @rdname shorten_url.semnar
 #' @export
-shorten_URLs <- function(object, service = "V.gd") {
-    UseMethod("shorten_URLs")
+shorten_url <- function(object, service = "V.gd") {
+    UseMethod("shorten_url")
 }

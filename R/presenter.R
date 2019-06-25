@@ -1,7 +1,7 @@
-#' Create a \code{seminaR_presenter} object with presenter details
+#' Create a \code{semnar_presenter} object with presenter details
 #'
 #'
-#' @aliases seminaR_presenter
+#' @aliases semnar_presenter
 #' @param name name of the presenter; character string or \code{NA} (default).
 #' @param midname middle name of the presenter; character string or \code{NA} (default).
 #' @param surname surname of the presenter; character string or \code{NA} (default).
@@ -38,8 +38,8 @@ presenter <- function(name = NA,
                       email = email,
                       link = link,
                       stringsAsFactors = FALSE)
-    if (!inherits(out, "seminaR")) {
-        class(out) <- c("seminaR_presenter", class(out))
+    if (!inherits(out, "semnar")) {
+        class(out) <- c("semnar_presenter", class(out))
     }
     out
 }
