@@ -1,6 +1,6 @@
 # Copyright (C) 2019 Ioannis Kosmidis
 
-#' semnar: Methods and classes for maintaining a database of talks and seminars
+#' semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations
 #'
 #' @docType package
 #' @name semnar

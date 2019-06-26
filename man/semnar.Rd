@@ -4,7 +4,7 @@
 \name{semnar}
 \alias{semnar}
 \alias{semnar-package}
-\title{semnar: Methods and classes for maintaining a database of talks and seminars}
+\title{semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations}
 \description{
-semnar: Methods and classes for maintaining a database of talks and seminars
+semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations
 }

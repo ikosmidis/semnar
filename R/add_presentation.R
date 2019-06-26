@@ -1,20 +1,20 @@
 #' Create or add to a \code{semnar} object
 #'
 #' @param object an object an object of class \code{"semnar"}.
-#' @param country country of the talk/seminar; character string or \code{NA} (default).
-#' @param city city of the talk/seminar; character string or \code{NA} (default).
-#' @param lon longitude of the venue of the talk/seminar; numeric or \code{NA} (default).
-#' @param lat latitude of the venue of the talk/seminar; numeric or \code{NA} (default).
-#' @param event name of the event at which the talk/seminar is/was given; character string or \code{NA} (default).
+#' @param country country of the presentation; character string or \code{NA} (default).
+#' @param city city of the presentation; character string or \code{NA} (default).
+#' @param lon longitude of the venue of the presentation; numeric or \code{NA} (default).
+#' @param lat latitude of the venue of the presentation; numeric or \code{NA} (default).
+#' @param event name of the event at which the presentation is/was given; character string or \code{NA} (default).
 #' @param presenter either \code{NA} (default) or an object of class \code{\link{semnar_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.
-#' @param presenter_name name of the presenter of the talk/seminar; character string or \code{NA} (default).
-#' @param presenter_midname middle name of the presenter of the talk/seminar; character string or \code{NA} (default).
-#' @param presenter_surname surname of the presenter of the talk/seminar; character string or \code{NA} (default).
-#' @param presenter_affiliation  affiliation of the presenter of the talk/seminar; character string or \code{NA} (default).
-#' @param presenter_link  link to the webpage of the presenter of the talk/seminar; character string or \code{NA} (default).
-#' @param presenter_email  email of the presenter of the talk/seminar; character string or \code{NA} (default).
-#' @param title title of the talk/seminar; character string or \code{NA} (default).
-#' @param abstract abstract of the talk/seminar; character string or \code{NA} (default).
+#' @param presenter_name name of the presenter of the presentation; character string or \code{NA} (default).
+#' @param presenter_midname middle name of the presenter of the presentation; character string or \code{NA} (default).
+#' @param presenter_surname surname of the presenter of the presentation; character string or \code{NA} (default).
+#' @param presenter_affiliation  affiliation of the presenter of the presentation; character string or \code{NA} (default).
+#' @param presenter_link  link to the webpage of the presenter of the presentation; character string or \code{NA} (default).
+#' @param presenter_email  email of the presenter of the presentation; character string or \code{NA} (default).
+#' @param title title of the presentation; character string or \code{NA} (default).
+#' @param abstract abstract of the presentation; character string or \code{NA} (default).
 #' @param type the type of the talk. Available options are \code{NA} (default), \code{"seminar"}, \code{"lecture"}, \code{"presentation"}, \code{"talk"}, \code{"poster"}.
 #' @param link link to the event or seminar/talk page; character string or \code{NA} (default).
 #' @param materials link to the slides or materials from the seminar/talk; character string or \code{NA} (default).
@@ -25,23 +25,23 @@
 #' @param address address where the seminar/talk took place; character string or \code{NA} (default).
 #' @param postcode post code where the seminar/talk took place; character string or \code{NA} (default).
 #' @param room room at which the event or seminar/talk page took/will take space; character string or \code{NA} (default).
-#' @param year year of the talk/seminar; numeric, e.g. \code{2019}, or \code{NA} (default).
-#' @param month month of the talk/seminar; numeric (1-12) or \code{NA} (default).
-#' @param day day of the talk/seminar; numeric (1-31) or \code{NA} (default).
-#' @param start_hour start hour of the talk/seminar; numeric (1-24) or \code{NA} (default).
-#' @param end_hour end hour of the talk/seminar; numeric (1-24) or \code{NA} (default).
-#' @param start_min start minute of the talk/seminar; numeric (0-60) or \code{NA} (default).
-#' @param end_min end minute of the talk/seminar; numeric (0-60) or \code{NA} (default).
-#' @param start_sec start second of the talk/seminar; numeric (0-60) or \code{NA} (default).
-#' @param end_sec end second of the talk/seminar; numeric (0-60) or \code{NA} (default).
+#' @param year year of the presentation; numeric, e.g. \code{2019}, or \code{NA} (default).
+#' @param month month of the presentation; numeric (1-12) or \code{NA} (default).
+#' @param day day of the presentation; numeric (1-31) or \code{NA} (default).
+#' @param start_hour start hour of the presentation; numeric (1-24) or \code{NA} (default).
+#' @param end_hour end hour of the presentation; numeric (1-24) or \code{NA} (default).
+#' @param start_min start minute of the presentation; numeric (0-60) or \code{NA} (default).
+#' @param end_min end minute of the presentation; numeric (0-60) or \code{NA} (default).
+#' @param start_sec start second of the presentation; numeric (0-60) or \code{NA} (default).
+#' @param end_sec end second of the presentation; numeric (0-60) or \code{NA} (default).
 #' @param tz timezone. Default is \code{"UTC"}. See \code{\link{DateTimeClasses}} for details.
-#' @param tag a tag for the talk/seminar; character string or \code{NA} (default).
+#' @param tag a tag for the presentation; character string or \code{NA} (default).
 #'
 #' @details
-#' If \code{object} is not specified then \code{add_presentation} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new talk/seminar on \code{object}.
+#' If \code{object} is not specified then \code{add_presentation} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
 #'
 #' @return
-#' A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied talk/seminar details.
+#' A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied presentation details.
 #'
 #' @examples
 #' # Two of my past talks
