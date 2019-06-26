@@ -112,7 +112,12 @@ plot.semnar <- function(x,
     if (show_event_url) {
         object$popup_text <- with(object, {
             paste(
-                paste("Presenter:", n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname)),
+                ifelse(is.na(presenter_link),
+                       paste("Presenter:",
+                             paste0("<a href=", presenter_link, ">"),
+                             n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname),
+                             "</a>"),
+                       paste("Presenter:", n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname))),
                 paste("Title:",
                       ifelse(is.na(materials),
                              paste0("<strong>", n2e(title), "</strong>"),
@@ -127,7 +132,12 @@ plot.semnar <- function(x,
     else {
         object$popup_text <- with(object, {
             paste(
-                paste("Presenter:", n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname)),
+                ifelse(is.na(presenter_link),
+                       paste("Presenter:", n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname)),
+                       paste("Presenter:",
+                             paste0("<a href=", presenter_link, ">"),
+                             n2e(presenter_name), n2e(presenter_midname), n2e(presenter_surname),
+                             "</a>")),
                 paste("Title:",
                       ifelse(is.na(materials),
                              paste0("<strong>", n2e(title), "</strong>"),

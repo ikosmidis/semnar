@@ -44,3 +44,21 @@ presenter <- function(name = NA,
     }
     out
 }
+
+
+#' Get presenter information
+#'
+get_presenter <- function(object) {
+    ret <- unique(object[, c("presenter_name",
+                             "presenter_midname",
+                             "presenter_surname",
+                             "presenter_affiliation",
+                             "presenter_link",
+                             "presenter_email")])
+    names(ret) <- c("name", "midname", "surname", "affiliation", "link", "email")
+    ret <-  split(ret, seq(nrow(ret)))
+    lapply(ret, function(x) {
+        class(x) <- c("semnar_presenter", class(x))
+        x
+    })
+}
