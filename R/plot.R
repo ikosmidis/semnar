@@ -181,7 +181,7 @@ plot.semnar <- function(x,
     if (!is.na(title)) {
         map_title <- paste0(title,
                             "<br/>",
-                            nrow(object), " talks",
+                            nrow(object), " presentations",
                             "<br/>",
                             length(unique(object$country)), " countries",
                             "<br/>",
