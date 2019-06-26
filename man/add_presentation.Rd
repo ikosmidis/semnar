@@ -2,7 +2,6 @@
 % Please edit documentation in R/add_presentation.R
 \name{add_presentation}
 \alias{add_presentation}
-\alias{semnar}
 \title{Create or add to a \code{semnar} object}
 \usage{
 add_presentation(object, presenter = NA, presenter_name = NA,

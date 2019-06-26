@@ -8,3 +8,6 @@
 \description{
 semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations
 }
+\seealso{
+add_presentation presenter plot.semnar
+}

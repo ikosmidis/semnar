@@ -3,7 +3,7 @@
 \name{get_presenter.semnar}
 \alias{get_presenter.semnar}
 \alias{get_presenter}
-\title{Get presenter information from a \code{\link{semnar}} object}
+\title{Get presenter information from a \code{"semnar"} object}
 \usage{
 \method{get_presenter}{semnar}(object)
 
@@ -16,7 +16,7 @@ get_presenter(object)
 A list of \code{\link{semnar_presenter}} objects, with the unique presenters in the \code{object}.
 }
 \description{
-Get presenter information from a \code{\link{semnar}} object
+Get presenter information from a \code{"semnar"} object
 }
 \examples{
 library("magrittr")

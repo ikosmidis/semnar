@@ -46,7 +46,7 @@ presenter <- function(name = NA,
 }
 
 
-#' Get presenter information from a \code{\link{semnar}} object
+#' Get presenter information from a \code{"semnar"} object
 #'
 #' @param object either an object an object of class \code{"semnar"}.
 #'

@@ -1,6 +1,5 @@
 #' Create or add to a \code{semnar} object
 #'
-#' @aliases semnar
 #' @param object either an object an object of class \code{"semnar"} or unspecified (default). See Details.
 #' @param country country of the presentation; character string or \code{NA} (default).
 #' @param city city of the presentation; character string or \code{NA} (default).

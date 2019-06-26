@@ -4,6 +4,9 @@
 #'
 #' @docType package
 #' @name semnar
+#'
+#' @seealso add_presentation presenter plot.semnar
+#'
 #' @import lubridate
 #' @import leaflet
 #' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
