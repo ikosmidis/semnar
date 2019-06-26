@@ -6,7 +6,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README_files/README-",
+  fig.path = "inst/README_files/README-",
   fig.width = 8
 )
 ```
