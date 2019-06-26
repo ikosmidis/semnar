@@ -4,16 +4,17 @@
 \alias{plot.semnar}
 \title{Interactive semnar maps}
 \usage{
-\method{plot}{semnar}(x, group = "year", title = NA,
+\method{plot}{semnar}(x, group = "city", title = NA,
   title_position = "bottomleft", provider = "OpenStreetMap.Mapnik",
   interval = TRUE, date_format = "dmy", shorten_url = FALSE,
   service = "Is.gd", width = NULL, height = NULL,
-  show_event_url = FALSE, opacity = 1, ...)
+  show_event_url = FALSE, opacity = 0.2,
+  past_year_colour = "#737373", this_year_colour = "#ef3b2c", ...)
 }
 \arguments{
 \item{x}{an object of class \code{"semnar"}. See \code{\link{add_presentation}}.}
 
-\item{group}{according to what should the semnars be selected on the map? Available options are \code{"year"} (default), \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}, \code{"city"}, \code{"year+country"}.}
+\item{group}{according to what should the semnars be selected on the map? Available options are \code{"none"} \code{"year"}, \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}, \code{"city"} (default), \code{"year+country"}.}
 
 \item{title}{character string for the title of the map. Default is \code{NA}, which produces no title.}
 
@@ -35,12 +36,21 @@
 
 \item{show_event_url}{Should the event or talk/seminar URL (\code{"link"} argument in \code{\link{add_presentation}}) be printed in the popups (\code{TRUE}), or the event name (\code{"event"} argument in \code{\link{add_presentation}}) become a hyperlink pointing to the event or talk/seminar URL (\code{FALSE}; default).}
 
-\item{opacity}{As in \code{\link[leaflet]{markerOptions}}. Default is \code{1}.}
+\item{opacity}{As in \code{\link[leaflet]{markerOptions}}. Default is \code{0.2}.}
+
+\item{past_year_colour}{Colour to be used for past year's presentations. Default is \code{"#ef3b2c"}. See Details.}
+
+\item{this_year_colour}{Colour to be used for this year's presentations. Default is \code{"#737373"}. See Details.}
 
 \item{...}{Arguments to be passed to other methods. Currently unused.}
 }
 \description{
 Interactive semnar maps
+}
+\details{
+A legend with the colour-year combination is printed only if
+\code{this_year_colour != past_year_colour}. The current year is
+determined by \code{lubridate::year(Sys.time())}.
 }
 \examples{
 library("magrittr")
