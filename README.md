@@ -121,7 +121,7 @@ The details in the database can be mapped using
     plot(IK_talks, group = "year",
          title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 
-![](inst/README_files/README-unnamed-chunk-5-1.png)
+![](inst/README_files/IK_talks.png)
 
 See `?plot.semnar` for the customization options `plot.semnar` provides,
 and [my talks page](http://ikosmidis.com/talks) for a live version with
