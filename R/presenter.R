@@ -46,9 +46,30 @@ presenter <- function(name = NA,
 }
 
 
-#' Get presenter information
+#' Get presenter information from a \code{\link{semnar}} object
 #'
-get_presenter <- function(object) {
+#' @param object either an object an object of class \code{"semnar"}.
+#'
+#' @return
+#' A list of \code{\link{semnar_presenter}} objects, with the unique presenters in the \code{object}.
+#'
+#' @examples
+#' library("magrittr")
+#' out <- add_presentation(presenter_name = "Ioannis",
+#'                         presenter_surname = "Kosmidis",
+#'                         presenter_affiliation = "University of Warwick",
+#'                         title = "A") %>%
+#'        add_presentation(presenter_name = "Ioannis",
+#'                         presenter_surname = "Kosmidis",
+#'                         presenter_affiliation = "University College London",
+#'                         title = "B") %>%
+#'        add_presentation(presenter_name = "Ioannis",
+#'                         presenter_surname = "Kosmidis",
+#'                         presenter_affiliation = "University College London",
+#'                         title = "C")
+#' get_presenter(out)
+#' @export
+get_presenter.semnar <- function(object) {
     ret <- unique(object[, c("presenter_name",
                              "presenter_midname",
                              "presenter_surname",
@@ -57,8 +78,53 @@ get_presenter <- function(object) {
                              "presenter_email")])
     names(ret) <- c("name", "midname", "surname", "affiliation", "link", "email")
     ret <-  split(ret, seq(nrow(ret)))
-    lapply(ret, function(x) {
+    unname(lapply(ret, function(x) {
         class(x) <- c("semnar_presenter", class(x))
         x
-    })
+    }))
 }
+
+
+
+#' Set presenter information from a \code{\link{semnar}} object
+#'
+#' @param object either an object an object of class \code{"semnar"}.
+#' @param presenter an object of class \code{"semnar_presenter"}
+#'
+#' @return
+#' A list of \code{\link{semnar}} object, with the presenter information as in \code{presenter}.
+#'
+#' @examples
+#' library("magrittr")
+#' out <- add_presentation(presenter_name = "Ioannis",
+#'                         presenter_surname = "Kosmidis",
+#'                         presenter_affiliation = "University of Warwick",
+#'                         title = "A") %>%
+#'        add_presentation(presenter_name = "Ioannis",
+#'                         presenter_surname = "Kosmidis",
+#'                         presenter_affiliation = "University College London",
+#'                         title = "B") %>%
+#'        add_presentation(presenter_name = "Ioannis",
+#'                         presenter_surname = "Kosmidis",
+#'                         presenter_affiliation = "University College London",
+#'                         title = "C")
+#' john_doe <- presenter(name = "John",
+#'                       surname = "Doe",
+#'                       affiliation = "Nowhereland",
+#'                       link = "http://johndoe.nowhereland.com",
+#'                       email = "john.doe@nowhereland.com")
+#' out
+#' set_presenter(out, john_doe)
+#' @export
+set_presenter.semnar <- function(object, presenter) {
+    object$presenter_name <- presenter$name
+    object$presenter_midname <- presenter$midname
+    object$presenter_surname <- presenter$surname
+    object$presenter_affiliation <- presenter$affiliation
+    object$presenter_email <- presenter$email
+    object$presenter_link <- presenter$link
+    object
+}
+
+
+

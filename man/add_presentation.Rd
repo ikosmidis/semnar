@@ -2,6 +2,7 @@
 % Please edit documentation in R/add_presentation.R
 \name{add_presentation}
 \alias{add_presentation}
+\alias{semnar}
 \title{Create or add to a \code{semnar} object}
 \usage{
 add_presentation(object, presenter = NA, presenter_name = NA,
@@ -16,7 +17,7 @@ add_presentation(object, presenter = NA, presenter_name = NA,
   start_sec = 0L, end_sec = 0L, tag = NA, tz = "UTC")
 }
 \arguments{
-\item{object}{an object an object of class \code{"semnar"}.}
+\item{object}{either an object an object of class \code{"semnar"} or unspecified (default). See Details.}
 
 \item{presenter}{either \code{NA} (default) or an object of class \code{\link{semnar_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.}
 

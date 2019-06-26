@@ -17,3 +17,17 @@ NULL
 shorten_url <- function(object, service = "V.gd") {
     UseMethod("shorten_url")
 }
+
+
+#' @rdname get_presenter.semnar
+#' @export
+get_presenter <- function(object) {
+    UseMethod("get_presenter")
+}
+
+
+#' @rdname set_presenter.semnar
+#' @export
+set_presenter <- function(object, presenter) {
+    UseMethod("set_presenter")
+}
