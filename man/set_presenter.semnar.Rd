@@ -39,5 +39,6 @@ john_doe <- presenter(name = "John",
                       affiliation = "Nowhereland",
                       link = "http://johndoe.nowhereland.com",
                       email = "john.doe@nowhereland.com")
+out
 set_presenter(out, john_doe)
 }
