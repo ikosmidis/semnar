@@ -1,3 +1,3 @@
-# semnar 0.5.1
+# semnar 0.6
 
 * First public release
