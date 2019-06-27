@@ -5,8 +5,8 @@ status](https://travis-ci.org/ikosmidis/semnar.svg?branch=master)](https://travi
 status](https://www.r-pkg.org/badges/version/semnar)](https://cran.r-project.org/package=semnar)
 <!-- badges: end -->
 
-semnar
-======
+semnar <img src="inst/art/semnar_hex.svg" width="320" align="right">
+====================================================================
 
 [**semnar**](https://github.com/ikosmidis/semnar) provides methods for
 constructing and maintaining a database of presentations in R. The
