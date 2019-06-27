@@ -137,17 +137,15 @@
        d="m 107.65526,167.09009 c -1.46579,0 -2.64583,1.18005 -2.64583,2.64584 v 31.74997 c 0,1.46579 1.18004,2.64583 2.64583,2.64583 h 42.3333 c 1.46579,0 2.64583,-1.18004 2.64583,-2.64583 v -31.74997 c 0,-1.46579 -1.18004,-2.64584 -2.64583,-2.64584 z m 2.64584,2.64584 h 37.04163 c 1.46579,0 2.64583,1.18004 2.64583,2.64583 v 26.45831 c 0,1.46579 -1.18004,2.64583 -2.64583,2.64583 H 110.3011 c -1.46579,0 -2.64584,-1.18004 -2.64584,-2.64583 v -26.45831 c 0,-1.46579 1.18005,-2.64583 2.64584,-2.64583 z"
        id="rect4616"
        inkscape:connector-curvature="0" />
-    <text
-       xml:space="preserve"
+    <g
+       aria-label="i"
+       transform="rotate(82.589691)"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;line-height:1.25;font-family:'M+ 2m';-inkscape-font-specification:'M+ 2m';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="280.13754"
-       y="-55.455467"
-       id="text845"
-       transform="rotate(82.589691)"><tspan
-         sodipodi:role="line"
-         id="tspan843"
-         x="280.13754"
-         y="-55.455467"
-         style="font-size:22.57777786px;stroke-width:0.26458332">i</tspan></text>
+       id="text845">
+      <path
+         d="m 287.27212,-67.195912 v 10.205156 h 2.46098 v 1.535289 h -7.45067 v -1.535289 h 3.13831 v -8.669867 h -2.46098 v -1.535289 z m -2.30293,-2.709333 v -2.709333 h 2.30293 v 2.709333 z"
+         style="font-size:22.57777786px;stroke-width:0.26458332"
+         id="path847" />
+    </g>
   </g>
 </svg>
