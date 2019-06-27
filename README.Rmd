@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/semnar)](https://cran.r-project.org/package=semnar)
 <!-- badges: end -->
 
-# semnar <img src="inst/art/semnar_hex.svg" width="320" align="right">
+# semnar <img src="https://github.com/ikosmidis/semnar/blob/develop/inst/art/semnar_hex.svg" width="320" align="right">
 
 [**semnar**](https://github.com/ikosmidis/semnar) provides methods for constructing and maintaining a database of presentations in R. The presentations are either ones that the user gives or gave or presentations at a particular event or event series. [**semnar**](https://github.com/ikosmidis/semnar) also provides methods for the interactive mapping of the presentations using `leaflet` by grouping them according to country, city, year and other presentation attributes (see `?plot.semnar`). The markers on the map come with popups providing presentation details (title, institution, event, links to materials and events, and so on).
 
