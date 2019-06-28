@@ -8,6 +8,7 @@
 #' @param affiliation  affiliation of the presenter; character string or \code{NA} (default).
 #' @param link  link to the webpage of the presenter; character string or \code{NA} (default).
 #' @param email  email of the presenter; character string or \code{NA} (default).
+#' @param address address of the presenter; character string or \code{NA} (default).
 #'
 #' @export
 #' @examples
@@ -31,13 +32,15 @@ presenter <- function(name = NA,
                       surname = NA,
                       affiliation = NA,
                       link = NA,
-                      email = NA) {
+                      email = NA,
+                      address = NA) {
     out <- data.frame(name = name,
                       midname = midname,
                       surname = surname,
                       affiliation = affiliation,
                       email = email,
                       link = link,
+                      address = address,
                       stringsAsFactors = FALSE)
     if (!inherits(out, "semnar")) {
         class(out) <- c("semnar_presenter", class(out))
@@ -75,8 +78,9 @@ get_presenter.semnar <- function(object) {
                              "presenter_surname",
                              "presenter_affiliation",
                              "presenter_link",
-                             "presenter_email")])
-    names(ret) <- c("name", "midname", "surname", "affiliation", "link", "email")
+                             "presenter_email",
+                             "presenter_address")])
+    names(ret) <- c("name", "midname", "surname", "affiliation", "link", "email", "address")
     ret <-  split(ret, seq(nrow(ret)))
     unname(lapply(ret, function(x) {
         class(x) <- c("semnar_presenter", class(x))
@@ -123,6 +127,7 @@ set_presenter.semnar <- function(object, presenter) {
     object$presenter_affiliation <- presenter$affiliation
     object$presenter_email <- presenter$email
     object$presenter_link <- presenter$link
+    object$address_link <- presenter$address
     object
 }
 

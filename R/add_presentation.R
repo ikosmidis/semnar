@@ -14,6 +14,7 @@
 #' @param presenter_affiliation  affiliation of the presenter of the presentation; character string or \code{NA} (default).
 #' @param presenter_link  link to the webpage of the presenter of the presentation; character string or \code{NA} (default).
 #' @param presenter_email  email of the presenter of the presentation; character string or \code{NA} (default).
+#' @param presenter_address address of the presenter; character string or \code{NA} (default).
 #' @param title title of the presentation; character string or \code{NA} (default).
 #' @param abstract abstract of the presentation; character string or \code{NA} (default).
 #' @param type the type of the talk. Available options are \code{NA} (default), \code{"seminar"}, \code{"lecture"}, \code{"presentation"}, \code{"talk"}, \code{"poster"}.
@@ -84,6 +85,7 @@ add_presentation <- function(object,
                              presenter_affiliation = NA,
                              presenter_email = NA,
                              presenter_link = NA,
+                             presenter_address = NA,
                      country = NA,
                      city = NA,
                      state = NA,
@@ -138,6 +140,7 @@ add_presentation <- function(object,
         presenter_affiliation <- presenter$affiliation
         presenter_email <- presenter$email
         presenter_link <- presenter$link
+        presenter_address <- presenter$address
     }
     next_seminar <-  data.frame(country = country,
                                 city = city,
@@ -151,6 +154,7 @@ add_presentation <- function(object,
                                 presenter_affiliation = presenter_affiliation,
                                 presenter_link = presenter_link,
                                 presenter_email = presenter_email,
+                                presenter_address = presenter_address,
                                 title = title,
                                 link = link,
                                 materials = materials,

@@ -6,7 +6,7 @@
 \title{Create a \code{semnar_presenter} object with presenter details}
 \usage{
 presenter(name = NA, midname = NA, surname = NA, affiliation = NA,
-  link = NA, email = NA)
+  link = NA, email = NA, address = NA)
 }
 \arguments{
 \item{name}{name of the presenter; character string or \code{NA} (default).}
@@ -20,6 +20,8 @@ presenter(name = NA, midname = NA, surname = NA, affiliation = NA,
 \item{link}{link to the webpage of the presenter; character string or \code{NA} (default).}
 
 \item{email}{email of the presenter; character string or \code{NA} (default).}
+
+\item{address}{address of the presenter; character string or \code{NA} (default).}
 }
 \description{
 Create a \code{semnar_presenter} object with presenter details
