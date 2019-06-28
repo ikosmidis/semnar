@@ -7,4 +7,5 @@
 ^CONDUCT\.md$
 inst/scratch/
 ^README\.Rmd$
+^inst/README_files
 ^CRAN-RELEASE$

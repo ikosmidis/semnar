@@ -61,9 +61,10 @@ University of Warwick on workflows and task management:
 class `semnar`, including the supplied presentation details.
 
     str(IK_talks)
-    #> Classes 'semnar' and 'data.frame':   1 obs. of  26 variables:
+    #> Classes 'semnar' and 'data.frame':   1 obs. of  28 variables:
     #>  $ country              : chr "England"
     #>  $ city                 : chr "Coventry"
+    #>  $ state                : logi NA
     #>  $ lon                  : num -1.56
     #>  $ lat                  : num 52.4
     #>  $ event                : chr "Young Researchers' Meeting"
@@ -73,6 +74,7 @@ class `semnar`, including the supplied presentation details.
     #>  $ presenter_affiliation: logi NA
     #>  $ presenter_link       : logi NA
     #>  $ presenter_email      : logi NA
+    #>  $ presenter_address    : logi NA
     #>  $ title                : chr "A workflow that most probably isn't yours"
     #>  $ link                 : chr "https://warwick.ac.uk/fac/sci/statistics/news/yrm/"
     #>  $ materials            : chr "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf"
@@ -121,7 +123,7 @@ The details in the database can be mapped using
     plot(IK_talks, group = "year",
          title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 
-![](inst/README_files/IK_talks.png)
+![](https://github.com/ikosmidis/semnar/blob/master/inst/README_files/IK_talks.png)
 
 See `?plot.semnar` for the customization options `plot.semnar` provides,
 and [my talks page](http://ikosmidis.com/talks) for a live version with
