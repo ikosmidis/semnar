@@ -1,8 +1,9 @@
 #' Create or add to a \code{semnar} object
 #'
 #' @param object either an object an object of class \code{"semnar"} or unspecified (default). See Details.
-#' @param country country of the presentation; character string or \code{NA} (default).
-#' @param city city of the presentation; character string or \code{NA} (default).
+#' @param country country where the presentation took place; character string or \code{NA} (default).
+#' @param city city where the presentation took place; character string or \code{NA} (default).
+#' @param state state where the presentation took place; character string or \code{NA} (default).
 #' @param lon longitude of the venue of the presentation; numeric or \code{NA} (default).
 #' @param lat latitude of the venue of the presentation; numeric or \code{NA} (default).
 #' @param event name of the event at which the presentation is/was given; character string or \code{NA} (default).
@@ -85,6 +86,7 @@ add_presentation <- function(object,
                              presenter_link = NA,
                      country = NA,
                      city = NA,
+                     state = NA,
                      lon = NA,
                      lat = NA,
                      event = NA,
@@ -139,6 +141,7 @@ add_presentation <- function(object,
     }
     next_seminar <-  data.frame(country = country,
                                 city = city,
+                                state = state,
                                 lon = lon,
                                 lat = lat,
                                 event = event,

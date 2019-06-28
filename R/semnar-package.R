@@ -34,3 +34,9 @@ get_presenter <- function(object) {
 set_presenter <- function(object, presenter) {
     UseMethod("set_presenter")
 }
+
+#' @rdname guess_address.semnar
+#' @export
+guess_address <- function(object) {
+    UseMethod("guess_address")
+}

@@ -7,13 +7,14 @@
 add_presentation(object, presenter = NA, presenter_name = NA,
   presenter_midname = NA, presenter_surname = NA,
   presenter_affiliation = NA, presenter_email = NA,
-  presenter_link = NA, country = NA, city = NA, lon = NA,
-  lat = NA, event = NA, title = NA, abstract = NA, type = NA,
-  link = NA, materials = NA, institution = NA, department = NA,
-  school = NA, venue = NA, address = NA, postcode = NA,
-  room = NA, year = NA, month = NA, day = NA, start_hour = NA,
-  end_hour = start_hour, start_min = 0L, end_min = start_min,
-  start_sec = 0L, end_sec = 0L, tag = NA, tz = "UTC")
+  presenter_link = NA, country = NA, city = NA, state = NA,
+  lon = NA, lat = NA, event = NA, title = NA, abstract = NA,
+  type = NA, link = NA, materials = NA, institution = NA,
+  department = NA, school = NA, venue = NA, address = NA,
+  postcode = NA, room = NA, year = NA, month = NA, day = NA,
+  start_hour = NA, end_hour = start_hour, start_min = 0L,
+  end_min = start_min, start_sec = 0L, end_sec = 0L, tag = NA,
+  tz = "UTC")
 }
 \arguments{
 \item{object}{either an object an object of class \code{"semnar"} or unspecified (default). See Details.}
@@ -32,9 +33,11 @@ add_presentation(object, presenter = NA, presenter_name = NA,
 
 \item{presenter_link}{link to the webpage of the presenter of the presentation; character string or \code{NA} (default).}
 
-\item{country}{country of the presentation; character string or \code{NA} (default).}
+\item{country}{country where the presentation took place; character string or \code{NA} (default).}
 
-\item{city}{city of the presentation; character string or \code{NA} (default).}
+\item{city}{city where the presentation took place; character string or \code{NA} (default).}
+
+\item{state}{state where the presentation took place; character string or \code{NA} (default).}
 
 \item{lon}{longitude of the venue of the presentation; numeric or \code{NA} (default).}
 
