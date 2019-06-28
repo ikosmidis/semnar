@@ -1,11 +1,11 @@
-#' Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geolocation
+#' Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geocoding
 #'
 #' @param object an object of class \code{"semnar"}. See \code{\link{add_presentation}}.
 #' @param all should we be guessing all addresses (\code{TRUE}) or only missing ones (\code{FALSE}; default)?
 #'
 #' @details
 #'
-#' \code{guess_address} is using reverse geolocation through the API at
+#' \code{guess_address} is using reverse geocoding through the API at
 #' \url{https://nominatim.openstreetmap.org}. Please check at that
 #' link for requests limits.
 #'
@@ -46,7 +46,7 @@
 guess_address.semnar <- function(object, all = FALSE) {
     base_url <- "https://nominatim.openstreetmap.org/reverse?format=jsonv2"
     coords <- object[c("lon", "lat")]
-    inds <- ifelse(all, rep(TRUE, nrow(coords)), is.na(object$address))
+    inds <- if (all) rep(TRUE, nrow(coords)) else is.na(object$address)
     out <- apply(coords[inds, ], 1, function(x) {
         if (any(is.na(x))) {
             NA
@@ -58,8 +58,13 @@ guess_address.semnar <- function(object, all = FALSE) {
                                      "addressdetails=1",
                                      sep = "&")
             res <- try(fromJSON(current_request), silent = TRUE)
-            ## HERE: Check what the request returns if API cannot geolocate.
-            ifelse(inherits(res, "try-error"), NA, res$display_name)
+            if (inherits(res, "try-error") | !is.null(res$error)) {
+                warning("unable to geocode")
+                NA
+            }
+            else {
+                res$display_name
+            }
         }
     })
     object$address[inds] <- unname(unlist(out))

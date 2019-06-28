@@ -3,7 +3,7 @@
 \name{guess_address.semnar}
 \alias{guess_address.semnar}
 \alias{guess_address}
-\title{Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geolocation}
+\title{Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geocoding}
 \usage{
 \method{guess_address}{semnar}(object, all = FALSE)
 
@@ -15,10 +15,10 @@ guess_address(object)
 \item{all}{should we be guessing all addresses (\code{TRUE}) or only missing ones (\code{FALSE}; default)?}
 }
 \description{
-Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geolocation
+Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geocoding
 }
 \details{
-\code{guess_address} is using reverse geolocation through the API at
+\code{guess_address} is using reverse geocoding through the API at
 \url{https://nominatim.openstreetmap.org}. Please check at that
 link for requests limits.
 }
