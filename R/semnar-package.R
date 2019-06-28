@@ -10,7 +10,7 @@
 #' @import lubridate
 #' @import leaflet
 #' @importFrom jsonlite fromJSON
-#' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
+#' @import urlshorteneR
 #' @import magrittr
 #' @importFrom purrr walk
 #'
