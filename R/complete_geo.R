@@ -1,6 +1,7 @@
 #' Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geolocation
 #'
-#' @param an object of class \code{"semnar"}. See \code{\link{add_presentation}}.
+#' @param object an object of class \code{"semnar"}. See \code{\link{add_presentation}}.
+#' @param all should we be guessing all addresses (\code{TRUE}) or only missing ones (\code{FALSE}; default)?
 #'
 #' @details
 #'
@@ -42,10 +43,11 @@
 #' }
 #'
 #' @export
-guess_address.semnar <- function(object) {
+guess_address.semnar <- function(object, all = FALSE) {
     base_url <- "https://nominatim.openstreetmap.org/reverse?format=jsonv2"
     coords <- object[c("lon", "lat")]
-    out <- apply(coords, 1, function(x) {
+    inds <- ifelse(all, rep(TRUE, nrow(coords)), is.na(object$address))
+    out <- apply(coords[inds, ], 1, function(x) {
         if (any(is.na(x))) {
             NA
         }
@@ -56,14 +58,10 @@ guess_address.semnar <- function(object) {
                                      "addressdetails=1",
                                      sep = "&")
             res <- try(fromJSON(current_request), silent = TRUE)
-            if (inherits(res, "try-error")) {
-                NA
-            }
-            else {
-                res$display_name
-            }
+            ## HERE: Check what the request returns if API cannot geolocate.
+            ifelse(inherits(res, "try-error"), NA, res$display_name)
         }
     })
-    object$address <- unname(unlist(out))
+    object$address[inds] <- unname(unlist(out))
     object
 }

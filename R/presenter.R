@@ -130,6 +130,3 @@ set_presenter.semnar <- function(object, presenter) {
     object$address_link <- presenter$address
     object
 }
-
-
-

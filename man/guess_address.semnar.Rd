@@ -5,12 +5,14 @@
 \alias{guess_address}
 \title{Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geolocation}
 \usage{
-\method{guess_address}{semnar}(object)
+\method{guess_address}{semnar}(object, all = FALSE)
 
 guess_address(object)
 }
 \arguments{
-\item{an}{object of class \code{"semnar"}. See \code{\link{add_presentation}}.}
+\item{object}{an object of class \code{"semnar"}. See \code{\link{add_presentation}}.}
+
+\item{all}{should we be guessing all addresses (\code{TRUE}) or only missing ones (\code{FALSE}; default)?}
 }
 \description{
 Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geolocation

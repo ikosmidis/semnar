@@ -1,6 +1,12 @@
+# semnar 0.6.2
+
+## New functionality
+
+* Added `guess_address` method for reverse geolocation of presentations using the OpenStreetMap API
+
 # semnar 0.6.1
 
-## Bugs fixes
+## Bug fixes
 
 ## New functionality
 
