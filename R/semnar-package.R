@@ -9,6 +9,7 @@
 #'
 #' @import lubridate
 #' @import leaflet
+#' @importFrom jsonlite fromJSON
 #' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
 #' @import magrittr
 #' @importFrom purrr walk
@@ -37,6 +38,6 @@ set_presenter <- function(object, presenter) {
 
 #' @rdname guess_address.semnar
 #' @export
-guess_address <- function(object) {
+guess_address <- function(object, all = TRUE) {
     UseMethod("guess_address")
 }

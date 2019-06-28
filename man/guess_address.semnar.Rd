@@ -7,7 +7,7 @@
 \usage{
 \method{guess_address}{semnar}(object, all = FALSE)
 
-guess_address(object)
+guess_address(object, all = TRUE)
 }
 \arguments{
 \item{object}{an object of class \code{"semnar"}. See \code{\link{add_presentation}}.}
