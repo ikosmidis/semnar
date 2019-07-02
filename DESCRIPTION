@@ -12,6 +12,5 @@ Imports:
    lubridate,
    leaflet,
    magrittr,
-   urlshorteneR,
-   purrr
+   urlshorteneR
 RoxygenNote: 6.1.1

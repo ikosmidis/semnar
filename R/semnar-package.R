@@ -12,7 +12,6 @@
 #' @importFrom jsonlite fromJSON
 #' @import urlshorteneR
 #' @import magrittr
-#' @importFrom purrr walk
 #'
 NULL
 

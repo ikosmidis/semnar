@@ -197,18 +197,33 @@ plot.semnar <- function(x,
 
 
         object_split <- split(object, object$group)
-        names(object_split) %>% walk(function(group) {
-            p <<- addCircleMarkers(p,
-                                   data = object_split[[group]],
-                                   lng = ~ lon,
-                                   lat = ~ lat,
-                                   popup = ~ popup_text,
-                                   group = as.character(group),
-                                   color = ~ colour,
-                                   clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = FALSE),
-                                   labelOptions = labelOptions(noHide = TRUE, direction = "auto"),
-                                   fillOpacity = opacity)
-        })
+
+        for (group in names(object_split)) {
+            p <- addCircleMarkers(p,
+                             data = object_split[[group]],
+                             lng = ~ lon,
+                             lat = ~ lat,
+                             popup = ~ popup_text,
+                             group = as.character(group),
+                             color = ~ colour,
+                             clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = FALSE),
+                             labelOptions = labelOptions(noHide = TRUE, direction = "auto"),
+                             fillOpacity = opacity)
+        }
+
+
+        ## names(object_split) %>% walk(function(group) {
+        ##     p <<- addCircleMarkers(p,
+        ##                            data = object_split[[group]],
+        ##                            lng = ~ lon,
+        ##                            lat = ~ lat,
+        ##                            popup = ~ popup_text,
+        ##                            group = as.character(group),
+        ##                            color = ~ colour,
+        ##                            clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = FALSE),
+        ##                            labelOptions = labelOptions(noHide = TRUE, direction = "auto"),
+        ##                            fillOpacity = opacity)
+        ## })
 
         p <- addLayersControl(p,
                               overlayGroups = names(object_split),
