@@ -1,6 +1,6 @@
-#' Interactive semnar maps
+#' Interactive \code{\link{semnar}} maps
 #'
-#' @param x an object of class \code{"semnar"}. See \code{\link{add_presentation}}.
+#' @param x an object of class \code{\link{semnar}}. See \code{\link{add_presentation}}.
 #' @param group according to what should the semnars be selected on the map? Available options are \code{"none"} \code{"year"}, \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}, \code{"city"} (default), \code{"year+country"}.
 #' @param title character string for the title of the map. Default is \code{NA}, which produces no title.
 #' @param title_position the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.
@@ -23,6 +23,8 @@
 #' A legend with the colour-year combination is printed only if
 #' \code{this_year_colour != past_year_colour}. The current year is
 #' determined by \code{lubridate::year(Sys.time())}.
+#'
+#' @seealso add_presentation
 #'
 #' @export
 #' @examples

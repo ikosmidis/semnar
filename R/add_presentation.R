@@ -1,6 +1,7 @@
-#' Create or add to a \code{semnar} object
+#' Create or add to a \code{\link{semnar}} object
 #'
-#' @param object either an object an object of class \code{"semnar"} or unspecified (default). See Details.
+#' @aliases semnar
+#' @param object either an object an object of class \code{\link{semnar}} or unspecified (default). See Details.
 #' @param country country where the presentation took place; character string or \code{NA} (default).
 #' @param city city where the presentation took place; character string or \code{NA} (default).
 #' @param state state where the presentation took place; character string or \code{NA} (default).
@@ -40,10 +41,12 @@
 #' @param tag a tag for the presentation; character string or \code{NA} (default).
 #'
 #' @details
-#' If \code{object} is not specified then \code{add_presentation} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
+#' If \code{object} is not specified then \code{add_presentation} will create an \code{\link{semnar}} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
 #'
 #' @return
-#' A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied presentation details.
+#' A structured \code{\link{data.frame}} that also inherits from class \code{\link{semnar}}, including the supplied presentation details.
+#'
+#' @seealso presenter plot.semnar shorten_url guess_address
 #'
 #' @examples
 #' # Two of my past talks

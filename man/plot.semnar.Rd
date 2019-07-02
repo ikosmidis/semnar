@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{plot.semnar}
 \alias{plot.semnar}
-\title{Interactive semnar maps}
+\title{Interactive \code{\link{semnar}} maps}
 \usage{
 \method{plot}{semnar}(x, group = "city", title = NA,
   title_position = "bottomleft", provider = "OpenStreetMap.Mapnik",
@@ -12,7 +12,7 @@
   past_year_colour = "#737373", this_year_colour = "#ef3b2c", ...)
 }
 \arguments{
-\item{x}{an object of class \code{"semnar"}. See \code{\link{add_presentation}}.}
+\item{x}{an object of class \code{\link{semnar}}. See \code{\link{add_presentation}}.}
 
 \item{group}{according to what should the semnars be selected on the map? Available options are \code{"none"} \code{"year"}, \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}, \code{"city"} (default), \code{"year+country"}.}
 
@@ -45,7 +45,7 @@
 \item{...}{Arguments to be passed to other methods. Currently unused.}
 }
 \description{
-Interactive semnar maps
+Interactive \code{\link{semnar}} maps
 }
 \details{
 A legend with the colour-year combination is printed only if
@@ -82,4 +82,7 @@ if (interactive()) {
   plot(out, group = "city",
        title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 }
+}
+\seealso{
+add_presentation
 }

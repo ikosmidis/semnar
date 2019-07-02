@@ -1,4 +1,4 @@
-#' Create a \code{semnar_presenter} object with presenter details
+#' Create a \code{\link{semnar_presenter}} object with presenter details
 #'
 #'
 #' @aliases semnar_presenter
@@ -9,6 +9,12 @@
 #' @param link  link to the webpage of the presenter; character string or \code{NA} (default).
 #' @param email  email of the presenter; character string or \code{NA} (default).
 #' @param address address of the presenter; character string or \code{NA} (default).
+#'
+#'
+#' @return
+#' A structured \code{\link{data.frame}} that also inherits from class \code{\link{semnar_presenter}}, including the supplied presenter details.
+#'
+#' @seealso get_presenter set_presenter
 #'
 #' @export
 #' @examples
@@ -49,12 +55,15 @@ presenter <- function(name = NA,
 }
 
 
-#' Get presenter information from a \code{"semnar"} object
+#' Get presenter information from a \code{\link{semnar}} object
 #'
-#' @param object either an object an object of class \code{"semnar"}.
+#' @param object either an object an object of class \code{\link{semnar}}.
+#'
 #'
 #' @return
 #' A list of \code{\link{semnar_presenter}} objects, with the unique presenters in the \code{object}.
+#'
+#' @seealso presenter set_presenter
 #'
 #' @examples
 #' library("magrittr")
@@ -94,6 +103,8 @@ get_presenter.semnar <- function(object) {
 #'
 #' @param object either an object an object of class \code{"semnar"}.
 #' @param presenter an object of class \code{"semnar_presenter"}
+#'
+#' @seealso presenter get_presenter
 #'
 #' @return
 #' A list of \code{\link{semnar}} object, with the presenter information as in \code{presenter}.

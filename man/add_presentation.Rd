@@ -2,7 +2,8 @@
 % Please edit documentation in R/add_presentation.R
 \name{add_presentation}
 \alias{add_presentation}
-\title{Create or add to a \code{semnar} object}
+\alias{semnar}
+\title{Create or add to a \code{\link{semnar}} object}
 \usage{
 add_presentation(object, presenter = NA, presenter_name = NA,
   presenter_midname = NA, presenter_surname = NA,
@@ -17,7 +18,7 @@ add_presentation(object, presenter = NA, presenter_name = NA,
   end_sec = 0L, tag = NA, tz = "UTC")
 }
 \arguments{
-\item{object}{either an object an object of class \code{"semnar"} or unspecified (default). See Details.}
+\item{object}{either an object an object of class \code{\link{semnar}} or unspecified (default). See Details.}
 
 \item{presenter}{either \code{NA} (default) or an object of class \code{\link{semnar_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.}
 
@@ -94,13 +95,13 @@ add_presentation(object, presenter = NA, presenter_name = NA,
 \item{tz}{timezone. Default is \code{"UTC"}. See \code{\link{DateTimeClasses}} for details.}
 }
 \value{
-A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied presentation details.
+A structured \code{\link{data.frame}} that also inherits from class \code{\link{semnar}}, including the supplied presentation details.
 }
 \description{
-Create or add to a \code{semnar} object
+Create or add to a \code{\link{semnar}} object
 }
 \details{
-If \code{object} is not specified then \code{add_presentation} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
+If \code{object} is not specified then \code{add_presentation} will create an \code{\link{semnar}} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
 }
 \examples{
 # Two of my past talks
@@ -133,4 +134,7 @@ out <- add_presentation(country = "England", city = "Coventry",
                          end_hour = 14, end_min = 35)
 out
 
+}
+\seealso{
+presenter plot.semnar shorten_url guess_address
 }

@@ -3,19 +3,22 @@
 \name{guess_address.semnar}
 \alias{guess_address.semnar}
 \alias{guess_address}
-\title{Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geocoding}
+\title{Guess presentation address in a \code{\link{semnar}} object using OSM's API for reverse geocoding}
 \usage{
 \method{guess_address}{semnar}(object, all = FALSE)
 
 guess_address(object, all = TRUE)
 }
 \arguments{
-\item{object}{an object of class \code{"semnar"}. See \code{\link{add_presentation}}.}
+\item{object}{an object of class \code{\link{semnar}}. See \code{\link{add_presentation}}.}
 
 \item{all}{should we be guessing all addresses (\code{TRUE}) or only missing ones (\code{FALSE}; default)?}
 }
+\value{
+An object of class \code{\link{semnar}} with all (\code{all = TRUE}) or the missing presentation addresses (\code{all = FALSE}) completed.
+}
 \description{
-Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geocoding
+Guess presentation address in a \code{\link{semnar}} object using OSM's API for reverse geocoding
 }
 \details{
 \code{guess_address} is using reverse geocoding through the API at
@@ -23,8 +26,8 @@ Guess presentation address in a \code{"semnar"} object using OSM's API for rever
 link for requests limits.
 }
 \examples{
-\dontrun{
-#' library("magrittr")
+\donttest{
+library("magrittr")
 out <- add_presentation(country = "England", city = "Coventry",
                         lon = -1.560843, lat = 52.384019,
                         event = "Young Researchers' Meeting",
@@ -55,4 +58,7 @@ out <- guess_address(out)
 out$address
 }
 
+}
+\seealso{
+add_presentation
 }

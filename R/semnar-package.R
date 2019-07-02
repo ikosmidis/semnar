@@ -3,7 +3,7 @@
 #' semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations
 #'
 #' @docType package
-#' @name semnar
+#' @name semnar-package
 #'
 #' @seealso add_presentation presenter plot.semnar
 #'

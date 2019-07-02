@@ -42,3 +42,6 @@ john_doe <- presenter(name = "John",
 out
 set_presenter(out, john_doe)
 }
+\seealso{
+presenter get_presenter
+}

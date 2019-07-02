@@ -3,20 +3,20 @@
 \name{get_presenter.semnar}
 \alias{get_presenter.semnar}
 \alias{get_presenter}
-\title{Get presenter information from a \code{"semnar"} object}
+\title{Get presenter information from a \code{\link{semnar}} object}
 \usage{
 \method{get_presenter}{semnar}(object)
 
 get_presenter(object)
 }
 \arguments{
-\item{object}{either an object an object of class \code{"semnar"}.}
+\item{object}{either an object an object of class \code{\link{semnar}}.}
 }
 \value{
 A list of \code{\link{semnar_presenter}} objects, with the unique presenters in the \code{object}.
 }
 \description{
-Get presenter information from a \code{"semnar"} object
+Get presenter information from a \code{\link{semnar}} object
 }
 \examples{
 library("magrittr")
@@ -33,4 +33,7 @@ out <- add_presentation(presenter_name = "Ioannis",
                         presenter_affiliation = "University College London",
                         title = "C")
 get_presenter(out)
+}
+\seealso{
+presenter set_presenter
 }

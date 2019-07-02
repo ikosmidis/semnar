@@ -1,6 +1,6 @@
-#' Guess presentation address in a \code{"semnar"} object using OSM's API for reverse geocoding
+#' Guess presentation address in a \code{\link{semnar}} object using OSM's API for reverse geocoding
 #'
-#' @param object an object of class \code{"semnar"}. See \code{\link{add_presentation}}.
+#' @param object an object of class \code{\link{semnar}}. See \code{\link{add_presentation}}.
 #' @param all should we be guessing all addresses (\code{TRUE}) or only missing ones (\code{FALSE}; default)?
 #'
 #' @details
@@ -9,9 +9,14 @@
 #' \url{https://nominatim.openstreetmap.org}. Please check at that
 #' link for requests limits.
 #'
+#' @return
+#' An object of class \code{\link{semnar}} with all (\code{all = TRUE}) or the missing presentation addresses (\code{all = FALSE}) completed.
+#'
+#' @seealso add_presentation
+#'
 #' @examples
-#'\dontrun{
-#' #' library("magrittr")
+#' \donttest{
+#' library("magrittr")
 #' out <- add_presentation(country = "England", city = "Coventry",
 #'                         lon = -1.560843, lat = 52.384019,
 #'                         event = "Young Researchers' Meeting",
