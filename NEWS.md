@@ -1,3 +1,9 @@
+# semnar 0.7.1
+
+## Other improvements, updates and additions
+* Updated and improved documentation
+* New code for plotting that avoids use of `<<-`
+
 # semnar 0.6.2
 
 ## New functionality
