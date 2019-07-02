@@ -8,5 +8,5 @@
 semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations
 }
 \seealso{
-add_presentation presenter plot.semnar
+\code{\link{add_presentation}} \code{\link{presenter}} \code{\link{plot.semnar}}
 }

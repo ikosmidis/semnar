@@ -24,7 +24,7 @@
 #' \code{this_year_colour != past_year_colour}. The current year is
 #' determined by \code{lubridate::year(Sys.time())}.
 #'
-#' @seealso add_presentation
+#' @seealso \code{\link{add_presentation}}
 #'
 #' @export
 #' @examples

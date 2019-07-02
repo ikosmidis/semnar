@@ -136,5 +136,5 @@ out
 
 }
 \seealso{
-presenter plot.semnar shorten_url guess_address
+\code{\link{presenter}} \code{\link{plot.semnar}} \code{\link{shorten_url}} \code{\link{guess_address}}
 }

@@ -60,5 +60,5 @@ out$address
 
 }
 \seealso{
-add_presentation
+\code{\link{add_presentation}}
 }

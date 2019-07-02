@@ -63,7 +63,7 @@ presenter <- function(name = NA,
 #' @return
 #' A list of \code{\link{semnar_presenter}} objects, with the unique presenters in the \code{object}.
 #'
-#' @seealso presenter set_presenter
+#' @seealso \code{\link{presenter}} \code{\link{set_presenter}}
 #'
 #' @examples
 #' library("magrittr")

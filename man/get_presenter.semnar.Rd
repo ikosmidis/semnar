@@ -35,5 +35,5 @@ out <- add_presentation(presenter_name = "Ioannis",
 get_presenter(out)
 }
 \seealso{
-presenter set_presenter
+\code{\link{presenter}} \code{\link{set_presenter}}
 }

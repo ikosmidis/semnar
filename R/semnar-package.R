@@ -5,7 +5,7 @@
 #' @docType package
 #' @name semnar-package
 #'
-#' @seealso add_presentation presenter plot.semnar
+#' @seealso \code{\link{add_presentation}} \code{\link{presenter}} \code{\link{plot.semnar}}
 #'
 #' @import lubridate
 #' @import leaflet

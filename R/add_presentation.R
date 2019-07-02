@@ -46,7 +46,7 @@
 #' @return
 #' A structured \code{\link{data.frame}} that also inherits from class \code{\link{semnar}}, including the supplied presentation details.
 #'
-#' @seealso presenter plot.semnar shorten_url guess_address
+#' @seealso \code{\link{presenter}} \code{\link{plot.semnar}} \code{\link{shorten_url}} \code{\link{guess_address}}
 #'
 #' @examples
 #' # Two of my past talks

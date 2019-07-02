@@ -12,7 +12,7 @@
 #' @return
 #' An object of class \code{\link{semnar}} with all (\code{all = TRUE}) or the missing presentation addresses (\code{all = FALSE}) completed.
 #'
-#' @seealso add_presentation
+#' @seealso \code{\link{add_presentation}}
 #'
 #' @examples
 #' \donttest{

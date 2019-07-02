@@ -20,3 +20,6 @@ An object of class \code{\link{semnar}} with any URLs in \code{object$link} repl
 \description{
 Shorten the URLs of any links in a \code{\link{semnar}} object
 }
+\seealso{
+\code{\link{add_presentation}} \code{\link{guess_address}}
+}
