@@ -2,21 +2,23 @@
 % Please edit documentation in R/add_presentation.R
 \name{add_presentation}
 \alias{add_presentation}
-\title{Create or add to a \code{semnar} object}
+\alias{semnar}
+\title{Create or add to a \code{\link{semnar}} object}
 \usage{
 add_presentation(object, presenter = NA, presenter_name = NA,
   presenter_midname = NA, presenter_surname = NA,
   presenter_affiliation = NA, presenter_email = NA,
-  presenter_link = NA, country = NA, city = NA, lon = NA,
-  lat = NA, event = NA, title = NA, abstract = NA, type = NA,
-  link = NA, materials = NA, institution = NA, department = NA,
-  school = NA, venue = NA, address = NA, postcode = NA,
-  room = NA, year = NA, month = NA, day = NA, start_hour = NA,
-  end_hour = start_hour, start_min = 0L, end_min = start_min,
-  start_sec = 0L, end_sec = 0L, tag = NA, tz = "UTC")
+  presenter_link = NA, presenter_address = NA, country = NA,
+  city = NA, state = NA, lon = NA, lat = NA, event = NA,
+  title = NA, abstract = NA, type = NA, link = NA,
+  materials = NA, institution = NA, department = NA, school = NA,
+  venue = NA, address = NA, postcode = NA, room = NA, year = NA,
+  month = NA, day = NA, start_hour = NA, end_hour = start_hour,
+  start_min = 0L, end_min = start_min, start_sec = 0L,
+  end_sec = 0L, tag = NA, tz = "UTC")
 }
 \arguments{
-\item{object}{an object an object of class \code{"semnar"}.}
+\item{object}{either an object an object of class \code{\link{semnar}} or unspecified (default). See Details.}
 
 \item{presenter}{either \code{NA} (default) or an object of class \code{\link{semnar_presenter}}. In the latter case, all input to the \code{presenter_*} arguments below is ignored and populated according to the supplied object.}
 
@@ -32,9 +34,13 @@ add_presentation(object, presenter = NA, presenter_name = NA,
 
 \item{presenter_link}{link to the webpage of the presenter of the presentation; character string or \code{NA} (default).}
 
-\item{country}{country of the presentation; character string or \code{NA} (default).}
+\item{presenter_address}{address of the presenter; character string or \code{NA} (default).}
 
-\item{city}{city of the presentation; character string or \code{NA} (default).}
+\item{country}{country where the presentation took place; character string or \code{NA} (default).}
+
+\item{city}{city where the presentation took place; character string or \code{NA} (default).}
+
+\item{state}{state where the presentation took place; character string or \code{NA} (default).}
 
 \item{lon}{longitude of the venue of the presentation; numeric or \code{NA} (default).}
 
@@ -89,13 +95,13 @@ add_presentation(object, presenter = NA, presenter_name = NA,
 \item{tz}{timezone. Default is \code{"UTC"}. See \code{\link{DateTimeClasses}} for details.}
 }
 \value{
-A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied presentation details.
+A structured \code{\link{data.frame}} that also inherits from class \code{\link{semnar}}, including the supplied presentation details.
 }
 \description{
-Create or add to a \code{semnar} object
+Create or add to a \code{\link{semnar}} object
 }
 \details{
-If \code{object} is not specified then \code{add_presentation} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
+If \code{object} is not specified then \code{add_presentation} will create an \code{\link{semnar}} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
 }
 \examples{
 # Two of my past talks
@@ -128,4 +134,7 @@ out <- add_presentation(country = "England", city = "Coventry",
                          end_hour = 14, end_min = 35)
 out
 
+}
+\seealso{
+\code{\link{presenter}} \code{\link{plot.semnar}} \code{\link{shorten_url}} \code{\link{guess_address}}
 }

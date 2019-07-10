@@ -3,17 +3,23 @@
 \name{shorten_url}
 \alias{shorten_url}
 \alias{shorten_url.semnar}
-\title{Shorten the URLs of any links in a \code{"semnar"} object}
+\title{Shorten the URLs of any links in a \code{\link{semnar}} object}
 \usage{
 shorten_url(object, service = "V.gd")
 
 \method{shorten_url}{semnar}(object, service = "Is.gd")
 }
 \arguments{
-\item{object}{an object of class \code{"semnar"}. See \code{\link{add_presentation}}.}
+\item{object}{an object of class \code{\link{semnar}}. See \code{\link{add_presentation}}.}
 
 \item{service}{service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}.}
 }
+\value{
+An object of class \code{\link{semnar}} with any URLs in \code{object$link} replace with shorter ones according to the value of \code{service}.
+}
 \description{
-Shorten the URLs of any links in a \code{"semnar"} object
+Shorten the URLs of any links in a \code{\link{semnar}} object
+}
+\seealso{
+\code{\link{add_presentation}} \code{\link{guess_address}}
 }

@@ -1,7 +1,12 @@
-#' Shorten the URLs of any links in a \code{"semnar"} object
+#' Shorten the URLs of any links in a \code{\link{semnar}} object
 #'
-#' @param object an object of class \code{"semnar"}. See \code{\link{add_presentation}}.
+#' @param object an object of class \code{\link{semnar}}. See \code{\link{add_presentation}}.
 #' @param service service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}.
+#'
+#' @return
+#' An object of class \code{\link{semnar}} with any URLs in \code{object$link} replace with shorter ones according to the value of \code{service}.
+#'
+#' @seealso \code{\link{add_presentation}} \code{\link{guess_address}}
 #'
 #' @export
 shorten_url.semnar <- function(object, service = "Is.gd") {

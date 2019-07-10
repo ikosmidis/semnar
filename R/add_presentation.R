@@ -1,8 +1,10 @@
-#' Create or add to a \code{semnar} object
+#' Create or add to a \code{\link{semnar}} object
 #'
-#' @param object an object an object of class \code{"semnar"}.
-#' @param country country of the presentation; character string or \code{NA} (default).
-#' @param city city of the presentation; character string or \code{NA} (default).
+#' @aliases semnar
+#' @param object either an object an object of class \code{\link{semnar}} or unspecified (default). See Details.
+#' @param country country where the presentation took place; character string or \code{NA} (default).
+#' @param city city where the presentation took place; character string or \code{NA} (default).
+#' @param state state where the presentation took place; character string or \code{NA} (default).
 #' @param lon longitude of the venue of the presentation; numeric or \code{NA} (default).
 #' @param lat latitude of the venue of the presentation; numeric or \code{NA} (default).
 #' @param event name of the event at which the presentation is/was given; character string or \code{NA} (default).
@@ -13,6 +15,7 @@
 #' @param presenter_affiliation  affiliation of the presenter of the presentation; character string or \code{NA} (default).
 #' @param presenter_link  link to the webpage of the presenter of the presentation; character string or \code{NA} (default).
 #' @param presenter_email  email of the presenter of the presentation; character string or \code{NA} (default).
+#' @param presenter_address address of the presenter; character string or \code{NA} (default).
 #' @param title title of the presentation; character string or \code{NA} (default).
 #' @param abstract abstract of the presentation; character string or \code{NA} (default).
 #' @param type the type of the talk. Available options are \code{NA} (default), \code{"seminar"}, \code{"lecture"}, \code{"presentation"}, \code{"talk"}, \code{"poster"}.
@@ -38,10 +41,12 @@
 #' @param tag a tag for the presentation; character string or \code{NA} (default).
 #'
 #' @details
-#' If \code{object} is not specified then \code{add_presentation} will create an \code{semnar} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
+#' If \code{object} is not specified then \code{add_presentation} will create an \code{\link{semnar}} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
 #'
 #' @return
-#' A structured \code{\link{data.frame}} that also inherits from class \code{semnar}, including the supplied presentation details.
+#' A structured \code{\link{data.frame}} that also inherits from class \code{\link{semnar}}, including the supplied presentation details.
+#'
+#' @seealso \code{\link{presenter}} \code{\link{plot.semnar}} \code{\link{shorten_url}} \code{\link{guess_address}}
 #'
 #' @examples
 #' # Two of my past talks
@@ -83,8 +88,10 @@ add_presentation <- function(object,
                              presenter_affiliation = NA,
                              presenter_email = NA,
                              presenter_link = NA,
+                             presenter_address = NA,
                      country = NA,
                      city = NA,
+                     state = NA,
                      lon = NA,
                      lat = NA,
                      event = NA,
@@ -136,9 +143,11 @@ add_presentation <- function(object,
         presenter_affiliation <- presenter$affiliation
         presenter_email <- presenter$email
         presenter_link <- presenter$link
+        presenter_address <- presenter$address
     }
     next_seminar <-  data.frame(country = country,
                                 city = city,
+                                state = state,
                                 lon = lon,
                                 lat = lat,
                                 event = event,
@@ -148,6 +157,7 @@ add_presentation <- function(object,
                                 presenter_affiliation = presenter_affiliation,
                                 presenter_link = presenter_link,
                                 presenter_email = presenter_email,
+                                presenter_address = presenter_address,
                                 title = title,
                                 link = link,
                                 materials = materials,
