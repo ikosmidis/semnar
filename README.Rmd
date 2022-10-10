@@ -82,14 +82,14 @@ IK_talks <- IK_talks |>
                      room = "Siepr 120",
                      start = "20160629 14:15", end = "20160629 14:35")
 ```
-`start` and `end` are parsed using the [**parsedate**](https:://cran.r-project.org/package=parsedate), which allows for great flexibilty in the format that dates/times are supplied.
+`start` and `end` are parsed using the [**parsedate**](https://cran.r-project.org/package=parsedate) R package, which allows for great flexibility in the format that dates/times are supplied.
 
 `add_presentation` provides many arguments (see `?add_presentation`) to cover as much detail as I could think of relevant to a presentation.
 
 ## Mapping
 The details in the database can be mapped using [**leaflet**](https://cran.r-project.org/package=leaflet):
 ```{r, eval = FALSE}
-plot(IK_talks, group = "year",
+plot(IK_talks, group = "city",
      title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 ```
 

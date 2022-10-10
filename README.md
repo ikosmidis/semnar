@@ -128,8 +128,9 @@ IK_talks <- IK_talks |>
 ```
 
 `start` and `end` are parsed using the
-[**parsedate**](https:://cran.r-project.org/package=parsedate), which
-allows for great flexibilty in the format that dates/times are supplied.
+[**parsedate**](https://cran.r-project.org/package=parsedate) R package,
+which allows for great flexibility in the format that dates/times are
+supplied.
 
 `add_presentation` provides many arguments (see `?add_presentation`) to
 cover as much detail as I could think of relevant to a presentation.
@@ -140,7 +141,7 @@ The details in the database can be mapped using
 [**leaflet**](https://cran.r-project.org/package=leaflet):
 
 ``` r
-plot(IK_talks, group = "year",
+plot(IK_talks, group = "city",
      title = "<a href='https://cran.r-project.org/package=semnar'>semnar</a> map")
 ```
 
