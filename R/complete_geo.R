@@ -78,7 +78,7 @@ guess_address.semnar <- function(object, all = FALSE) {
 guess_coord.semnar <- function(object, all = FALSE)  {
     base_url <- "https://nominatim.openstreetmap.org/?format=jsonv2"
     cc <- object[c("city", "country")]
-    inds <- if (all) rep(TRUE, nrow(coords)) else is.na(object$lon) | is.na(object$lat)
+    inds <- if (all) rep(TRUE, nrow(cc)) else is.na(object$lon) | is.na(object$lat)
     if (all(!inds)) {
         warning("no requests made")
     }
@@ -103,7 +103,6 @@ guess_coord.semnar <- function(object, all = FALSE)  {
                 }
             }
         })
-
         object$lon <- out["lon", ]
         object$lat <- out["lat", ]
     }

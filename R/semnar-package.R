@@ -2,12 +2,22 @@
 
 #' semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations
 #'
+#' Provides methods for constructing and maintaining a database of
+#' presentations in R. The presentations are either ones that the user
+#' gives or gave or presentations at a particular event or event
+#' series. The package also provides a plot method for the interactive
+#' mapping of the presentations using 'leaflet' by grouping them
+#' according to country, city, year and other presentation
+#' attributes. The markers on the map come with popups providing
+#' presentation details (title, institution, event, links to materials
+#' and events, and so on).
+#'
 #' @docType package
 #' @name semnar-package
 #'
-#' @seealso [add_presentation()] [presenter()] [plot.semnar()]
+#' @seealso [add_presentation()] [presenter()] [event()] [plot.semnar()]
 #'
-#' @importFrom lubridate make_datetime tz hour minute second wday year
+#' @importFrom lubridate make_datetime tz hour minute second wday year month
 #' @importFrom parsedate parse_date
 #' @import leaflet
 #' @importFrom jsonlite fromJSON

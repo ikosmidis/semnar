@@ -1,4 +1,4 @@
-# semnar 0.8
+# semnar 0.8.0
 
 ## Bug fixes
 * Fixed a bug with the `presenter_address`, when setting presenter
@@ -14,15 +14,16 @@
   `add_presentation()`, when both are specified.
 
 ## Other improvements, updates and additions
-* Moved from [**magrittr**](https://cran.r-project.org/package=magrittr) `%>%` pipe to base pipe `|>`.
-* Documentation updates and moved to [**roxygen2**](https://cran.r-project.org/package=roxygen2) with Rmarkdown.
 * `add_presentation()` returns an error if `start` date/time is after `end` date/time.
-* Under-the-hood improvements in codebase.
 * `add_presentation()` now supports `type = "webinar"`.
+* Moved from [**magrittr**](https://cran.r-project.org/package=magrittr) `%>%` pipe to base pipe `|>`.
+* Documentation updates and moved to [**roxygen2**](https://cran.r-project.org/package=roxygen2) with R Markdown.
+* Under-the-hood improvements in code base.
+* Added unit testing infrastructure
 
 # semnar 0.7.1
 
-## Other improvements, updates and additionsxb
+## Other improvements, updates and additions
 * Updated and improved documentation
 * New code for plotting that avoids use of `<<-`
 
