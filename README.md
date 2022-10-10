@@ -7,6 +7,7 @@ status](https://travis-ci.org/ikosmidis/semnar.svg?branch=master)](https://travi
 status](https://www.r-pkg.org/badges/version/semnar)](https://cran.r-project.org/package=semnar)
 [![Codecov test
 coverage](https://codecov.io/gh/ikosmidis/semnar/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ikosmidis/semnar?branch=master)
+[![R-CMD-check](https://github.com/ikosmidis/semnar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ikosmidis/semnar/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 # semnar <img src="https://github.com/ikosmidis/semnar/blob/develop/inst/art/semnar_hex.svg" width="320" align="right">
