@@ -44,7 +44,7 @@ install.packages("semnar")
 `add_presentation` is the main function for constructing and maintaining
 a data base of presentations. For example, below I record the details of
 a recent presentation I gave to the PhD students and PostDocs at
-University of Warwick on workflows and task management:
+University of Warwick on workflows and task management.
 
 ``` r
 library("semnar")
@@ -71,6 +71,15 @@ IK_talks <- add_presentation(presenter = IK,
                              start = "29 May 2019 4pm",
                              end = "29 May 2019, 17:00")
 ```
+
+Here, I start by defining the event information using `event()`, the
+presenter information using `presenter()`, and then supply the resulting
+objects in an `add_presentation()` call along with other
+presentation-specific details. `add_presentation` also provides
+arguments for supplying the same event and presenter information (and
+much more; see `?add_presentation`), but using the `event()` and
+`presenter()` constructor is useful when there are many presentations in
+the same event, and/or many presentations by the same presenter.
 
 `IK_talks` is now a structured `data.frame` that also inherits from
 class `semnar`, including the supplied presentation details.
@@ -131,9 +140,6 @@ IK_talks <- IK_talks |>
 [**parsedate**](https://cran.r-project.org/package=parsedate) R package,
 which allows for great flexibility in the format that dates/times are
 supplied.
-
-`add_presentation` provides many arguments (see `?add_presentation`) to
-cover as much detail as I could think of relevant to a presentation.
 
 ## Mapping
 
