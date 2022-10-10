@@ -41,6 +41,9 @@ expect_equal(out1[1, "end"], out2$end)
 ## `start` before `end`
 expect_error(add_presentation(start = "20200528, 16:00", end = "28 May 2019 5pm"),
              pattern = "Presentation start date/time is later than end date/time")
+expect_true(inherits(add_presentation(start = "20200528, 16:00")$start, "POSIXct"))
+expect_true(is.na(add_presentation(start = "20200528, 16:00")$end))
+
 
 ## Some of the attributes
 expect_equal(out1$country, c("England", "United States"))
@@ -61,3 +64,17 @@ expect_equal(out1$address, c(NA, NA))
 expect_equal(out1$postcode, c(NA, NA))
 expect_equal(out1$school, c(NA, NA))
 expect_equal(out1$tag, c(NA, NA))
+
+
+## type
+expect_equal(add_presentation(type = "presentation")$type, "presentation")
+expect_equal(add_presentation(type = "seminar")$type, "seminar")
+expect_equal(add_presentation(type = "webinar")$type, "webinar")
+expect_equal(add_presentation(type = "lecture")$type, "lecture")
+expect_equal(add_presentation(type = "talk")$type, "talk")
+expect_equal(add_presentation(type = "poster")$type, "poster")
+expect_error(add_presentation(type = "ABC"),
+             pattern = "`type` should be one ofNAseminarlecturepresentationtalkposterwebinar")
+
+
+
