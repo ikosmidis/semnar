@@ -15,4 +15,6 @@ Imports:
    urlshorteneR
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
-Suggests: tinytest
+Suggests: 
+    covr,
+    tinytest

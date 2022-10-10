@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/ikosmidis/semnar.svg?branch=master)](https://travis-ci.org/ikosmidis/semnar)
 [![CRAN status](https://www.r-pkg.org/badges/version/semnar)](https://cran.r-project.org/package=semnar)
+[![Codecov test coverage](https://codecov.io/gh/ikosmidis/semnar/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ikosmidis/semnar?branch=master)
 <!-- badges: end -->
 
 # semnar <img src="https://github.com/ikosmidis/semnar/blob/develop/inst/art/semnar_hex.svg" width="320" align="right">
