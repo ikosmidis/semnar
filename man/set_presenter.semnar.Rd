@@ -10,26 +10,28 @@
 set_presenter(object, presenter)
 }
 \arguments{
-\item{object}{either an object an object of class \code{"semnar"}.}
+\item{object}{either an object an object of class \code{\link{semnar}}.}
 
-\item{presenter}{an object of class \code{"semnar_presenter"}}
+\item{presenter}{an object of class \code{\link{semnar_presenter}}.}
 }
 \value{
-A list of \code{\link{semnar}} object, with the presenter information as in \code{presenter}.
+The \code{\link{semnar}} object supplied in \code{object}, with the
+presenter information as in \code{presenter}. See the output of
+\code{semnar:::get_presenter_variables()} for what variables are
+affected.
 }
 \description{
 Set presenter information from a \code{\link{semnar}} object
 }
 \examples{
-library("magrittr")
 out <- add_presentation(presenter_name = "Ioannis",
                         presenter_surname = "Kosmidis",
                         presenter_affiliation = "University of Warwick",
-                        title = "A") \%>\%
+                        title = "A") |>
        add_presentation(presenter_name = "Ioannis",
                         presenter_surname = "Kosmidis",
                         presenter_affiliation = "University College London",
-                        title = "B") \%>\%
+                        title = "B") |>
        add_presentation(presenter_name = "Ioannis",
                         presenter_surname = "Kosmidis",
                         presenter_affiliation = "University College London",

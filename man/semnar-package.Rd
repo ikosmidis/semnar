@@ -4,9 +4,6 @@
 \name{semnar-package}
 \alias{semnar-package}
 \title{semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations}
-\description{
-semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations
-}
 \seealso{
-\code{\link{add_presentation}} \code{\link{presenter}} \code{\link{plot.semnar}}
+\code{\link[=add_presentation]{add_presentation()}} \code{\link[=presenter]{presenter()}} \code{\link[=plot.semnar]{plot.semnar()}}
 }

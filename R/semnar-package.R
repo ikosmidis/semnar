@@ -5,13 +5,13 @@
 #' @docType package
 #' @name semnar-package
 #'
-#' @seealso \code{\link{add_presentation}} \code{\link{presenter}} \code{\link{plot.semnar}}
+#' @seealso [add_presentation()] [presenter()] [plot.semnar()]
 #'
-#' @import lubridate
+#' @importFrom lubridate make_datetime tz hour minute second wday year
+#' @importFrom parsedate parse_date
 #' @import leaflet
 #' @importFrom jsonlite fromJSON
-#' @import urlshorteneR
-#' @import magrittr
+#' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
 #'
 NULL
 
@@ -39,4 +39,17 @@ set_presenter <- function(object, presenter) {
 #' @export
 guess_address <- function(object, all = TRUE) {
     UseMethod("guess_address")
+}
+
+#' @rdname get_event.semnar
+#' @export
+get_event <- function(object) {
+    UseMethod("get_event")
+}
+
+
+#' @rdname set_event.semnar
+#' @export
+set_event <- function(object, event) {
+    UseMethod("set_event")
 }

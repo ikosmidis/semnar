@@ -57,10 +57,9 @@ IK_talks <- add_presentation(country = "England",
 str(IK_talks)
 ```
 
-I can then add another presentation, conveniently, by piping `IK_talks` forward into `add_presentation` using [**magrittr**'s](https://cran.r-project.org/package=magrittr) `%>%` operator:
+I can then add another presentation, conveniently, by piping `IK_talks` forward into `add_presentation` using the pipe operator `|>`:
 ```{r}
-library("magrittr")
-IK_talks <- IK_talks %>%
+IK_talks <- IK_talks |>
     add_presentation(country = "United States", city = "Stanford",
                      lon = -122.165330, lat = 37.429464,
                      event = "useR! 2016",

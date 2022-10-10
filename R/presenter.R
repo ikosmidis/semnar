@@ -1,18 +1,18 @@
-#' Create a \code{\link{semnar_presenter}} object with presenter details
+#' Create a `semnar_presenter()` object with presenter details
 #'
 #'
 #' @aliases semnar_presenter
-#' @param name name of the presenter; character string or \code{NA} (default).
-#' @param midname middle name of the presenter; character string or \code{NA} (default).
-#' @param surname surname of the presenter; character string or \code{NA} (default).
-#' @param affiliation  affiliation of the presenter; character string or \code{NA} (default).
-#' @param link  link to the webpage of the presenter; character string or \code{NA} (default).
-#' @param email  email of the presenter; character string or \code{NA} (default).
-#' @param address address of the presenter; character string or \code{NA} (default).
+#' @param name name of the presenter; character string or `NA` (default).
+#' @param midname middle name of the presenter; character string or `NA` (default).
+#' @param surname surname of the presenter; character string or `NA` (default).
+#' @param affiliation  affiliation of the presenter; character string or `NA` (default).
+#' @param link  link to the webpage of the presenter; character string or `NA` (default).
+#' @param email  email of the presenter; character string or `NA` (default).
+#' @param address address of the presenter; character string or `NA` (default).
 #'
 #'
 #' @return
-#' A structured \code{\link{data.frame}} that also inherits from class \code{\link{semnar_presenter}}, including the supplied presenter details.
+#' A structured [data.frame()] that also inherits from class [`semnar_presenter`], including the supplied presenter details.
 #'
 #' @seealso get_presenter set_presenter
 #'
@@ -55,26 +55,26 @@ presenter <- function(name = NA,
 }
 
 
-#' Get presenter information from a \code{\link{semnar}} object
+#' Get presenter information from a [`semnar`] object
 #'
-#' @param object either an object an object of class \code{\link{semnar}}.
+#' @param object either an object an object of class [`semnar`].
 #'
 #'
 #' @return
-#' A list of \code{\link{semnar_presenter}} objects, with the unique presenters in the \code{object}.
+#' A list of [`semnar_presenter`] objects, with the unique presenters in the `object`.
 #'
-#' @seealso \code{\link{presenter}} \code{\link{set_presenter}}
+#' @seealso [presenter()] [set_presenter()]
 #'
 #' @examples
-#' library("magrittr")
 #' out <- add_presentation(presenter_name = "Ioannis",
 #'                         presenter_surname = "Kosmidis",
 #'                         presenter_affiliation = "University of Warwick",
-#'                         title = "A") %>%
+#'                         presenter_email = "ioannis.kosmidis@warwick.ac.uk",
+#'                         title = "A") |>
 #'        add_presentation(presenter_name = "Ioannis",
 #'                         presenter_surname = "Kosmidis",
 #'                         presenter_affiliation = "University College London",
-#'                         title = "B") %>%
+#'                         title = "B") |>
 #'        add_presentation(presenter_name = "Ioannis",
 #'                         presenter_surname = "Kosmidis",
 #'                         presenter_affiliation = "University College London",
@@ -82,14 +82,9 @@ presenter <- function(name = NA,
 #' get_presenter(out)
 #' @export
 get_presenter.semnar <- function(object) {
-    ret <- unique(object[, c("presenter_name",
-                             "presenter_midname",
-                             "presenter_surname",
-                             "presenter_affiliation",
-                             "presenter_link",
-                             "presenter_email",
-                             "presenter_address")])
-    names(ret) <- c("name", "midname", "surname", "affiliation", "link", "email", "address")
+    nams <- get_presenter_variables()
+    ret <- unique(object[, nams[["semnar"]]])
+    names(ret) <- nams[["semnar_presenter"]]
     ret <-  split(ret, seq(nrow(ret)))
     unname(lapply(ret, function(x) {
         class(x) <- c("semnar_presenter", class(x))
@@ -99,26 +94,27 @@ get_presenter.semnar <- function(object) {
 
 
 
-#' Set presenter information from a \code{\link{semnar}} object
+#' Set presenter information from a [`semnar`] object
 #'
-#' @param object either an object an object of class \code{"semnar"}.
-#' @param presenter an object of class \code{"semnar_presenter"}
+#' @param object either an object an object of class [`semnar`].
+#' @param presenter an object of class [`semnar_presenter`].
 #'
 #' @seealso presenter get_presenter
 #'
-#' @return
-#' A list of \code{\link{semnar}} object, with the presenter information as in \code{presenter}.
+#' @return The [`semnar`] object supplied in `object`, with the
+#'     presenter information as in `presenter`. See the output of
+#'     `semnar:::get_presenter_variables()` for what variables are
+#'     affected.
 #'
 #' @examples
-#' library("magrittr")
 #' out <- add_presentation(presenter_name = "Ioannis",
 #'                         presenter_surname = "Kosmidis",
 #'                         presenter_affiliation = "University of Warwick",
-#'                         title = "A") %>%
+#'                         title = "A") |>
 #'        add_presentation(presenter_name = "Ioannis",
 #'                         presenter_surname = "Kosmidis",
 #'                         presenter_affiliation = "University College London",
-#'                         title = "B") %>%
+#'                         title = "B") |>
 #'        add_presentation(presenter_name = "Ioannis",
 #'                         presenter_surname = "Kosmidis",
 #'                         presenter_affiliation = "University College London",
@@ -132,12 +128,14 @@ get_presenter.semnar <- function(object) {
 #' set_presenter(out, john_doe)
 #' @export
 set_presenter.semnar <- function(object, presenter) {
-    object$presenter_name <- presenter$name
-    object$presenter_midname <- presenter$midname
-    object$presenter_surname <- presenter$surname
-    object$presenter_affiliation <- presenter$affiliation
-    object$presenter_email <- presenter$email
-    object$presenter_link <- presenter$link
-    object$address_link <- presenter$address
+    nams <- get_presenter_variables()
+    object[nams[[1]]] <- presenter[nams[[2]]]
     object
+}
+
+
+get_presenter_variables <- function() {
+    semnar_presenter <- c("name", "midname", "surname", "affiliation", "email", "link", "address")
+    semnar <- paste0("presenter_", semnar_presenter)
+    list(semnar = semnar, semnar_presenter = semnar_presenter)
 }
