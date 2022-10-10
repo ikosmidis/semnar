@@ -10,3 +10,4 @@ inst/scratch/
 ^inst/README_files
 ^CRAN-RELEASE$
 ^\.github$
+^CRAN-SUBMISSION$
