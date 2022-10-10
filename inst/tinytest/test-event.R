@@ -48,7 +48,7 @@ out1 <-
         start_hour = 13, start_min = 00,
         end_hour = 14, end_min = 00)
 
-vars <- get_event_variables()
+vars <- semnar:::get_event_variables()
 
 ## Details in the `semnar_event` object are passed in the `semnar` object
 o1 <- ACIIS[vars$semnar_event]

@@ -45,7 +45,7 @@ out2 <- add_presentation(
     venue = "Mathematical Sciences Building", room = "M1.02",
     year = 2019, month = 5, day = 28,
     start_hour = 16, start_min = 00,
-    end_hour = 17, end_min = 00) %>%
+    end_hour = 17, end_min = 00) |>
     add_presentation(
         presenter = ik_warwick,
         presenter_name = "I",
@@ -54,7 +54,7 @@ out2 <- add_presentation(
 
 
 ## presenter variables in out1 are the same as those in out2
-vars <- get_presenter_variables()
+vars <- semnar:::get_presenter_variables()
 expect_equal(out1[vars$semnar], out2[vars$semnar])
 
 
@@ -71,7 +71,7 @@ out3 <- add_presentation(
     venue = "Mathematical Sciences Building", room = "M1.02",
     year = 2019, month = 5, day = 28,
     start_hour = 16, start_min = 00,
-    end_hour = 17, end_min = 00) %>%
+    end_hour = 17, end_min = 00) |>
     add_presentation(
         presenter_name = "I",
         presenter_surname = "K",
