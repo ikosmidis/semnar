@@ -38,21 +38,28 @@ install.packages("semnar")
 `add_presentation` is the main function for constructing and maintaining a data base of presentations. For example, below I record the details of a recent presentation I gave to the PhD students and PostDocs at University of Warwick on workflows and task management:
 ```{r}
 library("semnar")
-IK_talks <- add_presentation(country = "England",
-                             city = "Coventry",
-                             lon = -1.560843, lat = 52.384019,
-                             event = "Young Researchers' Meeting",
+YRM <- event(event = "Young Researchers' Meeting",
+             country = "England",
+             city = "Coventry",
+             lon = -1.560843, lat = 52.384019,
+             link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
+             institution = "University of Warwick",
+             department = "Department of Statistics",
+             venue = "Mathematical Sciences Building")
+
+IK <- presenter(name = "Ioannis", surname = "Kosmidis",
+                affiliation = "University of Warwick",
+                email = "ioannis.kosmidis@warwick.ac.uk",
+                link = "https://ikosmidis.com")
+
+IK_talks <- add_presentation(presenter = IK,
                              title = "A workflow that most probably isn't yours",
-                             link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
-                             materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
                              type = "presentation",
-                             institution = "University of Warwick",
-                             department = "Department of Statistics",
-                             venue = "Mathematical Sciences Building",
+                             event = YRM,
                              room = "M1.02",
-                             year = 2019, month = 5, day = 28,
-                             start_hour = 16, start_min = 00,
-                             end_hour = 17, end_min = 00)
+                             materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+                             start = "29 May 2019 4pm",
+                             end = "29 May 2019, 17:00")
 ```
 `IK_talks` is now a structured `data.frame` that also inherits from class `semnar`, including the supplied presentation details.
 ```{r}
@@ -62,19 +69,20 @@ str(IK_talks)
 I can then add another presentation, conveniently, by piping `IK_talks` forward into `add_presentation` using the pipe operator `|>`:
 ```{r}
 IK_talks <- IK_talks |>
-    add_presentation(country = "United States", city = "Stanford",
+    add_presentation(presenter = IK,
+                     country = "United States",
+                     city = "Stanford",
                      lon = -122.165330, lat = 37.429464,
                      event = "useR! 2016",
                      title = "brglm: Reduced-bias inference in generalized linear models",
                      link = "http://user2016.r-project.org//files/abs-book.pdf",
                      materials = "https://bit.ly/2KCBbKg",
-                     type = "presentation", institution = NA, department = NA,
+                     type = "presentation", 
                      venue = "Stanford Institute for Economic Policy Research",
                      room = "Siepr 120",
-                     year = 2016, month = 06, day = 29,
-                     start_hour = 14, start_min = 15,
-                     end_hour = 14, end_min = 35)
+                     start = "20160629 14:15", end = "20160629 14:35")
 ```
+`start` and `end` are parsed using the [**parsedate**](https:://cran.r-project.org/package=parsedate), which allows for great flexibilty in the format that dates/times are supplied.
 
 `add_presentation` provides many arguments (see `?add_presentation`) to cover as much detail as I could think of relevant to a presentation.
 
