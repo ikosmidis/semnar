@@ -33,7 +33,7 @@
 #'                         event = "Young Researchers' Meeting",
 #'                         title = "A workflow that most probably isn't yours",
 #'                         link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
-#'                         materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+#'                         materials = "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
 #'                         type = "presentation", institution = "University of Warwick",
 #'                         department = "Department of Statistics",
 #'                         venue = "Mathematical Sciences Building", room = "M1.02",
@@ -44,7 +44,7 @@
 #'                          lon = -122.165330, lat = 37.429464,
 #'                          event = "useR! 2016",
 #'                          title = "brglm: Reduced-bias inference in generalized linear models",
-#'                          link = "http://user2016.r-project.org//files/abs-book.pdf",
+#'                          link = "https://user2016.r-project.org//files/abs-book.pdf",
 #'                          materials = "https://bit.ly/2KCBbKg",
 #'                          type = "presentation", institution = NA, department = NA,
 #'                          venue = "Stanford Institute for Economic Policy Research",
@@ -170,7 +170,7 @@ plot.semnar <- function(x,
     ## A few options
     ## "Stamen.Toner", "Stamen.TonerLite", "CartoDB.Positron", "Stamen.Watercolor",
     ## "Esri.WorldGrayCanvas", "CartoDB.Voyager"
-    ## Full list at http://leaflet-extras.github.io/leaflet-providers/preview/
+    ## Full list at https://leaflet-extras.github.io/leaflet-providers/preview/
     p <- leaflet(width = width, height = height) |>
         addProviderTiles(provider)
 

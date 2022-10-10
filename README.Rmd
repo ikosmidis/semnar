@@ -57,7 +57,7 @@ IK_talks <- add_presentation(presenter = IK,
                              type = "presentation",
                              event = YRM,
                              room = "M1.02",
-                             materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+                             materials = "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
                              start = "29 May 2019 4pm",
                              end = "29 May 2019, 17:00")
 ```
@@ -77,7 +77,7 @@ IK_talks <- IK_talks |>
                      lon = -122.165330, lat = 37.429464,
                      event = "useR! 2016",
                      title = "brglm: Reduced-bias inference in generalized linear models",
-                     link = "http://user2016.r-project.org//files/abs-book.pdf",
+                     link = "https://user2016.r-project.org//files/abs-book.pdf",
                      materials = "https://bit.ly/2KCBbKg",
                      type = "presentation", 
                      venue = "Stanford Institute for Economic Policy Research",
@@ -98,7 +98,7 @@ plot(IK_talks, group = "city",
 ![](https://github.com/ikosmidis/semnar/blob/master/inst/README_files/IK_talks.png)
 
 
-See `?plot.semnar` for the customization options `plot.semnar` provides, and [my talks page](http://ikosmidis.com/talks) for a live version with talks I gave in the last few years...
+See `?plot.semnar` for the customization options `plot.semnar` provides, and [my talks page](https://ikosmidis.com/talks) for a live version with talks I gave in the last few years...
 
 ## Interaction with other tools
 `jsonlite` can be directly used to export the [**semnar**](https://github.com/ikosmidis/semnar) databases into json files, ready to use in other software:

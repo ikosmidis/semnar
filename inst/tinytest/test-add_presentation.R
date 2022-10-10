@@ -5,7 +5,7 @@ out1 <- add_presentation(country = "England", city = "Coventry",
                          event = "Young Researchers Meeting",
                          title = "A workflow that most probably isnt yours",
                          link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
-                         materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+                         materials = "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
                          type = "presentation", institution = "University of Warwick",
                          department = "Department of Statistics",
                          venue = "Mathematical Sciences Building", room = "M1.02",
@@ -16,7 +16,7 @@ out1 <- add_presentation(country = "England", city = "Coventry",
                      lon = -122.165330, lat = 37.429464,
                      event = "useR! 2016",
                      title = "brglm: Reduced-bias inference in generalized linear models",
-                     link = "http://user2016.r-project.org//files/abs-book.pdf",
+                     link = "https://user2016.r-project.org//files/abs-book.pdf",
                      materials = "https://bit.ly/2KCBbKg",
                      type = "presentation", institution = NA, department = NA,
                      venue = "Stanford Institute for Economic Policy Research",
@@ -52,8 +52,8 @@ expect_equal(out1$lon, c(-1.560843, -122.165330))
 expect_equal(out1$lat, c(52.384019, 37.429464))
 expect_equal(out1$event, c("Young Researchers Meeting", "useR! 2016"))
 expect_equal(out1$title, c("A workflow that most probably isnt yours", "brglm: Reduced-bias inference in generalized linear models"))
-expect_equal(out1$link, c("https://warwick.ac.uk/fac/sci/statistics/news/yrm/", "http://user2016.r-project.org//files/abs-book.pdf"))
-expect_equal(out1$materials, c("http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf", "https://bit.ly/2KCBbKg"))
+expect_equal(out1$link, c("https://warwick.ac.uk/fac/sci/statistics/news/yrm/", "https://user2016.r-project.org//files/abs-book.pdf"))
+expect_equal(out1$materials, c("https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf", "https://bit.ly/2KCBbKg"))
 expect_equal(out1$type, c("presentation", "presentation"))
 expect_equal(out1$institution, c("University of Warwick", NA))
 expect_equal(out1$department, c("Department of Statistics", NA))

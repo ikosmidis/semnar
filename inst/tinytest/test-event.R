@@ -17,7 +17,7 @@ ik_warwick <- presenter(
     name = "Ioannis",
     surname = "Kosmidis",
     affiliation = "University of Warwick",
-    link = "http://www.ikosmidis.com",
+    link = "https://www.ikosmidis.com",
     email = "ioannis.kosmidis@warwick.ac.uk",
     address = "MSB1.12, Deparment of Statistics, University of Warwick, Coventry, CV4 7AL, UK")
 

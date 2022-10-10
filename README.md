@@ -67,7 +67,7 @@ IK_talks <- add_presentation(presenter = IK,
                              type = "presentation",
                              event = YRM,
                              room = "M1.02",
-                             materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+                             materials = "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
                              start = "29 May 2019 4pm",
                              end = "29 May 2019, 17:00")
 ```
@@ -102,7 +102,7 @@ str(IK_talks)
 #>  $ presenter_address    : logi NA
 #>  $ title                : chr "A workflow that most probably isn't yours"
 #>  $ link                 : chr "https://warwick.ac.uk/fac/sci/statistics/news/yrm/"
-#>  $ materials            : chr "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf"
+#>  $ materials            : chr "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf"
 #>  $ abstract             : logi NA
 #>  $ venue                : chr "Mathematical Sciences Building"
 #>  $ address              : logi NA
@@ -128,7 +128,7 @@ IK_talks <- IK_talks |>
                      lon = -122.165330, lat = 37.429464,
                      event = "useR! 2016",
                      title = "brglm: Reduced-bias inference in generalized linear models",
-                     link = "http://user2016.r-project.org//files/abs-book.pdf",
+                     link = "https://user2016.r-project.org//files/abs-book.pdf",
                      materials = "https://bit.ly/2KCBbKg",
                      type = "presentation", 
                      venue = "Stanford Institute for Economic Policy Research",
@@ -154,7 +154,7 @@ plot(IK_talks, group = "city",
 ![](https://github.com/ikosmidis/semnar/blob/master/inst/README_files/IK_talks.png)
 
 See `?plot.semnar` for the customization options `plot.semnar` provides,
-and [my talks page](http://ikosmidis.com/talks) for a live version with
+and [my talks page](https://ikosmidis.com/talks) for a live version with
 talks I gave in the last few years…
 
 ## Interaction with other tools
@@ -166,7 +166,7 @@ files, ready to use in other software:
 ``` r
 library("jsonlite")
 toJSON(IK_talks)
-#> [{"country":"England","city":"Coventry","lon":-1.5608,"lat":52.384,"event":"Young Researchers' Meeting","presenter_name":"Ioannis","presenter_surname":"Kosmidis","presenter_affiliation":"University of Warwick","presenter_link":"https://ikosmidis.com","presenter_email":"ioannis.kosmidis@warwick.ac.uk","title":"A workflow that most probably isn't yours","link":"https://warwick.ac.uk/fac/sci/statistics/news/yrm/","materials":"http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf","venue":"Mathematical Sciences Building","institution":"University of Warwick","department":"Department of Statistics","type":"presentation","room":"M1.02","start":"2019-05-29 16:00:00","end":"2019-05-29 17:00:00"},{"country":"United States","city":"Stanford","lon":-122.1653,"lat":37.4295,"event":"useR! 2016","presenter_name":"Ioannis","presenter_surname":"Kosmidis","presenter_affiliation":"University of Warwick","presenter_link":"https://ikosmidis.com","presenter_email":"ioannis.kosmidis@warwick.ac.uk","title":"brglm: Reduced-bias inference in generalized linear models","link":"http://user2016.r-project.org//files/abs-book.pdf","materials":"https://bit.ly/2KCBbKg","venue":"Stanford Institute for Economic Policy Research","type":"presentation","room":"Siepr 120","start":"2016-06-29 14:15:00","end":"2016-06-29 14:35:00"}]
+#> [{"country":"England","city":"Coventry","lon":-1.5608,"lat":52.384,"event":"Young Researchers' Meeting","presenter_name":"Ioannis","presenter_surname":"Kosmidis","presenter_affiliation":"University of Warwick","presenter_link":"https://ikosmidis.com","presenter_email":"ioannis.kosmidis@warwick.ac.uk","title":"A workflow that most probably isn't yours","link":"https://warwick.ac.uk/fac/sci/statistics/news/yrm/","materials":"https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf","venue":"Mathematical Sciences Building","institution":"University of Warwick","department":"Department of Statistics","type":"presentation","room":"M1.02","start":"2019-05-29 16:00:00","end":"2019-05-29 17:00:00"},{"country":"United States","city":"Stanford","lon":-122.1653,"lat":37.4295,"event":"useR! 2016","presenter_name":"Ioannis","presenter_surname":"Kosmidis","presenter_affiliation":"University of Warwick","presenter_link":"https://ikosmidis.com","presenter_email":"ioannis.kosmidis@warwick.ac.uk","title":"brglm: Reduced-bias inference in generalized linear models","link":"https://user2016.r-project.org//files/abs-book.pdf","materials":"https://bit.ly/2KCBbKg","venue":"Stanford Institute for Economic Policy Research","type":"presentation","room":"Siepr 120","start":"2016-06-29 14:15:00","end":"2016-06-29 14:35:00"}]
 ```
 
 ## Code of Conduct

@@ -39,7 +39,7 @@ out <- add_presentation(presenter_name = "Ioannis",
 john_doe <- presenter(name = "John",
                       surname = "Doe",
                       affiliation = "Nowhereland",
-                      link = "http://johndoe.nowhereland.com",
+                      link = "https://johndoe.nowhereland.com",
                       email = "john.doe@nowhereland.com")
 out
 set_presenter(out, john_doe)

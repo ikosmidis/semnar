@@ -77,7 +77,7 @@ Create a \code{\link{semnar_event}} object with event details
 IK_warwick <- presenter(name = "Ioannis",
                        surname = "Kosmidis",
                        affiliation = "University of Warwick",
-                       link = "http://www.ikosmidis.com")
+                       link = "https://www.ikosmidis.com")
 
 YRM <- event(event = "Young Researchers' Meeting",
              country = "England",

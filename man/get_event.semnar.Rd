@@ -22,7 +22,7 @@ Get event information from a \code{\link{semnar}} object
 IK_warwick <- presenter(name = "Ioannis",
                        surname = "Kosmidis",
                        affiliation = "University of Warwick",
-                       link = "http://www.ikosmidis.com")
+                       link = "https://www.ikosmidis.com")
 
 YRM <- event(event = "Young Researchers' Meeting",
              country = "England",

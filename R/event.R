@@ -15,7 +15,7 @@
 #' IK_warwick <- presenter(name = "Ioannis",
 #'                        surname = "Kosmidis",
 #'                        affiliation = "University of Warwick",
-#'                        link = "http://www.ikosmidis.com")
+#'                        link = "https://www.ikosmidis.com")
 #'
 #' YRM <- event(event = "Young Researchers' Meeting",
 #'              country = "England",
@@ -83,7 +83,7 @@ event <- function(event = NA,
 #' IK_warwick <- presenter(name = "Ioannis",
 #'                        surname = "Kosmidis",
 #'                        affiliation = "University of Warwick",
-#'                        link = "http://www.ikosmidis.com")
+#'                        link = "https://www.ikosmidis.com")
 #'
 #' YRM <- event(event = "Young Researchers' Meeting",
 #'              country = "England",

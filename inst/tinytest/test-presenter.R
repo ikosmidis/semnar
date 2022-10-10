@@ -1,7 +1,7 @@
 ik_warwick <- presenter(name = "Ioannis",
                         surname = "Kosmidis",
                         affiliation = "University of Warwick",
-                        link = "http://www.ikosmidis.com",
+                        link = "https://www.ikosmidis.com",
                         email = "ioannis.kosmidis@warwick.ac.uk",
                         address = "MSB1.12, Deparment of Statistics, University of Warwick, Coventry, CV4 7AL, UK")
 
@@ -9,7 +9,7 @@ out1 <- add_presentation(
     presenter_name = "Ioannis",
     presenter_surname = "Kosmidis",
     presenter_affiliation = "University of Warwick",
-    presenter_link = "http://www.ikosmidis.com",
+    presenter_link = "https://www.ikosmidis.com",
     presenter_email = "ioannis.kosmidis@warwick.ac.uk",
     presenter_address = "MSB1.12, Deparment of Statistics, University of Warwick, Coventry, CV4 7AL, UK",
     country = "England", city = "Coventry",
@@ -17,7 +17,7 @@ out1 <- add_presentation(
     event = "Young Researchers Meeting",
     title = "A workflow that most probably isnt yours",
     link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
-    materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+    materials = "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
     type = "presentation", institution = "University of Warwick",
     department = "Department of Statistics",
     venue = "Mathematical Sciences Building", room = "M1.02",
@@ -28,7 +28,7 @@ out1 <- add_presentation(
         presenter_name = "Ioannis",
         presenter_surname = "Kosmidis",
         presenter_affiliation = "University of Warwick",
-        presenter_link = "http://www.ikosmidis.com",
+        presenter_link = "https://www.ikosmidis.com",
         presenter_email = "ioannis.kosmidis@warwick.ac.uk",
         presenter_address = "MSB1.12, Deparment of Statistics, University of Warwick, Coventry, CV4 7AL, UK")
 
@@ -39,7 +39,7 @@ out2 <- add_presentation(
     event = "Young Researchers Meeting",
     title = "A workflow that most probably isnt yours",
     link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
-    materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+    materials = "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
     type = "presentation", institution = "University of Warwick",
     department = "Department of Statistics",
     venue = "Mathematical Sciences Building", room = "M1.02",
@@ -65,7 +65,7 @@ out3 <- add_presentation(
     event = "Young Researchers Meeting",
     title = "A workflow that most probably isnt yours",
     link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
-    materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+    materials = "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
     type = "presentation", institution = "University of Warwick",
     department = "Department of Statistics",
     venue = "Mathematical Sciences Building", room = "M1.02",

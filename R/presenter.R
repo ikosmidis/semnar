@@ -20,7 +20,7 @@
 #' @examples
 #' # A past talk of mine
 #' ik_warwick <- presenter(name = "Ioannis", surname = "Kosmidis",
-#'                         affiliation = "University of Warwick", link = "http://www.ikosmidis.com")
+#'                         affiliation = "University of Warwick", link = "https://www.ikosmidis.com")
 #' out <- add_presentation(country = "England", city = "Coventry",
 #'                         lon = -1.560843, lat = 52.384019,
 #'                         event = "Young Researchers' Meeting",
@@ -122,7 +122,7 @@ get_presenter.semnar <- function(object) {
 #' john_doe <- presenter(name = "John",
 #'                       surname = "Doe",
 #'                       affiliation = "Nowhereland",
-#'                       link = "http://johndoe.nowhereland.com",
+#'                       link = "https://johndoe.nowhereland.com",
 #'                       email = "john.doe@nowhereland.com")
 #' out
 #' set_presenter(out, john_doe)
