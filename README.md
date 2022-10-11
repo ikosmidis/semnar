@@ -154,8 +154,8 @@ plot(IK_talks, group = "city",
 ![](https://github.com/ikosmidis/semnar/blob/master/inst/README_files/IK_talks.png)
 
 See `?plot.semnar` for the customization options `plot.semnar` provides,
-and [my talks page](https://ikosmidis.com/talks) for a live version with
-talks I gave in the last few years…
+and [my talks page](https://ikosmidis.com/talks/) for a live version
+with talks I gave in the last few years…
 
 ## Interaction with other tools
 
