@@ -56,13 +56,15 @@
 
 \item{...}{Arguments to be passed to other methods. Currently unused.}
 }
+\value{
+An interactive map (opens in browser) with the locations of the
+events. When the locations are clicked, pup-ups appear which give
+access to event details. A legend with the colour-year combination
+is printed only if \code{this_year_colour != past_year_colour}. The
+current year is determined by \code{lubridate::year(Sys.time())}.
+}
 \description{
 Interactive \code{\link{semnar}} maps
-}
-\details{
-A legend with the colour-year combination is printed only if
-\code{this_year_colour != past_year_colour}. The current year is
-determined by \code{lubridate::year(Sys.time())}.
 }
 \examples{
 out <- add_presentation(country = "England", city = "Coventry",

@@ -18,11 +18,13 @@
 #' @param ... Arguments to be passed to other methods. Currently unused.
 #'
 #'
-#' @details
+#' @return
 #'
-#' A legend with the colour-year combination is printed only if
-#' `this_year_colour != past_year_colour`. The current year is
-#' determined by `lubridate::year(Sys.time())`.
+#' An interactive map (opens in browser) with the locations of the
+#' events. When the locations are clicked, pup-ups appear which give
+#' access to event details. A legend with the colour-year combination
+#' is printed only if `this_year_colour != past_year_colour`. The
+#' current year is determined by `lubridate::year(Sys.time())`.
 #'
 #' @seealso [add_presentation()]
 #'
