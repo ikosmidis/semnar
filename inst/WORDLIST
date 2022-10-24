@@ -9,4 +9,5 @@ geocoding
 geolocation
 json
 magrittr
+parsedate
 roxygen
