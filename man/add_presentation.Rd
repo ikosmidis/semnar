@@ -188,7 +188,17 @@ A structured \code{\link[=data.frame]{data.frame()}} that also inherits from cla
 Create or add to a \code{\link{semnar}} object
 }
 \details{
-If \code{object} is not specified then \code{\link[=add_presentation]{add_presentation()}} will create an \code{\link{semnar}} object based on the supplied inputs, otherwise it will add the details of the new presentation on \code{object}.
+If \code{object} is not specified then \code{\link[=add_presentation]{add_presentation()}} will create
+an \code{\link{semnar}} object based on the supplied inputs, otherwise it
+will add the details of the new presentation on \code{object}.
+
+If the start date and end date are specified (either through
+\code{start} and \code{end} or through \code{year}, \code{month}, \code{day}) and no
+information is provided or can be inferred about start/end times,
+then a time of 0 hours, 0 minutes and 0 seconds is assumed.
+
+An error is thrown if the start date/time is after the end
+date/time.
 }
 \examples{
 # Two of my past talks

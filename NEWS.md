@@ -1,3 +1,13 @@
+# semnar 0.8.1
+
+## Bug fixes
+* Improved the logic of dates with an error thrown if start date/time
+  is greater than end date/time
+
+## Other improvements, updates and additions
+* Provided details about the handling of start/end dates/times in the
+  `add_presentation()` documentation.
+
 # semnar 0.8.0
 
 ## Bug fixes

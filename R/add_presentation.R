@@ -95,7 +95,18 @@
 #'     (default).
 #'
 #' @details
-#' If `object` is not specified then [add_presentation()] will create an [`semnar`] object based on the supplied inputs, otherwise it will add the details of the new presentation on `object`.
+#'
+#' If `object` is not specified then [add_presentation()] will create
+#' an [`semnar`] object based on the supplied inputs, otherwise it
+#' will add the details of the new presentation on `object`.
+#'
+#' If the start date and end date are specified (either through
+#' `start` and `end` or through `year`, `month`, `day`) and no
+#' information is provided or can be inferred about start/end times,
+#' then a time of 0 hours, 0 minutes and 0 seconds is assumed.
+#'
+#' An error is thrown if the start date/time is after the end
+#' date/time.
 #'
 #' @return
 #' A structured [`data.frame()`] that also inherits from class [`semnar`], including the supplied presentation details.
@@ -201,36 +212,17 @@ add_presentation <- function(object,
     else {
         end_datetime <- parse_date(end)
     }
+
     if (!(is.na(start_datetime) | is.na(end_datetime))) {
-        if (start_datetime >= end_datetime) {
+        if (start_datetime > end_datetime) {
             stop("Presentation start date/time is later than end date/time")
         }
     }
     if (inherits(presenter, "semnar_presenter")) {
-        ## presenter_name <- presenter$name
-        ## presenter_midname <- presenter$midname
-        ## presenter_surname <- presenter$surname
-        ## presenter_affiliation <- presenter$affiliation
-        ## presenter_email <- presenter$email
-        ## presenter_link <- presenter$link
-        ## presenter_address <- presenter$address
         vars <- get_presenter_variables()
         for (i in seq_along(vars$semnar)) assign(vars$semnar[i], presenter[[vars$semnar_presenter[i]]])
     }
     if (inherits(event, "semnar_event")) {
-        ## country <- event$country
-        ## city <- event$city
-        ## state <- event$state
-        ## lon <- event$lon
-        ## lat <- event$lat
-        ## link <- event$link
-        ## institution <- event$institution
-        ## department <- event$department
-        ## school <- event$school
-        ## venue <- event$venue
-        ## address <- event$address
-        ## postcode <- event$postcode
-        ## event <- event$event
         vars <- get_event_variables()
         for (i in seq_along(vars$semnar)) assign(vars$semnar[i], event[[vars$semnar_event[i]]])
 
