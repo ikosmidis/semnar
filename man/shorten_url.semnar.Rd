@@ -10,7 +10,7 @@ shorten_url(object, service = "V.gd")
 \method{shorten_url}{semnar}(object, service = "Is.gd")
 }
 \arguments{
-\item{object}{an object of class \code{\link{semnar}}. See \code{\link{add_presentation}}.}
+\item{object}{an object of class \code{\link{semnar}}. See \code{\link[=add_presentation]{add_presentation()}}.}
 
 \item{service}{service to use for shortening URLs. Current options are \code{"V.gd"} (default) and \code{"Is.gd"}.}
 }
@@ -21,5 +21,5 @@ An object of class \code{\link{semnar}} with any URLs in \code{object$link} repl
 Shorten the URLs of any links in a \code{\link{semnar}} object
 }
 \seealso{
-\code{\link{add_presentation}} \code{\link{guess_address}}
+\code{\link[=add_presentation]{add_presentation()}} \code{\link[=guess_address]{guess_address()}}
 }

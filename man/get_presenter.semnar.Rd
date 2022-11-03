@@ -19,15 +19,15 @@ A list of \code{\link{semnar_presenter}} objects, with the unique presenters in 
 Get presenter information from a \code{\link{semnar}} object
 }
 \examples{
-library("magrittr")
 out <- add_presentation(presenter_name = "Ioannis",
                         presenter_surname = "Kosmidis",
                         presenter_affiliation = "University of Warwick",
-                        title = "A") \%>\%
+                        presenter_email = "ioannis.kosmidis@warwick.ac.uk",
+                        title = "A") |>
        add_presentation(presenter_name = "Ioannis",
                         presenter_surname = "Kosmidis",
                         presenter_affiliation = "University College London",
-                        title = "B") \%>\%
+                        title = "B") |>
        add_presentation(presenter_name = "Ioannis",
                         presenter_surname = "Kosmidis",
                         presenter_affiliation = "University College London",
@@ -35,5 +35,5 @@ out <- add_presentation(presenter_name = "Ioannis",
 get_presenter(out)
 }
 \seealso{
-\code{\link{presenter}} \code{\link{set_presenter}}
+\code{\link[=presenter]{presenter()}} \code{\link[=set_presenter]{set_presenter()}}
 }

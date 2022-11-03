@@ -4,23 +4,35 @@
 \alias{plot.semnar}
 \title{Interactive \code{\link{semnar}} maps}
 \usage{
-\method{plot}{semnar}(x, group = "city", title = NA,
-  title_position = "bottomleft", provider = "OpenStreetMap.Mapnik",
-  interval = TRUE, date_format = "dmy", shorten_url = FALSE,
-  service = "Is.gd", width = NULL, height = NULL,
-  show_event_url = FALSE, opacity = 0.2,
-  past_year_colour = "#737373", this_year_colour = "#ef3b2c", ...)
+\method{plot}{semnar}(
+  x,
+  group = "city",
+  title = NA,
+  title_position = "bottomleft",
+  provider = "OpenStreetMap.Mapnik",
+  interval = TRUE,
+  date_format = "dmy",
+  shorten_url = FALSE,
+  service = "Is.gd",
+  width = NULL,
+  height = NULL,
+  show_event_url = FALSE,
+  opacity = 0.2,
+  past_year_colour = "#737373",
+  this_year_colour = "#ef3b2c",
+  ...
+)
 }
 \arguments{
-\item{x}{an object of class \code{\link{semnar}}. See \code{\link{add_presentation}}.}
+\item{x}{an object of class \code{\link{semnar}}. See \code{\link[=add_presentation]{add_presentation()}}.}
 
-\item{group}{according to what should the semnars be selected on the map? Available options are \code{"none"} \code{"year"}, \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}, \code{"city"} (default), \code{"year+country"}.}
+\item{group}{according to what should the semnars be selected on the map? Available options are \code{"none"}, \code{"year"}, \code{"month"}, \code{"presenter"}, \code{"event"}, \code{"country"}, \code{"city"} (default), \code{"year+country"}.}
 
 \item{title}{character string for the title of the map. Default is \code{NA}, which produces no title.}
 
 \item{title_position}{the position of the title on the map, if \code{title} is not \code{NA}. Available options are \code{"bottomleft"} (default), \code{"bottomright"}, \code{"topleft"}, \code{"topright"}.}
 
-\item{provider}{the provider of tiles for the base map. See \code{\link[leaflet]{addProviderTiles}}. Default is \code{"OpenStreetMap.Mapnik"}.}
+\item{provider}{the provider of tiles for the base map. See \code{\link[leaflet:addProviderTiles]{leaflet::addProviderTiles()}}. Default is \code{"OpenStreetMap.Mapnik"}.}
 
 \item{interval}{Should the start and end times in each popup be displayed as an interval (\code{TRUE}; default) or in two separate lines (\code{FALSE})?}
 
@@ -28,15 +40,15 @@
 
 \item{shorten_url}{Should the URL links in \code{"object$link"} be shortened? Default is \code{FALSE}.}
 
-\item{service}{service to use for shortening URLs. Current options are \code{"Is.gd"} (default) and \code{"V.gd"}. See \code{\link{shorten_url}}.}
+\item{service}{service to use for shortening URLs. Current options are \code{"Is.gd"} (default) and \code{"V.gd"}. See \code{\link[=shorten_url]{shorten_url()}}.}
 
-\item{width}{As in \code{\link[leaflet]{leaflet}}. Default is \code{NULL}.}
+\item{width}{As in \code{\link[leaflet:leaflet]{leaflet::leaflet()}}. Default is \code{NULL}.}
 
-\item{height}{As in \code{\link[leaflet]{leaflet}}. Default is \code{NULL}.}
+\item{height}{As in \code{\link[leaflet:leaflet]{leaflet::leaflet()}}. Default is \code{NULL}.}
 
-\item{show_event_url}{Should the event or talk/seminar URL (\code{"link"} argument in \code{\link{add_presentation}}) be printed in the popups (\code{TRUE}), or the event name (\code{"event"} argument in \code{\link{add_presentation}}) become a hyperlink pointing to the event or talk/seminar URL (\code{FALSE}; default).}
+\item{show_event_url}{Should the event or talk/seminar URL (\code{"link"} argument in \code{\link[=add_presentation]{add_presentation()}}) be printed in the popups (\code{TRUE}), or the event name (\code{"event"} argument in \code{\link[=add_presentation]{add_presentation()}}) become a hyperlink pointing to the event or talk/seminar URL (\code{FALSE}; default).}
 
-\item{opacity}{As in \code{\link[leaflet]{markerOptions}}. Default is \code{0.2}.}
+\item{opacity}{As in \code{\link[leaflet:map-options]{leaflet::markerOptions()}}. Default is \code{0.2}.}
 
 \item{past_year_colour}{Colour to be used for past year's presentations. Default is \code{"#ef3b2c"}. See Details.}
 
@@ -44,33 +56,34 @@
 
 \item{...}{Arguments to be passed to other methods. Currently unused.}
 }
+\value{
+An interactive map (opens in browser) with the locations of the
+events. When the locations are clicked, pup-ups appear which give
+access to event details. A legend with the colour-year combination
+is printed only if \code{this_year_colour != past_year_colour}. The
+current year is determined by \code{lubridate::year(Sys.time())}.
+}
 \description{
 Interactive \code{\link{semnar}} maps
 }
-\details{
-A legend with the colour-year combination is printed only if
-\code{this_year_colour != past_year_colour}. The current year is
-determined by \code{lubridate::year(Sys.time())}.
-}
 \examples{
-library("magrittr")
 out <- add_presentation(country = "England", city = "Coventry",
                         lon = -1.560843, lat = 52.384019,
                         event = "Young Researchers' Meeting",
                         title = "A workflow that most probably isn't yours",
                         link = "https://warwick.ac.uk/fac/sci/statistics/news/yrm/",
-                        materials = "http://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
+                        materials = "https://ikosmidis.com/files/ikosmidis_YRM_2019.pdf",
                         type = "presentation", institution = "University of Warwick",
                         department = "Department of Statistics",
                         venue = "Mathematical Sciences Building", room = "M1.02",
                         year = 2019, month = 5, day = 28,
                         start_hour = 16, start_min = 00,
-                        end_hour = 17, end_min = 00) \%>\%
+                        end_hour = 17, end_min = 00) |>
         add_presentation(country = "United States", city = "Stanford",
                          lon = -122.165330, lat = 37.429464,
                          event = "useR! 2016",
                          title = "brglm: Reduced-bias inference in generalized linear models",
-                         link = "http://user2016.r-project.org//files/abs-book.pdf",
+                         link = "https://user2016.r-project.org//files/abs-book.pdf",
                          materials = "https://bit.ly/2KCBbKg",
                          type = "presentation", institution = NA, department = NA,
                          venue = "Stanford Institute for Economic Policy Research",
@@ -84,5 +97,5 @@ if (interactive()) {
 }
 }
 \seealso{
-\code{\link{add_presentation}}
+\code{\link[=add_presentation]{add_presentation()}}
 }

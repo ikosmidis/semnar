@@ -3,10 +3,17 @@
 \name{presenter}
 \alias{presenter}
 \alias{semnar_presenter}
-\title{Create a \code{\link{semnar_presenter}} object with presenter details}
+\title{Create a \code{semnar_presenter()} object with presenter details}
 \usage{
-presenter(name = NA, midname = NA, surname = NA, affiliation = NA,
-  link = NA, email = NA, address = NA)
+presenter(
+  name = NA,
+  midname = NA,
+  surname = NA,
+  affiliation = NA,
+  link = NA,
+  email = NA,
+  address = NA
+)
 }
 \arguments{
 \item{name}{name of the presenter; character string or \code{NA} (default).}
@@ -24,15 +31,15 @@ presenter(name = NA, midname = NA, surname = NA, affiliation = NA,
 \item{address}{address of the presenter; character string or \code{NA} (default).}
 }
 \value{
-A structured \code{\link{data.frame}} that also inherits from class \code{\link{semnar_presenter}}, including the supplied presenter details.
+A structured \code{\link[=data.frame]{data.frame()}} that also inherits from class \code{\link{semnar_presenter}}, including the supplied presenter details.
 }
 \description{
-Create a \code{\link{semnar_presenter}} object with presenter details
+Create a \code{semnar_presenter()} object with presenter details
 }
 \examples{
 # A past talk of mine
 ik_warwick <- presenter(name = "Ioannis", surname = "Kosmidis",
-                        affiliation = "University of Warwick", link = "http://www.ikosmidis.com")
+                        affiliation = "University of Warwick", link = "https://www.ikosmidis.com")
 out <- add_presentation(country = "England", city = "Coventry",
                         lon = -1.560843, lat = 52.384019,
                         event = "Young Researchers' Meeting",

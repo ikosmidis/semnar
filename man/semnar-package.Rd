@@ -5,8 +5,16 @@
 \alias{semnar-package}
 \title{semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations}
 \description{
-semnar: Methods and classes for constructing, maintaining and interacting with a database of presentations
+Provides methods for constructing and maintaining a database of
+presentations in R. The presentations are either ones that the user
+gives or gave or presentations at a particular event or event
+series. The package also provides a plot method for the interactive
+mapping of the presentations using 'leaflet' by grouping them
+according to country, city, year and other presentation
+attributes. The markers on the map come with popups providing
+presentation details (title, institution, event, links to materials
+and events, and so on).
 }
 \seealso{
-\code{\link{add_presentation}} \code{\link{presenter}} \code{\link{plot.semnar}}
+\code{\link[=add_presentation]{add_presentation()}} \code{\link[=presenter]{presenter()}} \code{\link[=event]{event()}} \code{\link[=plot.semnar]{plot.semnar()}}
 }
