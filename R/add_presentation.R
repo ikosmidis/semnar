@@ -192,13 +192,13 @@ add_presentation <- function(object,
         start_datetime <- make_datetime(year = year,
                                         month = month,
                                         day = day,
-                                        hour = ifelse(is.na(start_hour), 0, start_hour),
+                                        hour = ifelse(is.na(x =start_hour), 0, start_hour),
                                         min = ifelse(is.na(start_min), 0, start_min),
                                         sec = ifelse(is.na(start_sec), 0, start_sec),
                                         tz = tz)
     }
     else {
-        start_datetime <- parse_date(start)
+        start_datetime <- as.POSIXct(parse_date(start, default_tz = tz), tz)
     }
     if (is.na(end)) {
         end_datetime <- make_datetime(year = year,
@@ -210,7 +210,7 @@ add_presentation <- function(object,
                                       tz = tz)
     }
     else {
-        end_datetime <- parse_date(end)
+        end_datetime <- as.POSIXct(parse_date(end, default_tz = tz), tz)
     }
 
     if (!(is.na(start_datetime) | is.na(end_datetime))) {
