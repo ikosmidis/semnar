@@ -18,3 +18,7 @@ and events, and so on).
 \seealso{
 \code{\link[=add_presentation]{add_presentation()}} \code{\link[=presenter]{presenter()}} \code{\link[=event]{event()}} \code{\link[=plot.semnar]{plot.semnar()}}
 }
+\author{
+\strong{Maintainer}: Ioannis Kosmidis \email{ioannis.kosmidis@warwick.ac.uk} (\href{https://orcid.org/0000-0003-1556-0302}{ORCID})
+
+}
