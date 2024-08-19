@@ -61,13 +61,17 @@ guess_address.semnar <- function(object, all = FALSE) {
                                      paste0("lat=", x[2]),
                                      "addressdetails=1",
                                      sep = "&")
-            res <- try(fromJSON(current_request), silent = TRUE)
-            if (inherits(res, "try-error") | !is.null(res$error)) {
-                warning("unable to geocode")
+            if (curl::has_internet()) {
+                res <- try(fromJSON(current_request), silent = TRUE)
+                if (!is.null(res$error)) {
+                    message("unable to geocode")
+                    NA
+                } else {
+                    res$display_name
+                }
+            } else {
+                message("No internet connection")
                 NA
-            }
-            else {
-                res$display_name
             }
         }
     })

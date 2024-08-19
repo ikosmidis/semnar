@@ -1,4 +1,9 @@
-# semnar 0.x.x
+# semnar 0.8.2
+
+## Bug fixes
+* Fixed timezone issue when using parse_date
+
+* `guess_address()` fails gracefully when there is no internet connection
 
 # semnar 0.8.1
 

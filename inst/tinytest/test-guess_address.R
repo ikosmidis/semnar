@@ -26,5 +26,7 @@ out <- add_presentation(country = "England", city = "Coventry",
 expect_equal(out$address, c(NA, NA))
 out2 <- guess_address(out)
 expect_equal(length(out2$address), 2)
-expect_false(out2$address[1] == out2$address[2])
-expect_true(all(!is.na(out2$address)))
+if (curl::has_internet()) {
+    expect_false(out2$address[1] == out2$address[2])
+    expect_true(all(!is.na(out2$address)))
+}
