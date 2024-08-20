@@ -12,7 +12,6 @@
 #' presentation details (title, institution, event, links to materials
 #' and events, and so on).
 #'
-#' @docType package
 #' @name semnar-package
 #'
 #' @seealso [add_presentation()] [presenter()] [event()] [plot.semnar()]
@@ -23,7 +22,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom urlshorteneR isgd_LinksShorten vgd_LinksShorten
 #'
-NULL
+"_PACKAGE"
 
 #' @rdname shorten_url.semnar
 #' @export
